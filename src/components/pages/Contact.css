@@ -1,0 +1,88 @@
+.contact-container {
+  padding: 6rem 2rem;
+  background-color: #f5f5f5;
+  text-align: center;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-container h3 {
+  font-size: 3rem;
+  margin-bottom: 2.5rem;
+  color: #333;
+}
+
+.contact-phone,
+.contact-email,
+.contact-location {
+  font-size: 1.4rem;
+  margin: 1.5rem 0;
+  color: #555;
+}
+
+.contact-btns {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.contact-btns a {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btns a:hover {
+  background-color: #333;
+}
+
+.contact-btns i {
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+/* RESPONSYWNOŚĆ */
+@media screen and (max-width: 768px) {
+  .contact-container {
+    padding: 4rem 1.5rem;
+  }
+
+  .contact-container h3 {
+    font-size: 2.2rem;
+  }
+
+  .contact-phone,
+  .contact-email,
+  .contact-location {
+    font-size: 1.2rem;
+  }
+
+  .contact-btns a {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-container h3 {
+    font-size: 1.8rem;
+  }
+
+  .contact-btns {
+    gap: 1rem;
+  }
+
+  .contact-btns a {
+    width: 100%;
+    padding: 12px 0;
+  }
+}

@@ -1,0 +1,122 @@
+.car-container {
+  padding: 80px 20px;
+  background-color: #f4f4f4;
+  max-width: 1200px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 80vh;
+}
+
+.car-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.car-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.car-image {
+  flex: 1;
+  max-width: 47%;
+}
+
+.car-img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.car-info {
+  flex: 1;
+  max-width: 47%;
+}
+
+.car-subtitle {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.car-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.car-info li {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.car-info li strong {
+  color: #222;
+}
+
+/* RESPONSYWNOŚĆ */
+
+@media (max-width: 992px) {
+  .car-container {
+    padding: 60px 15px;
+  }
+
+  .car-title {
+    font-size: 2.5rem;
+  }
+
+  .car-subtitle {
+    font-size: 1.7rem;
+  }
+
+  .car-info li {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .car-details {
+    flex-direction: column;
+  }
+
+  .car-image,
+  .car-info {
+    max-width: 100%;
+  }
+
+  .car-title {
+    font-size: 2.2rem;
+  }
+
+  .car-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .car-info li {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-container {
+    padding: 40px 10px;
+  }
+
+  .car-title {
+    font-size: 2rem;
+  }
+
+  .car-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .car-info li {
+    font-size: 1rem;
+  }
+}
