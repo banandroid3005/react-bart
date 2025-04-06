@@ -1,12 +1,24 @@
 import React from "react";
 import "./AboutMe.css";
+import { Helmet } from "react-helmet";
 
 function AboutMe() {
   return (
     <>
       <div className="about-me-container">
+        <Helmet>
+          <title>O mnie – Taxi Premium Lexus ES300h Kielce</title>
+          <meta
+            name="description"
+            content="Poznaj właściciela i kierowcę usługi premium taxi Lexus ES300h w Kielcach. Dowiedz się, dlaczego warto skorzystać z naszej oferty."
+          />
+        </Helmet>
         <div className="about-me-photo">
-          <img src={require("../../images/face.jpg")} alt="moje zdjecie" loading="lazy" />
+          <img
+            src={require("../../images/face.jpg")}
+            alt="moje zdjecie"
+            loading="lazy"
+          />
         </div>
         <div className="about-me-text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut erat

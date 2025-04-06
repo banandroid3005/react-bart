@@ -97,6 +97,25 @@
   padding-left: 1rem;
 }
 
+/* Nowa sekcja 'Co oferujemy' na komputerach */
+.hero-column-offer {
+  flex: 1;
+  background-color: #f8f8f8;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.hero-column-offer h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-column-offer p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
 /* Sekcja Zadzwoń */
 .container-call {
   margin-top: 5rem;
@@ -161,6 +180,10 @@
   }
 
   .hero-column {
+    padding: 2rem;
+  }
+
+  .hero-column-offer {
     padding: 2rem;
   }
 

@@ -19,7 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px; /* Zwiększona przerwa między elementami */
+  margin-bottom: 80px; /* Zwiększona przerwa między elementami */
   padding: 10px 20px;
   background-color: #fff;
   border-radius: 5px;

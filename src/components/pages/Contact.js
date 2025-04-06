@@ -1,10 +1,18 @@
 import React from "react";
 import "./Contact.css";
+import { Helmet } from "react-helmet";
 
 function Contact() {
   return (
     <>
       <div className="contact-container">
+        <Helmet>
+          <title>Kontakt – Taxi Lexus ES300h Kielce</title>
+          <meta
+            name="description"
+            content="Skontaktuj się z nami, aby zamówić usługę taxi Lexus ES300h w Kielcach. Dostępność, informacje o rezerwacjach, oraz kontakt telefoniczny."
+          />
+        </Helmet>
         <h3>Kontakt</h3>
         <div className="contact-phone">Numer telefonu: +48 ### ### ###</div>
         <div className="contact-email">Email: ######@gmail.com</div>

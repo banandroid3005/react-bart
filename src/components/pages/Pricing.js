@@ -1,10 +1,18 @@
-// src/components/Pricing.js
 import React from "react";
 import "./Pricing.css";
+import { Helmet } from "react-helmet";
 
 function Pricing() {
   return (
     <div className="pricing-container">
+      <Helmet>
+        <title>Cennik Taxi – Lexus ES300h Kielce</title>
+        <meta
+          name="description"
+          content="Sprawdź aktualny cennik usług taxi Lexus ES300h w Kielcach – taryfy dzienne, nocne, poza miastem."
+        />
+      </Helmet>
+
       <h2>Cennik usług taxi (Lexus ES300h 2021 - Premium)</h2>
 
       <div className="pricing-item">

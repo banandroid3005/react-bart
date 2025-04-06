@@ -1,15 +1,28 @@
 import React from "react";
 import "./Car.css";
 import lexusImage from "../../images/lexus.webp";
+import { Helmet } from "react-helmet";
 
 function Car() {
   return (
     <div className="car-container">
+      <Helmet>
+        <title>Auto – Lexus ES300h 2021 – Taxi Premium Kielce</title>
+        <meta
+          name="description"
+          content="Dowiedz się więcej o Lexusie ES300h 2021. Oferujemy usługi premium taxi w Kielcach z komfortowym samochodem."
+        />
+      </Helmet>
       <h2 className="car-title">Lexus ES300h 2021 - Premium</h2>
 
       <div className="car-details">
         <div className="car-image">
-          <img src={lexusImage} alt="Lexus ES300h 2021" className="car-img" loading="lazy"/>
+          <img
+            src={lexusImage}
+            alt="Lexus ES300h 2021"
+            className="car-img"
+            loading="lazy"
+          />
         </div>
 
         <div className="car-info">
