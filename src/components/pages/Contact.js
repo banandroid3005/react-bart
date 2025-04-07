@@ -43,7 +43,7 @@ function Contact() {
 
         <div className="contact-email">
           <strong>Email:</strong>{" "}
-          <a href="mailto:szeregtaki@gmail.com">szeregtaki@gmail.com</a>
+          <a href="mailto:szeregtaki@gmail.com">baju24@gmail.com</a>
         </div>
 
         <div className="contact-location">
@@ -80,8 +80,6 @@ function Contact() {
             <i className="fa fa-envelope" /> Napisz e-mail
           </a>
         </div>
-
-        {/* Ikony mediów społecznościowych */}
         <div className="social-icons">
           <a href="#" aria-label="Facebook">
             <i className="fab fa-facebook-f"></i>

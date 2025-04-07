@@ -14,7 +14,7 @@
   color: #222;
 }
 
-.contact-phone span{
+.contact-phone span {
   gap: 20px;
 }
 
@@ -34,6 +34,15 @@
   font-size: 1.3rem;
   margin-bottom: 10px;
   color: #444;
+}
+
+.contact-email a{
+  text-decoration: none;
+  color: #242424;
+}
+
+.contact-email a:hover{
+  color: #2424;
 }
 
 .contact-hours {
@@ -101,7 +110,7 @@
 }
 
 .contact-btns a::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -141,8 +150,6 @@
 .social-icons a:hover {
   color: #007bff;
 }
-
-/* 📱 RESPONSYWNOŚĆ */
 
 @media (max-width: 768px) {
   .contact-container {

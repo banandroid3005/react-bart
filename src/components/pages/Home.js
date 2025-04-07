@@ -42,8 +42,6 @@ function Home() {
           <a href="/car">Zobacz więcej</a>
         </div>
       </section>
-
-      {/* Sekcja Co oferujemy */}
       <section className="home-columns">
         <div className="home-column-offer">
           <h2>Co oferujemy</h2>

@@ -58,7 +58,6 @@
   }
 }
 
-/* Na jeszcze mniejsze ekrany (np. telefony) */
 @media screen and (max-width: 480px) {
   .btn--medium,
   .btn--large {
