@@ -21,37 +21,22 @@ function Footer() {
           <div className="footer-link-items">
             <h3>Social Media</h3>
             <div className="social-icons">
-              <Link
-                className="social-icon-link instagram"
-                to="/"
-                target="_blank"
-                aria-label="Instagram"
-              >
+              <a href="/">
                 <i className="fab fa-instagram"></i>
-              </Link>
-              <a href="/">Instagram</a>
+                Instagram
+              </a>
             </div>
             <div className="social-icons">
-              <Link
-                className="social-icon-link facebook"
-                to="/"
-                target="_blank"
-                aria-label="Facebook"
-              >
+              <a href="/">
                 <i className="fab fa-facebook-f"></i>
-              </Link>
-              <a href="/">Facebook</a>
+                Facebook
+              </a>
             </div>
             <div className="social-icons">
-              <Link
-                className="social-icon-link tiktok"
-                to="/"
-                target="_blank"
-                aria-label="Tiktok"
-              >
-                <i className="fa fa-tiktok" />
-              </Link>
-              <a href="/">Tiktok</a>
+              <a href="/">
+                <i className="fab fa-tiktok" />
+                Tiktok
+              </a>
             </div>
           </div>
           <div className="footer-link-items">

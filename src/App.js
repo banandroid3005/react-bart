@@ -8,11 +8,14 @@ import Pricing from './components/pages/Pricing';
 import Car from './components/pages/Car';
 import Contact from './components/pages/Contact';
 import AboutMe from './components/pages/AboutMe';
+import './components/ScrollToTop';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <>
     <Router>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />

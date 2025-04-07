@@ -1,31 +1,31 @@
-.hero-container {
+.home-container {
   background-color: #fff;
   padding: 4rem 2rem;
   text-align: center;
   color: #000;
   width: 100%;
   box-sizing: border-box;
-  min-height: 80vh; /* Zapewnia, że kontener zawsze ma minimalną wysokość */
+  min-height: 80vh; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 1200px; /* Zapewnia, że kontener nie przekroczy szerokości */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.hero-heading h2 {
+.home-heading h2 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
 }
 
-.hero-sub-heading {
+.home-sub-heading {
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
   color: #555;
 }
 
-.hero-btn a {
+.home-btn a {
   background-color: #000;
   color: #fff;
   padding: 14px 28px;
@@ -35,12 +35,11 @@
   transition: background-color 0.3s ease;
 }
 
-.hero-btn a:hover {
+.home-btn a:hover {
   background-color: #333;
 }
 
-/* Kolumny */
-.hero-columns {
+.home-columns {
   display: flex;
   justify-content: space-between;
   gap: 4rem;
@@ -52,7 +51,7 @@
   flex-wrap: wrap;
 }
 
-.hero-column {
+.home-column {
   flex: 1;
   background-color: #f8f8f8;
   padding: 3rem;
@@ -60,7 +59,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.hero-column h2 {
+.home-column h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   color: #111;
@@ -71,17 +70,17 @@
   padding: 0;
 }
 
-.hero-column li {
+.home-column li {
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
 
-.hero-column p {
+.home-column p {
   font-size: 1.1rem;
   color: #444;
 }
 
-.hero-column a {
+.home-column a {
   display: inline-block;
   margin-top: 1.5rem;
   color: #000;
@@ -89,7 +88,7 @@
   text-decoration: underline;
 }
 
-.hero-column blockquote {
+.home-column blockquote {
   font-style: italic;
   color: #666;
   margin: 1.5rem 0;
@@ -97,8 +96,7 @@
   padding-left: 1rem;
 }
 
-/* Nowa sekcja 'Co oferujemy' na komputerach */
-.hero-column-offer {
+.home-column-offer {
   flex: 1;
   background-color: #f8f8f8;
   padding: 3rem;
@@ -106,12 +104,12 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.hero-column-offer h2 {
+.home-column-offer h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
 }
 
-.hero-column-offer p {
+.home-column-offer p {
   font-size: 1.1rem;
   color: #444;
 }
@@ -165,33 +163,32 @@
   transform: scale(1);
 }
 
-/* Responsywność */
 @media screen and (max-width: 960px) {
-  .hero-container {
+  .home-container {
     height: auto;
     padding: 2rem 1rem;
-    margin-bottom: 4rem; /* Dodano margines dolny */
+    margin-bottom: 4rem; 
   }
 
-  .hero-columns {
+  .home-columns {
     flex-direction: column;
     gap: 2rem;
     padding: 0 1rem;
   }
 
-  .hero-column {
+  .home-column {
     padding: 2rem;
   }
 
-  .hero-column-offer {
+  .home-column-offer {
     padding: 2rem;
   }
 
-  .hero-heading h2 {
+  .home-heading h2 {
     font-size: 2.5rem;
-  }
+  } 
 
-  .hero-sub-heading {
+  .home-sub-heading {
     font-size: 1.3rem;
   }
 
@@ -205,26 +202,25 @@
   }
 }
 
-/* Na jeszcze mniejsze ekrany (np. telefony) */
 @media screen and (max-width: 480px) {
-  .hero-heading h2 {
+  .home-heading h2 {
     font-size: 2rem;
   }
 
-  .hero-sub-heading {
+  .home-sub-heading {
     font-size: 1.2rem;
   }
 
-  .hero-btn a {
+  .home-btn a {
     padding: 12px 24px;
     font-size: 1rem;
   }
 
-  .hero-column h2 {
+  .home-column h2 {
     font-size: 1.6rem;
   }
 
-  .hero-column li {
+  .home-column li {
     font-size: 1rem;
   }
 

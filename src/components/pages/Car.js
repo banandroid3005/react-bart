@@ -49,13 +49,23 @@ function Car() {
             <li>
               <strong>Zużycie paliwa:</strong> 5.6 L/100 km
             </li>
-            <li>
-              <strong>Komfort:</strong> Skórzana tapicerka, system audio
-              premium, podgrzewane fotele
-            </li>
           </ul>
         </div>
-      </div>
+        </div>
+        {/* Lista komfortu pod spodem */}
+        <ul className="car-comfort">
+          <caption>Komfort</caption>
+          <li>🛋️ Skórzana, miękka tapicerka klasy premium</li>
+          <li>❄️ Czterostrefowa klimatyzacja automatyczna</li>
+          <li>🔇 Niezwykle cicha kabina dzięki wygłuszeniu i napędowi hybrydowemu</li>
+          <li>🚗 Płynna jazda dzięki zawieszeniu o wysokiej kulturze pracy</li>
+          <li>🔊 System audio Mark Levinson – krystaliczny dźwięk</li>
+          <li>🌡️ Podgrzewane i wentylowane fotele z przodu i z tyłu</li>
+          <li>💺 Elektrycznie regulowane siedzenia z pamięcią ustawień</li>
+          <li>☀️ Elektryczna roleta tylnej szyby i bocznych szyb</li>
+          <li>📱 Bezprzewodowa ładowarka i złącza USB dla pasażerów</li>
+          <li>🌌 Panoramiczny dach – wrażenie przestrzeni</li>
+        </ul>
     </div>
   );
 }
