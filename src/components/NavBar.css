@@ -125,9 +125,9 @@
   .menu-icon {
     display: block;
     position: absolute;
-    top: 0;
-    right: 10px; /* Zmiana pozycji ikony menu w prawo */
-    transform: translate(-100%, 60%);
+    top: 4;
+    right: 0; /* Ustawienie na 0 dla wyrównania w prawo */
+    transform: translateX(-50%);
     font-size: 1.8rem;
     cursor: pointer;
   }

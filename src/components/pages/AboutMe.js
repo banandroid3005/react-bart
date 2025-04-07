@@ -75,7 +75,7 @@ function AboutMe() {
         </div>
         <div className="faq-item">
           <h4>Jak mogę zarezerwować kurs?</h4>
-          <p>Rezerwacji można dokonać telefonicznie lub poprzez nasz formularz kontaktowy na stronie.</p>
+          <p>Rezerwacji można dokonać telefonicznie lub poprzez mail.</p>
         </div>
       </div>
     </>
