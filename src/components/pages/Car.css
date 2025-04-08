@@ -6,6 +6,17 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   min-height: 80vh;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .car-title {
@@ -13,6 +24,18 @@
   text-align: center;
   margin-bottom: 40px;
   color: #333;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .car-details {
@@ -26,6 +49,11 @@
 .car-image {
   flex: 1;
   max-width: 47%;
+  transition: transform 0.4s ease;
+}
+
+.car-image:hover {
+  transform: scale(1.05);
 }
 
 .car-img {
@@ -43,6 +71,7 @@
   font-size: 2rem;
   margin-bottom: 16px;
   color: #444;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .car-info ul {
@@ -71,6 +100,8 @@
   max-width: 800px;
   margin: 2rem auto;
   color: #333;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .car-comfort caption {
@@ -88,8 +119,6 @@
   display: flex;
   align-items: flex-start;
 }
-
-/* RESPONSYWNOŚĆ */
 
 @media (max-width: 992px) {
   .car-container {

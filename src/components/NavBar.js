@@ -5,6 +5,7 @@ import "./NavBar.css";
 function NavBar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -19,13 +20,20 @@ function NavBar() {
 
   useEffect(() => {
     showButton();
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  window.addEventListener("resize", showButton);
 
   return (
     <>
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             Bart Premium Services

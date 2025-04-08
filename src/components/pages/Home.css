@@ -1,3 +1,23 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .home-container {
   background-color: #fff;
   padding: 4rem 2rem;
@@ -12,17 +32,20 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 .home-heading h2 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
+  animation: fadeInUp 1s ease-in-out;
 }
 
 .home-sub-heading {
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
   color: #555;
+  animation: fadeInUp 1.2s ease-in-out;
 }
 
 .home-btn a {
@@ -32,11 +55,14 @@
   text-decoration: none;
   border-radius: 8px;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1.4s ease-in-out;
 }
 
 .home-btn a:hover {
   background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .home-columns {
@@ -49,17 +75,28 @@
   padding: 0 2rem;
   box-sizing: border-box;
   flex-wrap: wrap;
+  animation: fadeInUp 1.6s ease-in-out;
 }
 
-.home-column {
+.home-column,
+.home-column-offer {
   flex: 1;
   background-color: #f8f8f8;
   padding: 3rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 1.8s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.home-column h2 {
+.home-column:hover,
+.home-column-offer:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.home-column h2,
+.home-column-offer h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   color: #111;
@@ -75,7 +112,8 @@
   font-size: 1.1rem;
 }
 
-.home-column p {
+.home-column p,
+.home-column-offer p {
   font-size: 1.1rem;
   color: #444;
 }
@@ -96,43 +134,10 @@
   padding-left: 1rem;
 }
 
-.home-column-offer {
-  flex: 1;
-  background-color: #f8f8f8;
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.home-column-offer h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.home-column-offer p {
-  font-size: 1.1rem;
-  color: #444;
-}
-
-.container-call {
-  margin-top: 5rem;
-}
-
-.container-call h3 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.container-call a {
-  color: #000;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
 .container-call {
   margin-top: 5rem;
   text-align: center;
+  animation: fadeInUp 2s ease-in-out;
 }
 
 .container-call h3 {

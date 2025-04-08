@@ -1,4 +1,3 @@
-/* Zmienne kolorów */
 :root {
   --primary-color: #333;
   --secondary-color: #f4f4f4;
@@ -28,6 +27,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .about-me-photo {
@@ -36,6 +46,19 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .about-me-photo img {
@@ -53,6 +76,8 @@
   margin-bottom: 30px;
   max-width: 900px;
   padding: 0 15px;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .about-me-text p {
@@ -65,6 +90,8 @@
   text-align: center;
   margin-bottom: 20px;
   color: var(--primary-color);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .services-container {
@@ -73,6 +100,8 @@
   margin-top: 40px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .services-container h3 {
@@ -114,6 +143,8 @@
   padding: 40px 20px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .faq-container h3 {

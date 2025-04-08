@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 
 function Footer() {
+  const footerRef = useRef(null); // Używamy ref do elementu stopki
+  const [isVisible, setIsVisible] = useState(false); // Stan, aby kontrolować widoczność
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsVisible(true); // Jeśli stopka jest widoczna, zmień stan
+            observer.unobserve(footerRef.current); // Przestań obserwować
+          }
+        });
+      },
+      {
+        threshold: 0.4, // Element musi być widoczny w 10% okna
+      }
+    );
+
+    observer.observe(footerRef.current); // Rozpocznij obserwowanie stopki
+
+    // Zwróć funkcję czyszczącą
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="footer-container">
+    <div
+      className={`footer-container ${isVisible ? "visible" : ""}`}
+      ref={footerRef}
+    >
       <section className="footer-top">
         <h3>Bart Premium Services</h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
