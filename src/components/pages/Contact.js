@@ -13,45 +13,48 @@ function Contact() {
             content="Skontaktuj się z nami, aby zamówić usługę taxi Lexus ES300h w Kielcach. Dostępność, informacje o rezerwacjach, oraz kontakt telefoniczny."
           />
         </Helmet>
-        <h3>Kontakt</h3>
+        <div className="contact-header">
+          <h1>Kontakt z nami</h1>
+          <p>Rezerwacje, dostępność, oraz zapytania – Jesteśmy do Twojej dyspozycji!</p>
+        </div>
 
-        <div className="contact-phone">
-          <p>
-            <strong>Numery telefonu:</strong>
-          </p>
-          <div className="phone-list">
-            <span>
-              {" "}
-              <img
-                src={require("../../images/poland.webp")}
-                alt="moje zdjecie"
-                loading="lazy"
-              />
-              Polska: 660 866 047
-            </span>
-            <br />
-            <span>
-              <img
-                src={require("../../images/united-kingdom.webp")}
-                alt="moje zdjecie"
-                loading="lazy"
-              />
-              UK: 7425 931918
-            </span>
+        <div className="contact-info">
+          <div className="contact-info-item">
+            <h3>Numery Telefonu</h3>
+            <div className="contact-phone">
+              <div className="phone-item">
+                <img
+                  src={require("../../images/poland.webp")}
+                  alt="Polska"
+                  loading="lazy"
+                />
+                <span>Polska: 660 866 047</span>
+              </div>
+              <div className="phone-item">
+                <img
+                  src={require("../../images/united-kingdom.webp")}
+                  alt="UK"
+                  loading="lazy"
+                />
+                <span>UK: 7425 931918</span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="contact-email">
-          <strong>Email:</strong>{" "}
-          <a href="mailto:szeregtaki@gmail.com">baju24@gmail.com</a>
-        </div>
+          <div className="contact-info-item">
+            <h3>Email</h3>
+            <a href="mailto:szeregtaki@gmail.com">baju24@gmail.com</a>
+          </div>
 
-        <div className="contact-location">
-          <strong>Lokalizacja:</strong> Kielce, kursy na całą Polskę
-        </div>
+          <div className="contact-info-item">
+            <h3>Lokalizacja</h3>
+            <p>Kielce, kursy na całą Polskę</p>
+          </div>
 
-        <div className="contact-hours">
-          <strong>Godziny pracy:</strong> Codziennie 6:00 – 23:00
+          <div className="contact-info-item">
+            <h3>Godziny Pracy</h3>
+            <p>Codziennie 6:00 – 23:00</p>
+          </div>
         </div>
 
         {/* Mapa */}
@@ -68,18 +71,18 @@ function Contact() {
           ></iframe>
         </div>
 
-        {/* Przyciski kontaktowe */}
         <div className="contact-btns">
-          <a href="tel:+48660866047">
-            <i className="fa fa-phone" /> Zadzwoń Polska
+          <a href="tel:+48660866047" className="contact-btn">
+            Zadzwoń Polska
           </a>
-          <a href="tel:+447425931918">
-            <i className="fa fa-phone" /> Zadzwoń UK
+          <a href="tel:+447425931918" className="contact-btn">
+            Zadzwoń UK
           </a>
-          <a href="mailto:szeregtaki@gmail.com">
-            <i className="fa fa-envelope" /> Napisz e-mail
+          <a href="mailto:szeregtaki@gmail.com" className="contact-btn">
+            Napisz e-mail
           </a>
         </div>
+
         <div className="social-icons">
           <a href="#" aria-label="Facebook">
             <i className="fab fa-facebook-f"></i>

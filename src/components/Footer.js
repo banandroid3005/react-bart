@@ -3,27 +3,26 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 
 function Footer() {
-  const footerRef = useRef(null); // Używamy ref do elementu stopki
-  const [isVisible, setIsVisible] = useState(false); // Stan, aby kontrolować widoczność
+  const footerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(true); // Jeśli stopka jest widoczna, zmień stan
-            observer.unobserve(footerRef.current); // Przestań obserwować
+            setIsVisible(true);
+            observer.unobserve(footerRef.current);
           }
         });
       },
       {
-        threshold: 0.4, // Element musi być widoczny w 10% okna
+        threshold: 0.4,
       }
     );
 
-    observer.observe(footerRef.current); // Rozpocznij obserwowanie stopki
+    observer.observe(footerRef.current);
 
-    // Zwróć funkcję czyszczącą
     return () => {
       observer.disconnect();
     };
