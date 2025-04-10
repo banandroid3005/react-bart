@@ -46,47 +46,66 @@ function AboutMe() {
       </div>
       <div className="services-container">
         <h3>Nasze Usługi</h3>
-        <div className="service">
-          <h4>Transport VIP</h4>
-          <p>
-            Oferujemy przewóz osób VIP, w tym celebrytów, sportowców i osób
-            wymagających najwyższej jakości usług.
-          </p>
-        </div>
-        <div className="service">
-          <h4>Przewóz na lotnisko</h4>
-          <p>
-            Zapewniamy komfortowy transport na lotniska w Polsce i za granicą, z
-            pełnym profesjonalizmem i punktualnością.
-          </p>
-        </div>
-        <div className="service">
-          <h4>Transfery na eventy</h4>
-          <p>
-            Oferujemy usługi transportowe na wszelkiego rodzaju eventy,
-            konferencje, wesela, koncerty i inne ważne wydarzenia.
-          </p>
+        <div className="services-list">
+          <div className="service">
+            <div className="service-icon">
+              <i className="fas fa-crown"></i>
+            </div>
+            <div className="service-text">
+              <h4>Transport VIP</h4>
+              <p>
+                Oferujemy przewóz osób VIP, w tym celebrytów, sportowców i osób
+                wymagających najwyższej jakości usług.
+              </p>
+            </div>
+          </div>
+          <div className="service">
+            <div className="service-icon">
+              <i className="fas fa-plane-departure"></i>
+            </div>
+            <div className="service-text">
+              <h4>Przewóz na lotnisko</h4>
+              <p>
+                Zapewniamy komfortowy transport na lotniska w Polsce i za
+                granicą, z pełnym profesjonalizmem i punktualnością.
+              </p>
+            </div>
+          </div>
+          <div className="service">
+            <div className="service-icon">
+              <i className="fas fa-calendar-check"></i>
+            </div>
+            <div className="service-text">
+              <h4>Transfery na eventy</h4>
+              <p>
+                Oferujemy usługi transportowe na wszelkiego rodzaju eventy,
+                konferencje, wesela, koncerty i inne ważne wydarzenia.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="faq-container">
         <h3>Najczęściej zadawane pytania</h3>
-        <div className="faq-item">
-          <h4>Jakie usługi oferujesz?</h4>
-          <p>
-            Oferujemy transport VIP, przewóz na lotniska, transfery na eventy
-            oraz indywidualne usługi transportowe.
-          </p>
-        </div>
-        <div className="faq-item">
-          <h4>Czy mogę zamówić taxi na długi dystans?</h4>
-          <p>
-            Oczywiście, oferujemy również transport na długie dystanse, w tym
-            transfery na lotniska w Polsce i Europie.
-          </p>
-        </div>
-        <div className="faq-item">
-          <h4>Jak mogę zarezerwować kurs?</h4>
-          <p>Rezerwacji można dokonać telefonicznie lub poprzez mail.</p>
+        <div className="faq-list">
+          <div className="faq-item">
+            <h4>Jakie usługi oferujesz?</h4>
+            <p>
+              Oferujemy transport VIP, przewóz na lotniska, transfery na eventy
+              oraz indywidualne usługi transportowe.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h4>Czy mogę zamówić taxi na długi dystans?</h4>
+            <p>
+              Oczywiście, oferujemy również transport na długie dystanse, w
+              tym transfery na lotniska w Polsce i Europie.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h4>Jak mogę zarezerwować kurs?</h4>
+            <p>Rezerwacji można dokonać telefonicznie lub poprzez mail.</p>
+          </div>
         </div>
       </div>
     </>

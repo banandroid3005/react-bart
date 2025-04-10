@@ -46,21 +46,21 @@ function Home() {
         <div className="home-column-offer">
           <h2>Co oferujemy</h2>
           <p>
-            Oferujemy komfortowy transport w luksusowym Lexusie ES300h 2021,
+            Oferuję komfortowy transport luksusowym Lexusem ES300h 2021,
             idealnym zarówno na spotkania biznesowe, jak i prywatne wyjazdy.
-            Dzięki ekologicznej technologii hybrydowej nasz pojazd gwarantuje
-            cichą i wydajną jazdę, a najwyższej jakości fotele skórzane i
-            nowoczesny system multimedialny zapewniają pełny komfort w podróży.
-            Nasze usługi obejmują transport na lotniska, transfery między
-            miastami oraz przewóz osób na specjalne okazje, takie jak wesela czy
-            konferencje. Dodatkowo, oferujemy przewóz zwierząt, zapewniając im
-            komfortowe warunki i bezpieczeństwo w trakcie podróży. Wszystkie
-            nasze pojazdy są regularnie serwisowane, a doświadczeni kierowcy
-            dbają o bezpieczeństwo pasażerów. Zapewniamy także usługi
-            transportowe dla firm, oferując elastyczne warunki dostosowane do
-            potrzeb przedsiębiorstw i preferencyjne ceny dla stałych klientów.
-            Nasz transport dostępny jest 24/7, a nasza firma to gwarancja
-            punktualności i niezawodności.
+            Jako doświadczony kierowca dbam o każdy detal podróży – od
+            punktualności po atmosferę sprzyjającą relaksowi lub pracy. Dzięki
+            cichej i oszczędnej technologii hybrydowej jazda jest wyjątkowo
+            płynna, a wnętrze pojazdu – z najwyższej klasy skórzanymi fotelami i
+            systemem multimedialnym – gwarantuje wygodę na najwyższym poziomie.
+            Obsługuję transfery lotniskowe, przejazdy między miastami oraz
+            przewóz osób na wyjątkowe wydarzenia, takie jak śluby, konferencje
+            czy kolacje biznesowe. Działam jako prywatny kierowca premium,
+            zapewniając indywidualne podejście, dyskrecję i pełne zaangażowanie.
+            Samochód jest regularnie serwisowany, a każda podróż realizowana
+            jest z dbałością o najwyższe standardy. Transport dostępny jest
+            24/7, wyłącznie na rezerwację – to usługa dla tych, którzy cenią
+            niezawodność i jakość.
           </p>
         </div>
       </section>

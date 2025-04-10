@@ -60,6 +60,20 @@ function Pricing() {
         <h3>Opłata za luksusowy pojazd (Lexus ES300h 2021)</h3>
         <p>30,00 zł dodatkowo</p>
       </div>
+
+      {/* Dodatkowa sekcja z informacjami */}
+      <div className="additional-info">
+        <h3>Dlaczego warto wybrać nasze usługi?</h3>
+        <p>
+          Lexus ES300h to luksusowy pojazd klasy premium, zapewniający wygodną i
+          komfortową podróż w każdych warunkach. Oferujemy profesjonalną obsługę,
+          bezpieczeństwo i elegancję na każdym etapie podróży. Skorzystaj z naszych
+          usług i poczuj różnicę!
+        </p>
+        <a href="#rezerwacja" className="cta-link">
+          Zarezerwuj teraz
+        </a>
+      </div>
     </div>
   );
 }

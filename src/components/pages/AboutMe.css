@@ -1,23 +1,17 @@
 :root {
-  --primary-color: #333;
-  --secondary-color: #f4f4f4;
+  --primary-color: #2d3e50;
+  --secondary-color: #f9f9f9;
   --accent-color: #3498db;
   --highlight-color: #e74c3c;
-  --background-color: #f9f9f9;
+  --background-color: #f2f2f2;
   --text-color: #555;
-  --border-radius: 8px;
-  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Arial", sans-serif;
-}
 
 .about-me-container {
-  background-color: var(--background-color);
+  background-color: var(--secondary-color);
   padding: 60px 20px;
   max-width: 1200px;
   margin: 40px auto;
@@ -28,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
+  animation: fadeIn 1.2s ease-out forwards;
 }
 
 @keyframes fadeIn {
@@ -41,19 +35,19 @@
 }
 
 .about-me-photo {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 30px;
   opacity: 0;
-  animation: fadeInUp 1.2s ease-out forwards;
+  animation: fadeInUp 1.5s ease-out forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(50px);
   }
   to {
     opacity: 1;
@@ -69,26 +63,26 @@
 }
 
 .about-me-text {
-  font-size: 1.2rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.7;
   text-align: justify;
   color: var(--text-color);
-  margin-bottom: 30px;
-  max-width: 900px;
-  padding: 0 15px;
+  margin-bottom: 40px;
+  max-width: 800px;
+  padding: 0 20px;
   opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 1.5s ease-out forwards;
 }
 
 .about-me-text p {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .about-me-container h3 {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 2.2rem;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: var(--primary-color);
   opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
@@ -97,11 +91,11 @@
 .services-container {
   background-color: var(--secondary-color);
   padding: 40px 20px;
-  margin-top: 40px;
+  margin-top: 60px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 1.5s ease-out forwards;
 }
 
 .services-container h3 {
@@ -111,165 +105,108 @@
   color: var(--primary-color);
 }
 
+.services-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .service {
-  margin-bottom: 30px;
+  width: 30%;
   background-color: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .service:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
 
-.service h4 {
-  font-size: 1.6rem;
+.service-icon {
+  font-size: 2.5rem;
   color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.service-text h4 {
+  font-size: 1.6rem;
+  color: var(--primary-color);
   margin-bottom: 10px;
 }
 
-.service p {
+.service-text p {
   font-size: 1.1rem;
   color: var(--text-color);
-  line-height: 1.6;
 }
 
 .faq-container {
-  margin-top: 40px;
+  margin-top: 60px;
   background-color: var(--secondary-color);
   padding: 40px 20px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 1.5s ease-out forwards;
 }
 
 .faq-container h3 {
   font-size: 2rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: var(--primary-color);
 }
 
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .faq-item {
-  margin-bottom: 20px;
   background-color: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .faq-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
 
 .faq-item h4 {
   font-size: 1.4rem;
   color: var(--accent-color);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .faq-item p {
   font-size: 1.1rem;
   color: var(--text-color);
-  line-height: 1.6;
-}
-
-/* Responsywność */
-@media (max-width: 992px) {
-  .about-me-container {
-    padding: 50px 15px;
-  }
-
-  .about-me-photo {
-    width: 180px;
-    height: 180px;
-  }
-
-  .about-me-text {
-    font-size: 1.1rem;
-  }
-
-  .services-container {
-    padding: 30px 15px;
-  }
-
-  .faq-container {
-    padding: 30px 15px;
-  }
 }
 
 @media (max-width: 768px) {
-  .about-me-container {
-    padding: 40px 10px;
+  .service {
+    width: 45%;
   }
 
-  .about-me-photo {
-    width: 160px;
-    height: 160px;
-  }
-
-  .about-me-text {
-    font-size: 1rem;
-  }
-
-  .services-container {
-    padding: 20px 10px;
-  }
-
-  .faq-container {
-    padding: 20px 10px;
-  }
-
-  .about-me-container h3 {
-    font-size: 2rem;
-  }
-
-  .services-container h3 {
-    font-size: 1.8rem;
-  }
-
-  .faq-container h3 {
-    font-size: 1.8rem;
+  .faq-item {
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .about-me-container {
-    padding: 30px 10px;
+  .service {
+    width: 100%;
   }
 
-  .about-me-photo {
-    width: 140px;
-    height: 140px;
-  }
-
-  .about-me-text {
-    font-size: 0.9rem;
-  }
-
-  .services-container {
-    padding: 15px 10px;
-  }
-
-  .faq-container {
-    padding: 15px 10px;
-  }
-
-  .about-me-container h3 {
-    font-size: 1.8rem;
-  }
-
-  .services-container h3 {
-    font-size: 1.6rem;
-  }
-
-  .faq-container h3 {
-    font-size: 1.6rem;
+  .faq-item {
+    padding: 15px;
   }
 }
