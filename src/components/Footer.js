@@ -17,7 +17,7 @@ function Footer() {
         });
       },
       {
-        threshold: 0.4,
+        threshold: 0.1,
       }
     );
 
@@ -45,6 +45,7 @@ function Footer() {
             <Link to="/car">O Aucie</Link>
             <Link to="/pricing">Cennik</Link>
             <Link to="/contact">Kontakt</Link>
+            <Link to="/about-me">O mnie</Link>
           </div>
           <div className="footer-link-items">
             <h3>Social Media</h3>
@@ -69,8 +70,9 @@ function Footer() {
           </div>
           <div className="footer-link-items">
             <h3>Kontakt</h3>
-            <p>📞 +48 664 269 408</p>
-            <p>✉️ szeregtaxi@gmail.com</p>
+            <p>📞 +48 660 866 047</p>
+            <p>📞 +44 7425 931918</p>
+            <p>✉️ baju.24@gmail.com</p>
             <p>Kielce, cała Polska</p>
           </div>
         </div>

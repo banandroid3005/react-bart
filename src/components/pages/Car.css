@@ -1,100 +1,135 @@
-/* Kontener całej strony */
-.car-container {
-  padding: 80px 20px;
-  background-color: #f8f9fa;
-  max-width: 1200px;
-  margin: 40px auto;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  min-height: 80vh;
-  opacity: 0;
-  animation: fadeIn 1.2s ease-out forwards;
-}
-
-@keyframes fadeIn {
+/* Globalne animacje */
+@keyframes fadeInUp {
   from {
     opacity: 0;
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Tytuł sekcji */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Główne kontenery */
+.car-container {
+  font-family: "Arial", sans-serif;
+  background-color: #f7f7f7;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out; /* Animacja wchodzenia */
+}
+
+/* Animacja tytułu */
 .car-title {
-  font-size: 2.8rem;
   text-align: center;
-  margin-bottom: 40px;
-  color: #343a40;
-  font-weight: bold;
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeInUp 1s ease-out 0.2s; /* Opóźnienie animacji */
 }
 
-/* Tytuły i inne teksty */
-.car-subtitle {
-  font-size: 1.8rem;
-  color: #495057;
-  margin-bottom: 15px;
-  font-weight: 600;
-  text-align: left;
-}
-
-.car-info li {
-  padding: 8px 0;
-  font-size: 1.2rem;
-  color: #6c757d;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.car-info li:last-child {
-  border-bottom: none;
-}
-
-/* Stylowanie galerii */
+/* Galeria zdjęć */
 .car-gallery {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
   overflow: hidden;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-out 0.4s;
 }
 
-.image-wrapper {
-  flex: 1;
-  cursor: pointer;
-}
-
-.car-img {
+.car-gallery .image-wrapper {
+  position: relative;
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  height: 100%;
+  transition: transform 0.5s ease;  /* Płynna animacja przejścia */
 }
 
-.car-gallery .arrow {
+.car-gallery .car-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: opacity 0.5s ease, transform 0.5s ease;  /* Płynne animacje dla zdjęcia */
+  animation: scaleIn 1s ease-out 0.6s; /* Animacja dla zdjęcia */
+}
+
+.car-gallery .car-img:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+/* Strzałki nawigacyjne */
+.arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
-  color: #333;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  padding: 10px;
+  font-size: 3rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 10%;
   cursor: pointer;
-  z-index: 10;
-  transition: background-color 0.3s;
+  z-index: 2;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 1s ease-out 0.8s; /* Animacja dla strzałek */
 }
 
-.car-gallery .arrow:hover {
-  background-color: rgba(255, 255, 255, 1);
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
 }
 
-.car-gallery .prev {
+.arrow.prev {
   left: 10px;
 }
 
-.car-gallery .next {
+.arrow.next {
   right: 10px;
 }
 
@@ -105,35 +140,33 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  animation: fadeInLightbox 0.3s ease-out;
-}
-
-@keyframes fadeInLightbox {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  z-index: 1000;
+  padding: 20px;
+  cursor: grab;
+  animation: fadeInUp 1s ease-out 1s; /* Animacja dla lightboxa */
 }
 
 .lightbox-content {
   position: relative;
+  max-width: 90%;
+  max-height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
 }
 
 .lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
+  width: 100%;
+  height: auto;
   object-fit: contain;
   cursor: grab;
+  border-radius: 10px;
   transition: transform 0.3s ease;
 }
 
@@ -141,53 +174,192 @@
   cursor: grabbing;
 }
 
-.lightbox .arrow {
+.close-btn {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 2rem;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  padding: 10px;
+  background-color: rgb(2, 2, 66);
+  padding: 12px;
+  border-radius: 50%;
+  top: 22px;
+  right: 22px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 3;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  animation: fadeInUp 1s ease-out 1.2s; /* Animacja dla przycisku zamknięcia */
 }
 
-.lightbox .prev {
-  left: 20px;
+.close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.lightbox .next {
-  right: 20px;
+/* Sekcja informacji o aucie */
+.car-info {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 15px;
+  animation: fadeInUp 1s ease-out 1.4s; /* Animacja dla sekcji info */
 }
 
-/* Komfort */
-.car-comfort {
-  list-style: none;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 2rem auto;
+.car-info h3 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  animation: slideInLeft 1s ease-out 1.6s; /* Animacja dla nagłówków */
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #555;
+  animation: slideInRight 1s ease-out 1.8s; /* Animacja dla elementów listy */
+}
+
+.info-item .label {
+  font-weight: 600;
   color: #333;
 }
 
-.car-comfort caption {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  display: block;
-  text-align: center;
-  color: #111;
+.info-item .value {
+  font-weight: 400;
+  color: #777;
+}
+
+/* Sekcja komfortu */
+.car-comfort {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease-out 2s; /* Animacja dla sekcji komfort */
+}
+
+.car-comfort h3 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.car-comfort ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 .car-comfort li {
-  margin-bottom: 1rem;
-  padding-left: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 10px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  animation: slideInRight 1s ease-out 2.2s; /* Animacja dla elementów listy */
+}
+
+.car-comfort li i {
+  color: #0e8f8f;
+  margin-right: 10px;
+}
+
+.car-info:hover,
+.car-comfort:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .car-container {
+    padding: 15px;
+  }
+
+  .car-title {
+    font-size: 2.2rem;
+  }
+
+  .car-gallery {
+    flex-direction: column;
+  }
+
+  .car-info,
+  .car-comfort {
+    padding: 20px;
+  }
+
+  .info-item {
+    font-size: 1rem;
+  }
+
+  .car-info h3,
+  .car-comfort h3 {
+    font-size: 1.6rem;
+  }
+
+  .car-comfort li {
+    font-size: 1.1rem;
+  }
+
+  .arrow {
+    font-size: 2rem;
+    padding: 10px;
+  }
+
+  .arrow.prev {
+    left: -1px;
+  }
+
+  .arrow.next {
+    right: -1px;
+  }
+
+  .close-btn {
+    top: -1px;
+    right: -1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-title {
+    font-size: 1.8rem;
+  }
+
+  .car-gallery {
+    margin-bottom: 20px;
+  }
+
+  .arrow {
+    font-size: 1.6rem;
+    padding: 8px;
+  }
+
+  .arrow.prev {
+    left: -1px;
+  }
+
+  .arrow.next {
+    right: -1px;
+  }
+
+  .close-btn {
+    font-size: 0.8rem;
+    right: 2px;
+    top: 2px;
+  }
 }

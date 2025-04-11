@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./Car.css";
 import lexusImage1 from "../../images/lexus.webp";
-import lexusImage2 from "../../images/lexus.webp";
+import lexusImage2 from "../../images/face.webp";
 import lexusImage3 from "../../images/lexus.webp";
 import { Helmet } from "react-helmet";
 
@@ -10,6 +10,9 @@ function Car() {
   const images = [lexusImage1, lexusImage2, lexusImage3];
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const imageRef = useRef(null);
+  const lightboxRef = useRef(null);
+
+  const [touchStart, setTouchStart] = useState(null);
 
   const openLightbox = (index) => {
     setCurrentImage(index);
@@ -28,38 +31,24 @@ function Car() {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  const handleDrag = (e) => {
-    const image = imageRef.current;
-    const rect = image.getBoundingClientRect();
-    const offsetX = e.clientX - image.startX;
-    const offsetY = e.clientY - image.startY;
-
-    const maxX = window.innerWidth - rect.width;
-    const maxY = window.innerHeight - rect.height;
-
-    const clampedX = Math.min(0, Math.max(maxX, offsetX));
-    const clampedY = Math.min(0, Math.max(maxY, offsetY));
-
-    image.style.transform = `translate(${clampedX}px, ${clampedY}px)`;
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientX);
   };
 
-  const startDrag = (e) => {
-    const image = imageRef.current;
-    image.startX = e.clientX - image.offsetLeft;
-    image.startY = e.clientY - image.offsetTop;
+  const handleTouchEnd = (e) => {
+    if (!touchStart) return;
 
-    document.addEventListener("mousemove", handleDrag);
-    document.addEventListener("mouseup", stopDrag);
+    const touchEnd = e.changedTouches[0].clientX;
+    const swipeThreshold = 50;
+
+    if (touchStart - touchEnd > swipeThreshold) {
+      nextImage(); // Swipe w prawo
+    } else if (touchEnd - touchStart > swipeThreshold) {
+      prevImage(); // Swipe w lewo
+    }
+
+    setTouchStart(null);
   };
-
-  const stopDrag = () => {
-    const image = imageRef.current;
-    image.style.transition = "transform 0.3s ease";
-    image.style.transform = `translate(0px, 0px)`;
-    document.removeEventListener("mousemove", handleDrag);
-    document.removeEventListener("mouseup", stopDrag);
-  };
-
   return (
     <div className="car-container">
       <Helmet>
@@ -71,12 +60,23 @@ function Car() {
       </Helmet>
       <h2 className="car-title">Lexus ES300h 2021 - Premium</h2>
 
-      <div className="car-gallery">
+      <div
+        className="car-gallery"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="arrow prev" onClick={prevImage}>
           &#8249;
         </div>
-        <div className="image-wrapper" onClick={() => openLightbox(currentImage)}>
-          <img src={images[currentImage]} alt="Lexus ES300h" className="car-img" />
+        <div
+          className="image-wrapper"
+          onClick={() => openLightbox(currentImage)}
+        >
+          <img
+            src={images[currentImage]}
+            alt="Lexus ES300h"
+            className="car-img"
+          />
         </div>
         <div className="arrow next" onClick={nextImage}>
           &#8250;
@@ -84,7 +84,15 @@ function Car() {
       </div>
 
       {isLightboxOpen && (
-        <div className="lightbox" onClick={closeLightbox}>
+        <div
+          className="lightbox"
+          ref={lightboxRef}
+          onClick={(e) => {
+            if (e.target === lightboxRef.current) {
+              closeLightbox();
+            }
+          }}
+        >
           <div className="lightbox-content">
             <img
               src={images[currentImage]}
@@ -92,12 +100,26 @@ function Car() {
               className="lightbox-img"
               draggable="false"
               ref={imageRef}
-              onMouseDown={startDrag}
             />
-            <div className="arrow prev" onClick={prevImage}>
+            <span className="close-btn" onClick={closeLightbox}>
+              X
+            </span>
+            <div
+              className="arrow prev"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+            >
               &#8249;
             </div>
-            <div className="arrow next" onClick={nextImage}>
+            <div
+              className="arrow next"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+            >
               &#8250;
             </div>
           </div>
@@ -106,32 +128,51 @@ function Car() {
 
       <div className="car-details">
         <div className="car-info">
-          <h3 className="car-subtitle">Podstawowe informacje</h3>
+          <h3>Podstawowe informacje</h3>
+          <div className="info-item">
+            <span className="label">Rok produkcji:</span>
+            <span className="value">2021</span>
+          </div>
+          <div className="info-item">
+            <span className="label">Marka:</span>
+            <span className="value">Lexus</span>
+          </div>
+          <div className="info-item">
+            <span className="label">Model:</span>
+            <span className="value">ES300h</span>
+          </div>
+          <div className="info-item">
+            <span className="label">Silnik:</span>
+            <span className="value">Hybrydowy 2.5L</span>
+          </div>
+          <div className="info-item">
+            <span className="label">Kolor:</span>
+            <span className="value">Biały perłowy</span>
+          </div>
+        </div>
+        <div className="car-comfort">
+          <h3>Komfort i wyposażenie</h3>
           <ul>
-            <li><strong>Marka:</strong> Lexus</li>
-            <li><strong>Model:</strong> ES300h</li>
-            <li><strong>Rok produkcji:</strong> 2021</li>
-            <li><strong>Rodzaj napędu:</strong> Hybrydowy (benzyna + elektryczny)</li>
-            <li><strong>Silnik:</strong> 2.5L 4-cylindrowy + silnik elektryczny</li>
-            <li><strong>Prędkość maksymalna:</strong> 180 km/h</li>
-            <li><strong>Zużycie paliwa:</strong> 5.6 L/100 km</li>
+            <li>
+              <i className="fas fa-check-circle"></i> Skórzana tapicerka
+            </li>
+            <li>
+              <i className="fas fa-check-circle"></i> Ogrzewanie i wentylacja
+              foteli
+            </li>
+            <li>
+              <i className="fas fa-check-circle"></i> System multimedialny z
+              ekranem dotykowym
+            </li>
+            <li>
+              <i className="fas fa-check-circle"></i> Audio premium
+            </li>
+            <li>
+              <i className="fas fa-check-circle"></i> Oświetlenie ambientowe
+            </li>
           </ul>
         </div>
       </div>
-
-      <ul className="car-comfort">
-        <caption>Komfort</caption>
-        <li>🛋️ Skórzana, miękka tapicerka klasy premium</li>
-        <li>❄️ Czterostrefowa klimatyzacja automatyczna</li>
-        <li>🔇 Niezwykle cicha kabina dzięki wygłuszeniu i napędowi hybrydowemu</li>
-        <li>🚗 Płynna jazda dzięki zawieszeniu o wysokiej kulturze pracy</li>
-        <li>🔊 System audio Mark Levinson – krystaliczny dźwięk</li>
-        <li>🌡️ Podgrzewane i wentylowane fotele z przodu i z tyłu</li>
-        <li>💺 Elektrycznie regulowane siedzenia z pamięcią ustawień</li>
-        <li>☀️ Elektryczna roleta tylnej szyby i bocznych szyb</li>
-        <li>📱 Bezprzewodowa ładowarka i złącza USB dla pasażerów</li>
-        <li>🌌 Panoramiczny dach – wrażenie przestrzeni</li>
-      </ul>
     </div>
   );
 }

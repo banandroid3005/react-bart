@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-function NavBar() {
+function NavBar({ toggleDarkMode, isDarkMode }) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [scrolled, setScrolled] = useState(false);
@@ -48,11 +48,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/pricing"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/pricing" className="nav-links" onClick={closeMobileMenu}>
                 Cennik
               </Link>
             </li>
@@ -62,20 +58,12 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/contact"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/contact" className="nav-links" onClick={closeMobileMenu}>
                 Kontakt
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/about-me"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/about-me" className="nav-links" onClick={closeMobileMenu}>
                 O mnie
               </Link>
             </li>
