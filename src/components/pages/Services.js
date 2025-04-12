@@ -64,6 +64,22 @@ function Services() {
           <p>"Usługa na najwyższym poziomie. Komfort podróży był niesamowity!"</p>
           <p className="author">Anna Nowak, Manager</p>
         </div>
+        <div className="testimonial">
+          <p>"Niezawodny transport, zawsze na czas. Zdecydowanie polecam!"</p>
+          <p className="author">Jan Kowalski, Prezes</p>
+        </div>
+        <div className="testimonial">
+          <p>"Niezawodny transport, zawsze na czas. Zdecydowanie polecam!"</p>
+          <p className="author">Jan Kowalski, Prezes</p>
+        </div>
+        <div className="testimonial">
+          <p>"Niezawodny transport, zawsze na czas. Zdecydowanie polecam!"</p>
+          <p className="author">Jan Kowalski, Prezes</p>
+        </div>
+        <div className="testimonial">
+          <p>"Niezawodny transport, zawsze na czas. Zdecydowanie polecam!"</p>
+          <p className="author">Jan Kowalski, Prezes</p>
+        </div>
       </div>
 
       <div className="decorative-line"></div>

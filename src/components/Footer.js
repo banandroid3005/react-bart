@@ -1,6 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaWhatsapp,
+} from "react-icons/fa";
+import { FaI } from "react-icons/fa6";
 
 function Footer() {
   const footerRef = useRef(null);
@@ -51,29 +60,55 @@ function Footer() {
             <h3>Social Media</h3>
             <div className="social-icons">
               <a href="/">
-                <i className="fab fa-instagram"></i>
+                <div className="fa-icon">
+                  <FaInstagram />{" "}
+                </div>
                 Instagram
               </a>
             </div>
             <div className="social-icons">
               <a href="/">
-                <i className="fab fa-facebook-f"></i>
+                <div className="fa-icon">
+                  <FaFacebookF />{" "}
+                </div>
                 Facebook
               </a>
             </div>
             <div className="social-icons">
               <a href="/">
-                <i className="fab fa-tiktok" />
+                <div className="fa-icon">
+                  <FaTiktok />{" "}
+                </div>
                 Tiktok
               </a>
             </div>
           </div>
           <div className="footer-link-items">
             <h3>Kontakt</h3>
-            <p>📞 +48 660 866 047</p>
-            <p>📞 +44 7425 931918</p>
-            <p>✉️ baju.24@gmail.com</p>
-            <p>Kielce, cała Polska</p>
+            <p>
+              <div className="fa-icon">
+                <FaPhoneAlt />{" "}
+              </div>
+              +48 660 866 047
+            </p>
+            <p>
+              <div className="fa-icon">
+                <FaPhoneAlt />{" "}
+              </div>
+              +44 7425 931918
+            </p>
+            <p>
+              <div className="fa-icon">
+                <FaEnvelope />{" "}
+              </div>
+              baju.24@gmail.com
+            </p>
+            <p>
+              <div className="fa-icon">
+                <FaWhatsapp />{" "}
+              </div>
+              Whatsapp
+            </p>
           </div>
         </div>
       </div>

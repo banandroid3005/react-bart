@@ -4,15 +4,14 @@ import lexusImage1 from "../../images/lexus.webp";
 import lexusImage2 from "../../images/face.webp";
 import lexusImage3 from "../../images/lexus.webp";
 import { Helmet } from "react-helmet";
-import { CSSTransition } from "react-transition-group";
 
 function Car() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [lexusImage1, lexusImage2, lexusImage3];
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const imageRef = useRef(null);
   const lightboxRef = useRef(null);
   const [touchStart, setTouchStart] = useState(null);
+  const [hasAnimated, setHasAnimated] = useState(true);
 
   const openLightbox = useCallback((index) => {
     setCurrentImage(index);
@@ -53,8 +52,6 @@ function Car() {
     [touchStart, nextImage, prevImage]
   );
 
-  const [hasAnimated, setHasAnimated] = useState(true);
-
   return (
     <div className="car-container">
       <Helmet>
@@ -87,14 +84,9 @@ function Car() {
           &#8250;
         </div>
       </div>
-      <CSSTransition
-        in={isLightboxOpen}
-        timeout={300}
-        classNames="fade"
-        unmountOnExit
-      >
+      {isLightboxOpen && (
         <div
-          className="lightbox"
+          className={`lightbox ${!isLightboxOpen ? "" : "visible"}`}
           ref={lightboxRef}
           onClick={(e) => {
             if (e.target === lightboxRef.current) {
@@ -132,7 +124,7 @@ function Car() {
             </div>
           </div>
         </div>
-      </CSSTransition>
+      )}
 
       <div className="car-details">
         <div className="car-info">

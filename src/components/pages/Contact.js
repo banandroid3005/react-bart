@@ -9,6 +9,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaTiktok,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 function Contact() {
@@ -63,13 +64,14 @@ function Contact() {
       <section className="contact-btns fade-in">
         <a href="tel:+48660866047" className="contact-btn">📞 Zadzwoń Polska</a>
         <a href="tel:+447425931918" className="contact-btn">📞 Zadzwoń UK</a>
-        <a href="mailto:szeregtaki@gmail.com" className="contact-btn">✉️ Napisz e-mail</a>
+        <a href="mailto:baju24@gmail.com" className="contact-btn">✉️ Napisz e-mail</a>
       </section>
 
       <footer className="contact-social fade-in">
         <a href="#"><FaFacebookF /></a>
         <a href="#"><FaInstagram /></a>
         <a href="#"><FaTiktok /></a>
+        <a href="#"><FaWhatsapp /></a>
       </footer>
     </div>
   );
