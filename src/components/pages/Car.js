@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import "./Car.css";
 import lexusImage1 from "../../images/lexus.webp";
 import lexusImage2 from "../../images/face.webp";
 import lexusImage3 from "../../images/lexus.webp";
 import { Helmet } from "react-helmet";
+import { CSSTransition } from "react-transition-group";
 
 function Car() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -11,44 +12,49 @@ function Car() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const imageRef = useRef(null);
   const lightboxRef = useRef(null);
-
   const [touchStart, setTouchStart] = useState(null);
 
-  const openLightbox = (index) => {
+  const openLightbox = useCallback((index) => {
     setCurrentImage(index);
     setIsLightboxOpen(true);
-  };
+  }, []);
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
-  };
+  }, []);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentImage((prev) => (prev + 1) % images.length);
-  };
+  }, [images.length]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
-  };
+  }, [images.length]);
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = useCallback((e) => {
     setTouchStart(e.touches[0].clientX);
-  };
+  }, []);
 
-  const handleTouchEnd = (e) => {
-    if (!touchStart) return;
+  const handleTouchEnd = useCallback(
+    (e) => {
+      if (!touchStart) return;
 
-    const touchEnd = e.changedTouches[0].clientX;
-    const swipeThreshold = 50;
+      const touchEnd = e.changedTouches[0].clientX;
+      const swipeThreshold = 50;
 
-    if (touchStart - touchEnd > swipeThreshold) {
-      nextImage(); // Swipe w prawo
-    } else if (touchEnd - touchStart > swipeThreshold) {
-      prevImage(); // Swipe w lewo
-    }
+      if (touchStart - touchEnd > swipeThreshold) {
+        nextImage(); // Swipe w prawo
+      } else if (touchEnd - touchStart > swipeThreshold) {
+        prevImage(); // Swipe w lewo
+      }
 
-    setTouchStart(null);
-  };
+      setTouchStart(null);
+    },
+    [touchStart, nextImage, prevImage]
+  );
+
+  const [hasAnimated, setHasAnimated] = useState(true);
+
   return (
     <div className="car-container">
       <Helmet>
@@ -59,7 +65,6 @@ function Car() {
         />
       </Helmet>
       <h2 className="car-title">Lexus ES300h 2021 - Premium</h2>
-
       <div
         className="car-gallery"
         onTouchStart={handleTouchStart}
@@ -82,8 +87,12 @@ function Car() {
           &#8250;
         </div>
       </div>
-
-      {isLightboxOpen && (
+      <CSSTransition
+        in={isLightboxOpen}
+        timeout={300}
+        classNames="fade"
+        unmountOnExit
+      >
         <div
           className="lightbox"
           ref={lightboxRef}
@@ -97,9 +106,8 @@ function Car() {
             <img
               src={images[currentImage]}
               alt="Lexus ES300h"
-              className="lightbox-img"
-              draggable="false"
-              ref={imageRef}
+              className={`car-img ${hasAnimated ? "animate-once" : ""}`}
+              onAnimationEnd={() => setHasAnimated(false)}
             />
             <span className="close-btn" onClick={closeLightbox}>
               X
@@ -124,7 +132,7 @@ function Car() {
             </div>
           </div>
         </div>
-      )}
+      </CSSTransition>
 
       <div className="car-details">
         <div className="car-info">

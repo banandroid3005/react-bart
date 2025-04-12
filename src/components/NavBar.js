@@ -48,8 +48,8 @@ function NavBar({ toggleDarkMode, isDarkMode }) {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/pricing" className="nav-links" onClick={closeMobileMenu}>
-                Cennik
+              <Link to="/services" className="nav-links" onClick={closeMobileMenu}>
+                Usługi
               </Link>
             </li>
             <li className="nav-item">
