@@ -1,275 +1,153 @@
-/* Services Section */
-.services-section {
-  background-color: #f8fafc; /* Jasne tło */
-  padding: 60px 20px;
+/* General styling */
+.services-container {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
   text-align: center;
   min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
 }
 
-/* Title */
-.services-title {
+.services-heading h2 {
   font-size: 2.5rem;
-  color: #1e293b; /* Ciemny niebiesko-szary */
-  margin-bottom: 40px;
-  font-weight: 700;
-  animation: fadeIn 1s ease-out;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-/* Services Grid */
+.services-heading p {
+  font-size: 1.1rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* Grid layout */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
   gap: 20px;
-  max-width: 1200px;
-  width: 100%;
-  margin-bottom: 40px;
-  animation: fadeIn 1.5s ease-out;
+  padding: 0 30px;
 }
 
-/* Service Card */
 .service-card {
-  background-color: #e2e8f0; /* Jasny szary */
-  padding: 25px;
+  background-color: white;
+  padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: scaleIn 0.5s ease-out;
+  height: 250px; /* Adjusted height */
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .service-icon {
   font-size: 3rem;
-  color: #2563eb; /* Niebieski */
+  color: #2e3a59;
   margin-bottom: 20px;
 }
 
 .service-card h3 {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
   font-weight: 600;
-  color: #1e293b; /* Ciemny niebiesko-szary */
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .service-card p {
-  color: #475569; /* Szary z niebieskim odcieniem */
   font-size: 1rem;
+  color: #777;
+  line-height: 1.5;
 }
 
-/* Full-width Custom Services */
-.custom-services {
-  background: linear-gradient(to right, #1e3a60, #212121);
-  color: #ffffff; /* Biały tekst */
+/* Contact section */
+.services-contact {
+  margin-top: 60px;
+  background-color: #2e3a59;
   padding: 40px;
+  color: white;
   border-radius: 10px;
-  text-align: center;
-  width: 60%;
-  margin-top: 40px;
-  animation: slideIn 1.5s ease-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.custom-services h3 {
+.services-contact h3 {
   font-size: 2rem;
+  font-weight: bold;
   margin-bottom: 20px;
-  font-weight: 700;
 }
 
-.custom-services p {
+.services-contact p {
   font-size: 1.1rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-/* Contact CTA */
-.services-contact-cta {
-  margin-top: 50px;
-  text-align: center;
-}
-
-.services-contact-cta p {
-  font-size: 1.2rem;
-  color: #1e293b; /* Ciemny niebiesko-szary */
-  margin-bottom: 20px;
-}
-
-/* Główny przycisk */
-.btn-contact {
-  background: linear-gradient(to right, #4caf50, #2e7d32); /* Zielony gradient */
-  color: #ffffff; /* Biały tekst */
-  padding: 12px 20px;
-  margin-left: 10px;
-  text-decoration: none;
-  border-radius: 8px; /* Zaokrąglone rogi */
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  animation: fadeIn 1s ease-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtelny cień */
-}
-
-.btn-contact:hover {
-  background: linear-gradient(to right, #43a047, #1b5e20); /* Ciemniejszy zielony gradient */
-  transform: scale(1.1); /* Powiększenie przy najechaniu */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Większy cień */
-}
-
-/* Drugorzędny przycisk */
-.btn-contact.secondary {
-  background: linear-gradient(to right, #2196f3, #1565c0); /* Niebieski gradient */
-  color: #ffffff; /* Biały tekst */
-  padding: 12px 20px;
-  margin-left: 10px;
-  text-decoration: none;
-  border-radius: 8px; /* Zaokrąglone rogi */
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  animation: fadeIn 1s ease-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtelny cień */
-}
-
-.btn-contact.secondary:hover {
-  background: linear-gradient(to right, #1976d2, #0d47a1); /* Ciemniejszy niebieski gradient */
-  transform: scale(1.1); /* Powiększenie przy najechaniu */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Większy cień */
-}
-
-/* Testimonials */
-.testimonials {
-  margin-top: 60px;
+.contact-buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
+  justify-content: center;
+  gap: 20px;
 }
 
-.testimonials {
-  margin-top: 60px;
-  display: grid; /* Zmieniono na grid */
-  grid-template-columns: repeat(3, 1fr); /* Trzy kolumny */
-  gap: 30px; /* Odstępy między opiniami */
-  justify-content: center; /* Wyśrodkowanie opinii */
-  align-items: stretch; /* Dopasowanie wysokości */
+.contact-buttons .btn-contact {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #ff6347;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.testimonial {
-  background-color: #e2e8f0; /* Jasny szary */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeIn 2s ease-out;
+.contact-buttons .btn-contact:hover {
+  background-color: #ff4500;
+  transform: translateY(-5px);
 }
 
-.testimonial:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+.contact-buttons .btn-contact.secondary {
+  background-color: #4caf50;
 }
 
-.testimonial p {
-  font-size: 1.2rem;
-  color: #475569; /* Szary z niebieskim odcieniem */
-  margin-bottom: 20px;
+.contact-buttons .btn-contact.secondary:hover {
+  background-color: #45a049;
 }
 
-.testimonial .author {
-  font-size: 1rem;
-  color: #1e293b; /* Ciemny niebiesko-szary */
-  font-weight: 600;
-}
-/* Decorative Line */
-.decorative-line {
-  width: 100%;
-  height: 2px;
-  background-color: #2563eb; /* Niebieski */
-  margin-top: 60px;
-  max-width: 1200px;
-  margin-bottom: 40px;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
- 
-@keyframes scaleIn {
-  0% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
+/* Responsive design */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    gap: 20px;
   }
 }
 
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* Responsiveness */
 @media (max-width: 768px) {
-  .services-title {
+  .services-grid {
+    grid-template-columns: 1fr; /* One column on smaller screens */
+    gap: 15px;
+    padding: 0 20px;
+  }
+
+  .services-heading h2 {
     font-size: 2rem;
   }
 
-  .service-card {
-    padding: 15px;
-  }
-
-  .service-card h3 {
-    font-size: 1.3rem;
-  }
-
-  .service-card p {
-    font-size: 0.9rem;
-  }
-
-  .services-contact-cta p {
+  .services-heading p {
     font-size: 1rem;
   }
 
-  .testimonials {
-    grid-template-columns: 1fr 1fr; /* Dwie kolumny na średnich ekranach */
-  }
-
-  .testimonial p {
-    font-size: 1rem;
-  }
-
-  .testimonial .author {
-    font-size: 0.9rem;
-  }
-
-  .btn-contact {
-    padding: 10px 15px;
+  .services-contact {
+    padding: 30px;
   }
 }
 
 @media (max-width: 480px) {
-  .services-title {
-    font-size: 1.8rem;
+  .service-card {
+    height: auto; /* Auto height for smaller screens */
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  .service-icon {
+    font-size: 2.5rem;
   }
 
   .service-card h3 {
@@ -278,28 +156,5 @@
 
   .service-card p {
     font-size: 0.9rem;
-  }
-
-  .custom-services h3 {
-    font-size: 1.8rem;
-  }
-
-  .custom-services p {
-    font-size: 1rem;
-  }
-
-  .btn-contact {
-    font-size: 1rem;
-    padding: 8px 12px;
-  }
-  .testimonials {
-    grid-template-columns: 1fr; /* Jedna kolumna na małych ekranach */
-  }
-  .testimonial p {
-    font-size: 0.9rem;
-  }
-
-  .testimonial .author {
-    font-size: 0.8rem;
   }
 }

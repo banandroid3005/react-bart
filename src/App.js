@@ -8,9 +8,11 @@ import Services from './components/pages/Services';
 import Car from './components/pages/Car';
 import Contact from './components/pages/Contact';
 import AboutMe from './components/pages/AboutMe';
+import './components/CnInfo.css';
 import './components/ScrollToTop';
 import ScrollToTop from './components/ScrollToTop';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import CnInfo from './components/CnInfo';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <NavBar />
+      <CnInfo />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/services' element={<Services />} />

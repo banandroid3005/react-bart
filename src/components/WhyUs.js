@@ -26,7 +26,7 @@ function WhyUs() {
           <div className="whyus-card">
             <FaGlobe className="whyus-icon" />
             <h3>Znajomość języków</h3>
-            <p>Komunikacja po angielsku i nie tylko.</p>
+            <p>Komunikacja po angielsku i po polsku.</p>
           </div>
           <div className="whyus-card">
             <FaUserTie className="whyus-icon" />
