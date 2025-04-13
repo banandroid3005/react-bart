@@ -1,0 +1,236 @@
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .hero-container {
+    background: linear-gradient(to bottom, #ffffff 100%, #f7f7f7 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #000;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  .hero-heading h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease-in-out;
+  }
+  
+  .hero-sub-heading {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: #555;
+    animation: fadeInUp 1.2s ease-in-out;
+  }
+  
+  .hero-btn a {
+    background-color: #000;
+    color: #fff;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1.4s ease-in-out;
+  }
+  
+  .hero-btn a:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 4rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    animation: fadeInUp 1.6s ease-in-out;
+  }
+  
+  .hero-column,
+  .hero-column-offer {
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 1.8s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hero-column:hover,
+  .hero-column-offer:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+  
+  .hero-column h2,
+  .hero-column-offer h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #111;
+  }
+  
+  .hero-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .hero-column li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .hero-column p,
+  .hero-column-offer p {
+    font-size: 1.1rem;
+    color: #444;
+  }
+  
+  .hero-column a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .hero-column blockquote {
+    font-style: italic;
+    color: #666;
+    margin: 1.5rem 0;
+    border-left: 4px solid #ccc;
+    padding-left: 1rem;
+  }
+  
+  .container-call {
+    margin-top: 5rem;
+    text-align: center;
+    animation: fadeInUp 2s ease-in-out;
+  }
+  
+  .container-call h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .container-call a {
+    display: inline-block;
+    background-color: #0066cc;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 16px 30px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+  }
+  
+  .container-call a:hover {
+    background-color: #0057b8;
+    transform: scale(1.05);
+  }
+  
+  .container-call a:active {
+    transform: scale(1);
+  }
+  
+  @media screen and (max-width: 960px) {
+    .hero-container {
+      height: auto;
+      padding: 2rem 1rem;
+      margin-bottom: 4rem;
+    }
+  
+    .hero-columns {
+      flex-direction: column;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+  
+    .hero-column {
+      padding: 2rem;
+    }
+  
+    .hero-column-offer {
+      padding: 2rem;
+    }
+  
+    .hero-heading h2 {
+      font-size: 2.5rem;
+    }
+  
+    .hero-sub-heading {
+      font-size: 1.3rem;
+    }
+  
+    .container-call h3 {
+      font-size: 1.5rem;
+    }
+  
+    .container-call a {
+      font-size: 1rem;
+      padding: 12px 24px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .hero-heading h2 {
+      font-size: 2rem;
+    }
+  
+    .hero-sub-heading {
+      font-size: 1.2rem;
+    }
+  
+    .hero-btn a {
+      padding: 12px 24px;
+      font-size: 1rem;
+    }
+  
+    .hero-column h2 {
+      font-size: 1.6rem;
+    }
+  
+    .hero-column li {
+      font-size: 1rem;
+    }
+  
+    .container-call a {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+  

@@ -1,0 +1,106 @@
+.whyus-section {
+    padding: 80px 20px;
+    background: linear-gradient(to bottom, #ffffff 100%, #f3f4f6 100%);
+  }
+  
+  .whyus-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .whyus-title {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: #111;
+    font-weight: 600;
+  }
+  
+  .whyus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  
+  .whyus-card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+  }
+  
+  .whyus-card:nth-child(1) { animation-delay: 0.1s; }
+  .whyus-card:nth-child(2) { animation-delay: 0.2s; }
+  .whyus-card:nth-child(3) { animation-delay: 0.3s; }
+  .whyus-card:nth-child(4) { animation-delay: 0.4s; }
+  .whyus-card:nth-child(5) { animation-delay: 0.5s; }
+  .whyus-card:nth-child(6) { animation-delay: 0.6s; }
+  
+  .whyus-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .whyus-icon {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .whyus-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #111;
+  }
+  
+  .whyus-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Animacja fade-in-up */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsywność */
+  @media (max-width: 992px) {
+    .whyus-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .whyus-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .whyus-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+  
+    .whyus-card {
+      padding: 24px 16px;
+    }
+  
+    .whyus-icon {
+      font-size: 2.5rem;
+    }
+  }
+  
