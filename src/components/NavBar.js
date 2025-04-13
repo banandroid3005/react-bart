@@ -32,14 +32,21 @@ function NavBar() {
   }, []);
 
   const removeGoogleTranslateBar = () => {
+    // Usuń iframe z paskiem Google Translate
     const frame = document.querySelector("iframe.goog-te-banner-frame");
     if (frame) {
       frame.remove();
     }
-
-    const overlay = document.querySelector(".goog-te-banner-frame");
-    if (overlay) {
-      overlay.remove();
+  
+    // Usuń inne elementy Google Translate
+    const menuFrame = document.querySelector(".goog-te-menu-frame");
+    if (menuFrame) {
+      menuFrame.remove();
+    }
+  
+    const menu = document.querySelector(".goog-te-menu2");
+    if (menu) {
+      menu.remove();
     }
   };
 
@@ -76,21 +83,7 @@ function NavBar() {
     removeGoogleTranslateBar(); // Usuń pasek tłumaczenia po załadowaniu strony
   }, []);
 
-  useEffect(() => {
-    window.googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement(
-        {
-          pageLanguage: "pl",
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false, // Wyłącza automatyczne wyświetlanie paska
-        },
-        "google_translate_element"
-      );
-    };
 
-    // Usuń pasek tłumaczenia po załadowaniu strony
-    removeGoogleTranslateBar();
-  }, []);
 
   return (
     <>
@@ -101,10 +94,10 @@ function NavBar() {
           </Link>
           <div className="language-switcher">
             <button onClick={resetTranslation} className="lang-btn">
-              🇵🇱
+              PL
             </button>
             <button onClick={translateToEnglish} className="lang-btn">
-              🇬🇧
+              EN
             </button>
           </div>
 

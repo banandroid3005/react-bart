@@ -2,41 +2,33 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-right: 30px;
 }
 
 .lang-btn {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: transform 0.2s ease;
+  color: #f8f8f8;
 }
 
 .lang-btn:hover {
   transform: scale(1.2);
 }
-.goog-te-gadget-icon {
-  display: none;
-}
 
-.goog-te-gadget-simple {
-  background-color: #ecebf0 !important;
-  border: 0 !important;
-  outline: 1px solid black;
-  font-size: 10pt;
-  font-weight: 800;
-  display: inline-block;
-  padding: 10px 10px !important;
-  cursor: pointer;
-  zoom: 1;
+iframe.skiptranslate {
+  visibility: hidden !important;
 }
-
-.goog-te-gadget-simple span {
-  color: #000 !important;
+.goog-te-banner-frame,
+.goog-te-menu-frame,
+.goog-te-menu2 {
+  display: none !important;
 }
 
 body {
-  top: 0px !important;
+  top: 0 !important;
 }
 
 .navbar {
@@ -112,11 +104,6 @@ body {
   opacity: 0.25;
 }
 
-.fa-typo3 {
-  margin-left: 0.5rem;
-  font-size: 1.8rem;
-}
-
 .nav-menu {
   display: flex;
   justify-content: flex-end;
@@ -159,8 +146,21 @@ body {
 }
 
 @media screen and (max-width: 960px) {
-  .NavbarItems {
+  .language-switcher {
     position: relative;
+    top: -3px;
+    left: -10px;
+    margin-top: 10px;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .navbar-logo {
+    position: relative;
+    top: 0;
+    left: -15px;
+    transform: none;
+    font-size: 1.65rem;
   }
 
   .nav-menu {
@@ -196,18 +196,11 @@ body {
     border-radius: 0;
   }
 
-  .navbar-logo {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    transform: translate(0%, 50%);
-  }
-
   .menu-icon {
     display: block;
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 10px;
     font-size: 1.8rem;
     cursor: pointer;
   }
