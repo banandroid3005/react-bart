@@ -19,11 +19,11 @@
   
   .airport-gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 90px;
     justify-content: center;
     align-items: stretch;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
   }
   
@@ -65,15 +65,18 @@
     .airport-gallery {
       grid-template-columns: repeat(2, 1fr);
     }
-  
+    .airport-item{
+      width: 100%;;
+    }
     .airport-item img {
       height: 180px;
+      width: 100%;
     }
   }
   
   @media (max-width: 600px) {
     .airport-gallery {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
   
     .airport-item img {

@@ -1,348 +1,388 @@
-/* Globalne style */
-.car-container {
-  font-family: "Arial", sans-serif;
-  background-color: #f7f7f7;
-  padding: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-out;
-}
+/* Car.css - Wersja Premium Experience - REWIZJA STYLU GÓRY I ATUTÓW */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 
-/* Tytuł */
-.car-title {
+/* --- Główny Kontener (jak .contact-container) --- */
+.car-page-container {
+  max-width: 90%;
+  margin: 3rem auto; /* Zmniejszony margines */
+  padding: 0; /* Usunięty padding - sekcje mają własny */
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  background-color: transparent; /* Kontener przezroczysty, tło na body lub sekcjach */
+  border-radius: 0; /* Usunięte zaokrąglenie i cień z głównego kontenera */
+  box-shadow: none;
+}
+.car-page-container::before { content: none; } /* Usunięta górna linia z kontenera */
+
+
+/* --- Nagłówki Sekcji (jak .contact-heading) --- */
+.section-heading {
   text-align: center;
-  font-size: 2.8rem;
-  color: #333;
-  margin-bottom: 30px;
+  margin-bottom: 3rem; /* Zmniejszony margines */
+  padding: 0 1rem; /* Dodany padding boczny dla tekstu */
+}
+.section-heading h1,
+.section-heading h2 {
+  font-size: 2.6rem; /* Mniejszy rozmiar */
+  color: #111;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
   font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards 0.2s;
+}
+.section-heading h1 { font-size: 2.8rem; }
+.section-heading h1::after,
+.section-heading h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px; /* Cieńsza linia */
+  background: linear-gradient(90deg, #007bff, #56a Cff); /* Niebieski gradient */
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1.5px;
+}
+.section-heading p {
+  font-size: 1.1rem; /* Mniejszy opis */
+  color: #555; /* Ciemniejszy szary */
+  max-width: 700px;
+  margin: 0.8rem auto 0; /* Mniejszy margines górny */
+  line-height: 1.6;
 }
 
-/* Galeria zdjęć */
+/* === NOWA Sekcja Wprowadzająca (Nagłówek + Galeria) === */
+.car-intro-section {
+   padding: 4rem 2rem 3rem 2rem; /* Dopasowany padding */
+   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Tło jak FAQ */
+   border-radius: 15px; /* Zaokrąglenie jak w innych sekcjach */
+   margin-bottom: 4rem; /* Odstęp od sekcji Experience */
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); /* Cień jak FAQ */
+}
+.car-intro-section .intro-heading {
+   margin-bottom: 2.5rem; /* Odstęp nagłówka od galerii */
+}
+
+.car-gallery-wrapper {
+   position: relative; /* Kontekst dla strzałek */
+   max-width: 850px; /* Maksymalna szerokość galerii */
+   margin: 0 auto; /* Centrowanie */
+}
+
 .car-gallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-out;
+   position: relative; /* Dla z-index obrazu */
+   margin: 0; /* Usunięty margines */
+   display: block; /* Zmienione z flex */
+   user-select: none;
+   -webkit-user-drag: none;
 }
 
-.car-gallery .image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease;
+.image-wrapper {
+   cursor: pointer;
+   overflow: hidden;
+   border-radius: 10px; /* Mniejsze zaokrąglenie */
+   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Dopasowany cień */
+   position: relative;
+   width: 100%;
+   background-color: #e0e0e0;
+   aspect-ratio: 16 / 9.5; /* Dopasowanie proporcji */
+   border: none; /* Usunięta ramka */
+   z-index: 1; /* Aby było nad strzałkami tła */
+}
+.image-wrapper:hover .car-img { transform: scale(1.03); }
+.car-img {
+   /* ... (style display, width, height, object-fit bez zmian) ... */
+   border-radius: 10px;
+   transition: transform 0.35s ease;
 }
 
-.car-gallery .car-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 15px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards 0.5s;
-}
-
-.car-gallery .car-img:hover {
-  transform: scale(1.05);
-  opacity: 0.8;
-}
-
-/* Strzałki nawigacyjne */
-.arrow {
+/* Nowe pozycjonowanie strzałek - w wrapperze, po bokach */
+.car-gallery-wrapper .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 3rem;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 15px;
-  border-radius: 10%;
-  cursor: pointer;
-  z-index: 2;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards 1s;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #222;
+  border: none;
+  padding: 10px 15px;
+  font-size: 2rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  z-index: 5; /* Nad tłem, pod obrazem jeśli nachodzą */
 }
-
-.arrow:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.car-gallery-wrapper .arrow:hover {
+  background-color: #fff;
   transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.18);
 }
+/* Pozycjonowanie strzałek poza głównym obrazem */
+.car-gallery-wrapper .arrow.prev { left: -20px; }
+.car-gallery-wrapper .arrow.next { right: -20px; }
 
-.arrow.prev {
-  left: 10px;
+.gallery-thumbnails {
+   margin-top: 1.2rem; /* Mniejszy odstęp */
+   gap: 10px; /* Większy odstęp między miniaturkami */
 }
-
-.arrow.next {
-  right: 10px;
+.thumbnail {
+   width: 80px;
+   height: 50px;
+   border-radius: 6px;
+   opacity: 0.6;
+   border: 2px solid transparent; /* Ramka do aktywacji */
+   transition: all 0.3s ease;
 }
+.thumbnail:hover { opacity: 1; border-color: #bbb; }
+.thumbnail.active {
+   opacity: 1;
+   border-color: #007bff; /* Aktywna ramka */
+   box-shadow: none; /* Usunięty cień */
+}
+/* === Koniec stylów sekcji Intro === */
 
-/* Lightbox */
-.lightbox {
-  position: fixed;
+
+/* === Sekcja Doświadczenia Pasażera (BEZ ZMIAN STYLÓW - styl jak contact-card) === */
+.car-experience-section {
+  padding: 4rem 2rem; /* Dodajemy padding z powrotem do sekcji */
+  margin-bottom: 4rem;
+  background-color: #fff; /* Białe tło sekcji */
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+  position: relative; /* Dla ::before */
+}
+ /* Linia na górze sekcji Experience */
+.car-experience-section::before {
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-  cursor: grab;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #007bff, transparent); /* Niebieska linia */
+  opacity: 0.25;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
-.lightbox.visible {
-  opacity: 1;
-  visibility: visible;
+.car-experience-section .section-heading { margin-bottom: 3.5rem; }
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
 }
-
-.lightbox-content {
+.experience-block {
+  /* STYLE POZOSTAJĄ JAK W POPRZEDNIEJ WERSJI (JAK CONTACT CARD) */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 3rem 2.5rem;
+  transition: all 0.4s ease;
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
-  transition: transform 0.3s ease-out;
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  text-align: center;
 }
-
-.lightbox-img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  cursor: grab;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.lightbox-img:active {
-  cursor: grabbing;
-}
-
-.close-btn {
+.experience-block::before {
+  content: '';
   position: absolute;
-  font-size: 2rem;
-  color: #fff;
-  background-color: rgb(2, 2, 66);
-  padding: 12px;
-  border-radius: 50%;
-  top: 22px;
-  right: 22px;
-  cursor: pointer;
-  z-index: 3;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-weight: bold;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.02) 0%, rgba(0, 123, 255, 0.08) 100%); /* Niebieski gradient hover */
+  z-index: -1; transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 12px;
 }
-
-.close-btn:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-  transform: scale(1.1);
+.experience-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 123, 255, 0.15); /* Niebieski cień hover */
+  border-color: rgba(0, 123, 255, 0.1); /* Niebieska ramka hover */
 }
-
-/* Sekcja informacji o aucie */
-.car-info {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  margin-bottom: 15px;
-  opacity: 0; /* Początkowo niewidoczne */
-  animation: slideIn 1s ease-out forwards; /* Przypisanie animacji */
+.experience-block:hover::before { transform: scale(1); }
+.experience-icon {
+  font-size: 2.8rem; color: #333; /* Ciemniejsza ikona */
+  margin-bottom: 1.8rem; display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
 }
-
-.car-info h3 {
-  font-size: 2rem;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 10px;
+.experience-block:hover .experience-icon {
+  transform: scale(1.15) rotate(5deg);
+  color: #007bff;
 }
-
-.info-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.info-item .label {
+.experience-block h3 {
+  font-size: 1.5rem; /* Mniejszy nagłówek karty */
+  margin-bottom: 1rem; color: #111;
+  position: relative; padding-bottom: 0.8rem;
   font-weight: 600;
-  color: #333;
+}
+.experience-block h3::after {
+  content: ''; position: absolute;
+  width: 50px; height: 3px; /* Krótsza linia */
+  background: linear-gradient(90deg, #ccc, #eee);
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  transition: width 0.4s ease, background 0.4s ease;
+  border-radius: 1.5px;
+}
+.experience-block:hover h3::after {
+  width: 80px;
+  background: linear-gradient(90deg, #007bff, #56a Cff);
+}
+.experience-block p {
+  color: #555; /* Ciemniejszy szary */
+  line-height: 1.65; font-size: 1rem; /* Mniejszy tekst */
+  margin-bottom: 0;
+}
+/* === Koniec stylów sekcji Experience === */
+
+
+/* === NOWA Sekcja Kluczowych Atutów (Lista) === */
+.car-highlights-section {
+   padding: 4rem 2rem;
+   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Tło jak FAQ / Intro */
+   margin-bottom: 4rem;
+   border-radius: 15px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+.car-highlights-section .section-heading { margin-bottom: 3rem; }
+.car-highlights-section .section-heading h2 { font-size: 2.2rem; }
+.car-highlights-section .section-heading h2::after { background: linear-gradient(90deg, #aaa, #ccc); } /* Szara linia */
+.car-highlights-section .section-heading p { font-size: 1.05rem; color: #555;}
+
+.highlights-list-container {
+   max-width: 800px; /* Ograniczenie szerokości listy */
+   margin: 0 auto; /* Centrowanie */
 }
 
-.info-item .value {
-  font-weight: 400;
-  color: #777;
+.highlights-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   /* Używamy grida dla lepszej kontroli */
+   display: grid;
+   grid-template-columns: repeat(2, 1fr); /* Dwie kolumny */
+   gap: 1rem 2rem; /* Odstęp pionowy i poziomy */
 }
 
-/* Sekcja komfortu */
-.car-comfort {
-  background-color: #ffffff;
-  padding: 30px;
+.highlight-entry {
+   display: flex;
+   align-items: center;
+   background-color: rgba(255, 255, 255, 0.6); /* Lekko przezroczyste tło */
+   padding: 1rem 1.5rem;
+   border-radius: 8px;
+   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+   border: 1px solid transparent; /* Placeholder dla hover */
+}
+
+.highlight-entry:hover {
+   background-color: #fff;
+   box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+   border-color: #eee;
+}
+
+.highlight-icon {
+   font-size: 1.6rem; /* Dopasowany rozmiar ikony */
+   color: #007bff; /* Niebieska ikona */
+   margin-right: 1.2rem; /* Odstęp od tekstu */
+   flex-shrink: 0; /* Ikona nie zmniejsza się */
+   width: 30px; /* Stała szerokość dla wyrównania */
+   text-align: center;
+}
+
+.highlight-text {
+   font-size: 1.05rem; /* Rozmiar tekstu */
+   color: #333; /* Kolor tekstu */
+   font-weight: 500; /* Lekko pogrubiony */
+   line-height: 1.5;
+}
+/* === Koniec Sekcji Kluczowych Atutów === */
+
+
+/* --- Sekcja CTA (Bez zmian w stylach) --- */
+.car-cta-section {
+  background: linear-gradient(135deg, #343a40 0%, #1a1a1a 100%);
+  color: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  animation: slideIn 1s ease-out forwards;
+  margin-bottom: 3rem;
+}
+.car-cta-section h2 { font-size: 2.2rem; font-family: 'Roboto', sans-serif; margin-bottom: 1rem; }
+.car-cta-section p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; }
+.cta-button {
+  /* Style przycisku pozostają bez zmian - pasują do Contact.css */
+  display: inline-block; padding: 1.2rem 3rem; background: #111; color: #fff;
+  text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden; z-index: 1;
+  cursor: pointer; letter-spacing: 0.5px;
+}
+.cta-button::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: #007bff; z-index: -1; transform: scaleX(0); transform-origin: right;
+  transition: transform 0.4s ease-in-out; }
+.cta-button:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); }
+.cta-button:hover::before { transform: scaleX(1); transform-origin: left; }
+
+
+/* --- Responsywność --- */
+@media (max-width: 1024px) {
+  /* Styl sekcji intro */
+  .car-intro-section { padding: 3rem 1.5rem 2.5rem 1.5rem; border-radius: 12px; }
+  .car-gallery-wrapper .arrow.prev { left: -15px; }
+  .car-gallery-wrapper .arrow.next { right: -15px; }
+   /* Styl sekcji experience */
+  .car-experience-section { padding: 3rem 1.5rem; border-radius: 12px; }
+  .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+   /* Styl sekcji highlights */
+  .car-highlights-section { padding: 3rem 1.5rem; border-radius: 12px; }
+  .highlights-list { gap: 0.8rem 1.5rem; } /* Mniejsze odstępy */
 }
 
-.car-comfort h3 {
-  font-size: 2rem;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 10px;
-}
-
-.car-comfort ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.car-comfort li {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.car-comfort li i {
-  color: #0e8f8f;
-  margin-right: 10px;
-}
-
-.car-info:hover,
-.car-comfort:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
-}
-
-/* Animacje */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Responsywność */
 @media (max-width: 768px) {
-  .car-container {
-    padding: 15px;
-  }
-
-  .car-title {
-    font-size: 2.2rem;
-  }
-
-  .car-gallery {
-    flex-direction: column;
-  }
-
-  .car-info,
-  .car-comfort {
-    padding: 20px;
-  }
-
-  .info-item {
-    font-size: 1rem;
-  }
-
-  .car-info h3,
-  .car-comfort h3 {
-    font-size: 1.6rem;
-  }
-
-  .car-comfort li {
-    font-size: 1.1rem;
-  }
-
-  .arrow {
-    font-size: 2rem;
-    padding: 10px;
-  }
-
-  .arrow.prev {
-    left: -1px;
-  }
-
-  .arrow.next {
-    right: -1px;
-  }
-
-  .close-btn {
-    top: -1px;
-    right: -1px;
-  }
+   .car-page-container { margin: 2rem auto; }
+   .section-heading h1 { font-size: 2.2rem; }
+   .section-heading h2 { font-size: 2rem; }
+   .section-heading p { font-size: 1rem; }
+   /* Styl sekcji intro */
+   .car-intro-section { padding: 2.5rem 1rem 2rem 1rem; border-radius: 10px; margin-bottom: 3rem;}
+   .car-gallery-wrapper .arrow { display: none; } /* Ukrywamy strzałki galerii */
+   .gallery-thumbnails { gap: 8px; margin-top: 1rem; }
+   .thumbnail { width: 60px; height: 40px; }
+   /* Styl sekcji experience */
+   .car-experience-section { padding: 2.5rem 1rem; border-radius: 10px; margin-bottom: 3rem; }
+   .experience-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+   .experience-block { padding: 2rem 1.5rem; }
+   /* Styl sekcji highlights */
+   .car-highlights-section { padding: 2.5rem 1rem; border-radius: 10px; margin-bottom: 3rem; }
+   .highlights-list { grid-template-columns: 1fr; /* Jedna kolumna na mobile */ gap: 0.8rem; }
+   .highlight-entry { padding: 0.8rem 1rem; }
+   .highlight-icon { font-size: 1.4rem; margin-right: 1rem; width: 25px; }
+   .highlight-text { font-size: 1rem; }
+   /* Styl sekcji CTA */
+   .car-cta-section { padding: 3rem 1rem; border-radius: 10px; margin-bottom: 2rem; }
+   .car-cta-section h2 { font-size: 1.8rem; }
+   .cta-button { padding: 1rem 2.5rem; font-size: 1rem; }
 }
 
-@media (max-width: 480px) {
-  .car-title {
-    font-size: 1.8rem;
-  }
-
-  .car-gallery {
-    margin-bottom: 20px;
-  }
-
-  .arrow {
-    font-size: 1.6rem;
-    padding: 8px;
-  }
-
-  .arrow.prev {
-    left: -1px;
-  }
-
-  .arrow.next {
-    right: -1px;
-  }
-
-  .close-btn {
-    font-size: 0.8rem;
-    right: 2px;
-    top: 2px;
-  }
+@media (max-width: 576px) {
+   .section-heading h1 { font-size: 1.8rem; }
+   .section-heading h2 { font-size: 1.6rem; }
+   .section-heading h1::after, .section-heading h2::after { width: 40px; height: 2px; bottom: -8px;}
+   /* Styl sekcji intro */
+   .car-intro-section { padding: 2rem 0.8rem 1.5rem 0.8rem; border-radius: 8px; }
+   .gallery-thumbnails { gap: 5px; }
+   .thumbnail { width: 50px; height: 35px; }
+   /* Styl sekcji experience */
+   .car-experience-section { padding: 2rem 0.8rem; }
+   .experience-block { padding: 1.8rem 1rem; }
+   .experience-icon { font-size: 2rem; margin-bottom: 1rem; }
+   .experience-block h3 { font-size: 1.2rem; margin-bottom: 0.8rem; padding-bottom: 0.6rem; }
+   .experience-block h3::after { width: 40px; height: 2px;}
+   .experience-block:hover h3::after { width: 60px; }
+   .experience-block p { font-size: 0.9rem; line-height: 1.6;}
+   /* Styl sekcji highlights */
+   .car-highlights-section { padding: 2rem 0.8rem; }
+   .highlight-icon { font-size: 1.3rem; margin-right: 0.8rem; }
+   .highlight-text { font-size: 0.95rem; }
+   /* Styl sekcji CTA */
+   .cta-button { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
 }

@@ -35,24 +35,12 @@ function AirPort() {
           <p>Katowice</p>
         </div>
         <div className="airport-item">
-          <img src={modlin} alt="Lotnisko Modlin" />
-          <p>Modlin</p>
-        </div>
-        <div className="airport-item">
           <img src={lublin} alt="Lotnisko Lublin" />
           <p>Lublin</p>
         </div>
         <div className="airport-item">
-          <img src={bydgosz} alt="Lotnisko Bydgoszcz" />
-          <p>Bydgoszcz</p>
-        </div>
-        <div className="airport-item">
           <img src={szczecin} alt="Lotnisko Szczecin" />
           <p>Szczecin</p>
-        </div>
-        <div className="airport-item">
-          <img src={lodz} alt="Lotnisko Łódź" />
-          <p>Łódź</p>
         </div>
         <div className="airport-item">
           <img src={rzeszow} alt="Lotnisko Rzeszów" />
@@ -65,10 +53,6 @@ function AirPort() {
         <div className="airport-item">
           <img src={wroclaw} alt="Lotnisko Wrocław" />
           <p>Wrocław</p>
-        </div>
-        <div className="airport-item">
-          <img src={poznan} alt="Lotnisko Poznań" />
-          <p>Poznań</p>
         </div>
       </div>
       <p className="airport-note">
