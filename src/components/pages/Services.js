@@ -14,7 +14,6 @@ import {
 
 function Services() {
   return (
-    <div className="services-background">
     <div className="services-container">
       <div className="services-heading">
         <h2>Nasze Usługi</h2>
@@ -103,7 +102,6 @@ function Services() {
           <a href="mailto:info@example.com" className="btn-contact secondary">Napisz E-mail</a>
         </div>
       </div>
-    </div>
     </div>
   );
 }

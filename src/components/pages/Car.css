@@ -1,388 +1,754 @@
-/* Car.css - Wersja Premium Experience - REWIZJA STYLU GÓRY I ATUTÓW */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+/* Car.css - Premium Taxi Style */
 
-/* --- Główny Kontener (jak .contact-container) --- */
-.car-page-container {
-  max-width: 90%;
-  margin: 3rem auto; /* Zmniejszony margines */
-  padding: 0; /* Usunięty padding - sekcje mają własny */
-  font-family: 'Roboto', sans-serif;
-  position: relative;
-  background-color: transparent; /* Kontener przezroczysty, tło na body lub sekcjach */
-  border-radius: 0; /* Usunięte zaokrąglenie i cień z głównego kontenera */
-  box-shadow: none;
+/* === Zmienne CSS dla łatwego zarządzania kolorami === */
+:root {
+  --color-primary: #1a1a1a;
+  --color-primary-light: #333333;
+  --color-secondary: #1a1a1a; /* Zmiana ze złotego na czarny */
+  --color-secondary-light: #333333; /* Zmiana ze złotego na ciemny szary */
+  --color-light: #ffffff;
+  --color-light-gray: #f8f8f8;
+  --color-gray: #e0e0e0;
+  --color-dark-gray: #555555;
+  --font-primary: 'Roboto', sans-serif; /* Zmiana na Roboto */
+  --font-secondary: 'Roboto', sans-serif; /* Zmiana na Roboto */
+  --transition-slow: 0.5s ease;
+  --transition-normal: 0.3s ease;
+  --shadow-light: 0 2px 15px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 12px;
 }
-.car-page-container::before { content: none; } /* Usunięta górna linia z kontenera */
 
 
-/* --- Nagłówki Sekcji (jak .contact-heading) --- */
+.car-page-container h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  font-weight: 500; /* Lżejsza waga dla Roboto */
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.car-page-container h1 {
+  font-size: 2.5rem;
+}
+
+.car-page-container h2 {
+  font-size: 2rem;
+}
+
+.car-page-container h3 {
+  font-size: 1.5rem;
+}
+
+.car-page-container p {
+  margin-bottom: 1rem;
+}
+ 
+.car-page-container a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.car-page-container a:hover {
+  color: var(--color-secondary-light);
+}
+
+.car-page-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Layout główny === */
+.car-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.car-page-container section {
+  margin: 5rem 0;
+  padding: 2rem 0;
+}
+
 .section-heading {
   text-align: center;
-  margin-bottom: 3rem; /* Zmniejszony margines */
-  padding: 0 1rem; /* Dodany padding boczny dla tekstu */
-}
-.section-heading h1,
-.section-heading h2 {
-  font-size: 2.6rem; /* Mniejszy rozmiar */
-  color: #111;
+  margin-bottom: 3rem;
   position: relative;
-  display: inline-block;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.5px;
-  font-weight: 700;
+  padding-bottom: 1.5rem;
 }
-.section-heading h1 { font-size: 2.8rem; }
-.section-heading h1::after,
-.section-heading h2::after {
+
+.section-heading:after {
   content: '';
   position: absolute;
-  width: 60px;
-  height: 3px; /* Cieńsza linia */
-  background: linear-gradient(90deg, #007bff, #56a Cff); /* Niebieski gradient */
-  bottom: -10px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 1.5px;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%); /* Gradient zamiast jednolitego koloru */
+  border-radius: 3px;
 }
+
+.section-heading h1, 
+.section-heading h2 {
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
 .section-heading p {
-  font-size: 1.1rem; /* Mniejszy opis */
-  color: #555; /* Ciemniejszy szary */
+  color: var(--color-dark-gray);
+  font-size: 1.1rem;
   max-width: 700px;
-  margin: 0.8rem auto 0; /* Mniejszy margines górny */
-  line-height: 1.6;
+  margin: 0 auto;
 }
 
-/* === NOWA Sekcja Wprowadzająca (Nagłówek + Galeria) === */
+/* === Sekcja Wprowadzająca === */
 .car-intro-section {
-   padding: 4rem 2rem 3rem 2rem; /* Dopasowany padding */
-   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Tło jak FAQ */
-   border-radius: 15px; /* Zaokrąglenie jak w innych sekcjach */
-   margin-bottom: 4rem; /* Odstęp od sekcji Experience */
-   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); /* Cień jak FAQ */
-}
-.car-intro-section .intro-heading {
-   margin-bottom: 2.5rem; /* Odstęp nagłówka od galerii */
+  background-color: var(--color-light-gray);
+  border-radius: var(--radius-large);
+  padding: 3rem 2rem;
+  box-shadow: var(--shadow-light);
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
 }
 
+.intro-heading h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Galeria === */
 .car-gallery-wrapper {
-   position: relative; /* Kontekst dla strzałek */
-   max-width: 850px; /* Maksymalna szerokość galerii */
-   margin: 0 auto; /* Centrowanie */
+  margin: 3rem 0;
+  position: relative;
 }
 
 .car-gallery {
-   position: relative; /* Dla z-index obrazu */
-   margin: 0; /* Usunięty margines */
-   display: block; /* Zmienione z flex */
-   user-select: none;
-   -webkit-user-drag: none;
+  position: relative;
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-light);
 }
 
 .image-wrapper {
-   cursor: pointer;
-   overflow: hidden;
-   border-radius: 10px; /* Mniejsze zaokrąglenie */
-   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Dopasowany cień */
-   position: relative;
-   width: 100%;
-   background-color: #e0e0e0;
-   aspect-ratio: 16 / 9.5; /* Dopasowanie proporcji */
-   border: none; /* Usunięta ramka */
-   z-index: 1; /* Aby było nad strzałkami tła */
-}
-.image-wrapper:hover .car-img { transform: scale(1.03); }
-.car-img {
-   /* ... (style display, width, height, object-fit bez zmian) ... */
-   border-radius: 10px;
-   transition: transform 0.35s ease;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Nowe pozycjonowanie strzałek - w wrapperze, po bokach */
-.car-gallery-wrapper .arrow {
+.car-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.car-img:hover {
+  transform: scale(1.03);
+}
+
+.arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.85);
-  color: #222;
-  border: none;
-  padding: 10px 15px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
   border-radius: 50%;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-  z-index: 5; /* Nad tłem, pod obrazem jeśli nachodzą */
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-normal);
 }
-.car-gallery-wrapper .arrow:hover {
-  background-color: #fff;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.18);
+
+.arrow:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-light);
 }
-/* Pozycjonowanie strzałek poza głównym obrazem */
-.car-gallery-wrapper .arrow.prev { left: -20px; }
-.car-gallery-wrapper .arrow.next { right: -20px; }
+
+.prev {
+  left: 15px;
+}
+
+.next {
+  right: 15px;
+}
 
 .gallery-thumbnails {
-   margin-top: 1.2rem; /* Mniejszy odstęp */
-   gap: 10px; /* Większy odstęp między miniaturkami */
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
 }
+
 .thumbnail {
-   width: 80px;
-   height: 50px;
-   border-radius: 6px;
-   opacity: 0.6;
-   border: 2px solid transparent; /* Ramka do aktywacji */
-   transition: all 0.3s ease;
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
 }
-.thumbnail:hover { opacity: 1; border-color: #bbb; }
+
+.thumbnail:hover {
+  opacity: 0.9;
+}
+
 .thumbnail.active {
-   opacity: 1;
-   border-color: #007bff; /* Aktywna ramka */
-   box-shadow: none; /* Usunięty cień */
+  opacity: 1;
+  border-color: var(--color-secondary);
 }
-/* === Koniec stylów sekcji Intro === */
 
-
-/* === Sekcja Doświadczenia Pasażera (BEZ ZMIAN STYLÓW - styl jak contact-card) === */
-.car-experience-section {
-  padding: 4rem 2rem; /* Dodajemy padding z powrotem do sekcji */
-  margin-bottom: 4rem;
-  background-color: #fff; /* Białe tło sekcji */
-  border-radius: 15px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
-  position: relative; /* Dla ::before */
+/* === Animacja galerii === */
+.animate-once {
+  animation: fadeIn 0.5s ease-in-out;
 }
- /* Linia na górze sekcji Experience */
-.car-experience-section::before {
-  content: '';
-  position: absolute;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === Loader dla galerii === */
+.gallery-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 450px;
+  background-color: var(--color-light-gray);
+  border-radius: var(--radius-medium);
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--color-gray);
+  border-radius: 50%;
+  border-top-color: var(--color-secondary);
+  animation: spin 1s infinite ease-in-out;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Lightbox === */
+.lightbox {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, transparent, #007bff, transparent); /* Niebieska linia */
-  opacity: 0.25;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
 }
 
-.car-experience-section .section-heading { margin-bottom: 3.5rem; }
+.lightbox.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 95%; /* Zwiększona szerokość */
+  max-height: 95%; /* Zwiększona wysokość */
+  margin: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 2rem;
+  color: var(--color-light);
+  cursor: pointer;
+  z-index: 1001;
+  opacity: 0.8;
+  transition: opacity var(--transition-normal);
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
+.lightbox-arrow {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-light);
+}
+
+.lightbox-arrow:hover {
+  background-color: var(--color-secondary);
+}
+
+.lightbox .car-img {
+  max-height: 85vh; /* Zwiększona wysokość obrazu */
+  width: auto;
+  object-fit: contain;
+  border-radius: var(--radius-small);
+}
+
+/* === Sekcja Doświadczenia === */
+.car-experience-section {
+  background-color: var(--color-light);
+  padding: 4rem 2rem;
+}
+
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
 .experience-block {
-  /* STYLE POZOSTAJĄ JAK W POPRZEDNIEJ WERSJI (JAK CONTACT CARD) */
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  padding: 3rem 2.5rem;
-  transition: all 0.4s ease;
+  background-color: var(--color-light);
+  padding: 2rem;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  border: 1px solid rgba(0, 0, 0, 0.03);
   text-align: center;
+  border: 1px solid var(--color-gray);
 }
-.experience-block::before {
+
+.experience-block:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--color-secondary-light);
+}
+
+.experience-icon {
+  font-size: 2.2rem;
+  color: var(--color-secondary);
+  margin-bottom: 1.2rem;
+  height: 70px;
+  width: 70px;
+  line-height: 70px;
+  background-color: var(--color-light-gray);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.experience-icon:after {
   content: '';
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(0, 123, 255, 0.02) 0%, rgba(0, 123, 255, 0.08) 100%); /* Niebieski gradient hover */
-  z-index: -1; transform: scale(0);
-  transform-origin: bottom right;
-  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  border-radius: 12px;
-}
-.experience-block:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 123, 255, 0.15); /* Niebieski cień hover */
-  border-color: rgba(0, 123, 255, 0.1); /* Niebieska ramka hover */
-}
-.experience-block:hover::before { transform: scale(1); }
-.experience-icon {
-  font-size: 2.8rem; color: #333; /* Ciemniejsza ikona */
-  margin-bottom: 1.8rem; display: inline-block;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
-}
-.experience-block:hover .experience-icon {
-  transform: scale(1.15) rotate(5deg);
-  color: #007bff;
-}
-.experience-block h3 {
-  font-size: 1.5rem; /* Mniejszy nagłówek karty */
-  margin-bottom: 1rem; color: #111;
-  position: relative; padding-bottom: 0.8rem;
-  font-weight: 600;
-}
-.experience-block h3::after {
-  content: ''; position: absolute;
-  width: 50px; height: 3px; /* Krótsza linia */
-  background: linear-gradient(90deg, #ccc, #eee);
-  bottom: 0; left: 50%; transform: translateX(-50%);
-  transition: width 0.4s ease, background 0.4s ease;
-  border-radius: 1.5px;
-}
-.experience-block:hover h3::after {
   width: 80px;
-  background: linear-gradient(90deg, #007bff, #56a Cff);
+  height: 80px;
+  border: 1px solid var(--color-secondary-light);
+  border-radius: 50%;
+  top: -5px;
+  left: -5px;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
 }
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(1.05);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+.experience-block h3 {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.experience-block h3:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%); /* Gradient */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .experience-block p {
-  color: #555; /* Ciemniejszy szary */
-  line-height: 1.65; font-size: 1rem; /* Mniejszy tekst */
-  margin-bottom: 0;
+  color: var(--color-dark-gray);
+  line-height: 1.7;
 }
-/* === Koniec stylów sekcji Experience === */
 
-
-/* === NOWA Sekcja Kluczowych Atutów (Lista) === */
+/* === Sekcja Kluczowych Atutów === */
 .car-highlights-section {
-   padding: 4rem 2rem;
-   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Tło jak FAQ / Intro */
-   margin-bottom: 4rem;
-   border-radius: 15px;
-   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  background-color: var(--color-light-gray);
+  border-radius: var(--radius-large);
+  padding: 4rem 2rem;
+  box-shadow: var(--shadow-light);
 }
-.car-highlights-section .section-heading { margin-bottom: 3rem; }
-.car-highlights-section .section-heading h2 { font-size: 2.2rem; }
-.car-highlights-section .section-heading h2::after { background: linear-gradient(90deg, #aaa, #ccc); } /* Szara linia */
-.car-highlights-section .section-heading p { font-size: 1.05rem; color: #555;}
 
 .highlights-list-container {
-   max-width: 800px; /* Ograniczenie szerokości listy */
-   margin: 0 auto; /* Centrowanie */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .highlights-list {
-   list-style: none;
-   padding: 0;
-   margin: 0;
-   /* Używamy grida dla lepszej kontroli */
-   display: grid;
-   grid-template-columns: repeat(2, 1fr); /* Dwie kolumny */
-   gap: 1rem 2rem; /* Odstęp pionowy i poziomy */
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
 }
 
 .highlight-entry {
-   display: flex;
-   align-items: center;
-   background-color: rgba(255, 255, 255, 0.6); /* Lekko przezroczyste tło */
-   padding: 1rem 1.5rem;
-   border-radius: 8px;
-   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-   border: 1px solid transparent; /* Placeholder dla hover */
+  background-color: var(--color-light);
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--radius-medium);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-normal);
+  border-left: 3px solid var(--color-secondary);
+  background: linear-gradient(to right, var(--color-light) 0%, rgba(248, 248, 248, 0.5) 100%); /* Subtelny gradient */
 }
 
 .highlight-entry:hover {
-   background-color: #fff;
-   box-shadow: 0 5px 15px rgba(0,0,0,0.07);
-   border-color: #eee;
+  transform: translateX(5px);
+  box-shadow: var(--shadow-medium);
 }
 
 .highlight-icon {
-   font-size: 1.6rem; /* Dopasowany rozmiar ikony */
-   color: #007bff; /* Niebieska ikona */
-   margin-right: 1.2rem; /* Odstęp od tekstu */
-   flex-shrink: 0; /* Ikona nie zmniejsza się */
-   width: 30px; /* Stała szerokość dla wyrównania */
-   text-align: center;
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+  margin-right: 1rem;
 }
 
 .highlight-text {
-   font-size: 1.05rem; /* Rozmiar tekstu */
-   color: #333; /* Kolor tekstu */
-   font-weight: 500; /* Lekko pogrubiony */
-   line-height: 1.5;
+  font-weight: 500;
+  color: var(--color-primary);
 }
-/* === Koniec Sekcji Kluczowych Atutów === */
 
-
-/* --- Sekcja CTA (Bez zmian w stylach) --- */
+/* === Sekcja CTA === */
 .car-cta-section {
-  background: linear-gradient(135deg, #343a40 0%, #1a1a1a 100%);
-  color: #fff;
-  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: var(--color-light);
   text-align: center;
-  border-radius: 15px;
-  margin-bottom: 3rem;
+  padding: 4rem 2rem;
+  border-radius: var(--radius-large);
+  margin: 6rem auto;
+  box-shadow: var(--shadow-dark);
+  position: relative;
+  overflow: hidden;
 }
-.car-cta-section h2 { font-size: 2.2rem; font-family: 'Roboto', sans-serif; margin-bottom: 1rem; }
-.car-cta-section p { font-size: 1.1rem; color: #e0e0e0; margin-bottom: 2rem; }
+
+.car-cta-section:before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(var(--color-secondary-light), transparent 70%);
+  opacity: 0.15;
+  top: -50px;
+  right: -50px;
+  border-radius: 50%;
+}
+
+.car-cta-section:after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(var(--color-secondary-light), transparent 70%);
+  opacity: 0.1;
+  bottom: -50px;
+  left: -50px;
+  border-radius: 50%;
+}
+
+.car-cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-light);
+}
+
+.car-cta-section p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .cta-button {
-  /* Style przycisku pozostają bez zmian - pasują do Contact.css */
-  display: inline-block; padding: 1.2rem 3rem; background: #111; color: #fff;
-  text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); position: relative; overflow: hidden; z-index: 1;
-  cursor: pointer; letter-spacing: 0.5px;
+  display: inline-block;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%); /* Gradient */
+  color: var(--color-light);
+  font-weight: 500; /* Lżejsza waga dla Roboto */
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-normal);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
-.cta-button::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: #007bff; z-index: -1; transform: scaleX(0); transform-origin: right;
-  transition: transform 0.4s ease-in-out; }
-.cta-button:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); }
-.cta-button:hover::before { transform: scaleX(1); transform-origin: left; }
 
+.cta-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s;
+  z-index: -1;
+}
 
-/* --- Responsywność --- */
-@media (max-width: 1024px) {
-  /* Styl sekcji intro */
-  .car-intro-section { padding: 3rem 1.5rem 2.5rem 1.5rem; border-radius: 12px; }
-  .car-gallery-wrapper .arrow.prev { left: -15px; }
-  .car-gallery-wrapper .arrow.next { right: -15px; }
-   /* Styl sekcji experience */
-  .car-experience-section { padding: 3rem 1.5rem; border-radius: 12px; }
-  .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-   /* Styl sekcji highlights */
-  .car-highlights-section { padding: 3rem 1.5rem; border-radius: 12px; }
-  .highlights-list { gap: 0.8rem 1.5rem; } /* Mniejsze odstępy */
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  color: var(--color-light);
+  border-color: var(--color-secondary-light);
+  background: var(--color-secondary-light);
+}
+
+.cta-button:hover:before {
+  left: 100%;
+}
+
+/* === Media Queries dla responsywności === */
+@media (max-width: 1200px) {
+  .car-page-container {
+    padding: 0 15px;
+  }
+  
+  .highlights-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .car-page-container h1 {
+    font-size: 2.2rem;
+  }
+  
+  .car-page-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .car-page-container h3 {
+    font-size: 1.3rem;
+  }
+  
+  .car-gallery {
+    height: 380px;
+  }
+  
+  .experience-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
-   .car-page-container { margin: 2rem auto; }
-   .section-heading h1 { font-size: 2.2rem; }
-   .section-heading h2 { font-size: 2rem; }
-   .section-heading p { font-size: 1rem; }
-   /* Styl sekcji intro */
-   .car-intro-section { padding: 2.5rem 1rem 2rem 1rem; border-radius: 10px; margin-bottom: 3rem;}
-   .car-gallery-wrapper .arrow { display: none; } /* Ukrywamy strzałki galerii */
-   .gallery-thumbnails { gap: 8px; margin-top: 1rem; }
-   .thumbnail { width: 60px; height: 40px; }
-   /* Styl sekcji experience */
-   .car-experience-section { padding: 2.5rem 1rem; border-radius: 10px; margin-bottom: 3rem; }
-   .experience-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-   .experience-block { padding: 2rem 1.5rem; }
-   /* Styl sekcji highlights */
-   .car-highlights-section { padding: 2.5rem 1rem; border-radius: 10px; margin-bottom: 3rem; }
-   .highlights-list { grid-template-columns: 1fr; /* Jedna kolumna na mobile */ gap: 0.8rem; }
-   .highlight-entry { padding: 0.8rem 1rem; }
-   .highlight-icon { font-size: 1.4rem; margin-right: 1rem; width: 25px; }
-   .highlight-text { font-size: 1rem; }
-   /* Styl sekcji CTA */
-   .car-cta-section { padding: 3rem 1rem; border-radius: 10px; margin-bottom: 2rem; }
-   .car-cta-section h2 { font-size: 1.8rem; }
-   .cta-button { padding: 1rem 2.5rem; font-size: 1rem; }
+  .car-page-container section {
+    margin: 3rem 0;
+    padding: 1.5rem 0;
+  }
+  
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+  
+  .intro-heading h1 {
+    font-size: 2.2rem;
+  }
+  
+  .car-gallery {
+    height: 320px;
+  }
+  
+  .thumbnail {
+    width: 60px;
+    height: 45px;
+  }
+  
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .experience-grid,
+  .highlights-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .car-cta-section h2 {
+    font-size: 2rem;
+  }
+  
+  .car-cta-section p {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 576px) {
-   .section-heading h1 { font-size: 1.8rem; }
-   .section-heading h2 { font-size: 1.6rem; }
-   .section-heading h1::after, .section-heading h2::after { width: 40px; height: 2px; bottom: -8px;}
-   /* Styl sekcji intro */
-   .car-intro-section { padding: 2rem 0.8rem 1.5rem 0.8rem; border-radius: 8px; }
-   .gallery-thumbnails { gap: 5px; }
-   .thumbnail { width: 50px; height: 35px; }
-   /* Styl sekcji experience */
-   .car-experience-section { padding: 2rem 0.8rem; }
-   .experience-block { padding: 1.8rem 1rem; }
-   .experience-icon { font-size: 2rem; margin-bottom: 1rem; }
-   .experience-block h3 { font-size: 1.2rem; margin-bottom: 0.8rem; padding-bottom: 0.6rem; }
-   .experience-block h3::after { width: 40px; height: 2px;}
-   .experience-block:hover h3::after { width: 60px; }
-   .experience-block p { font-size: 0.9rem; line-height: 1.6;}
-   /* Styl sekcji highlights */
-   .car-highlights-section { padding: 2rem 0.8rem; }
-   .highlight-icon { font-size: 1.3rem; margin-right: 0.8rem; }
-   .highlight-text { font-size: 0.95rem; }
-   /* Styl sekcji CTA */
-   .cta-button { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+  .car-page-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .car-page-container h2 {
+    font-size: 1.6rem;
+  }
+  
+  .intro-heading h1 {
+    font-size: 1.8rem;
+  }
+  
+  .car-gallery {
+    height: 250px;
+  }
+  
+  .highlight-entry {
+    padding: 1rem;
+  }
+  
+  .car-intro-section,
+  .car-highlights-section,
+  .car-cta-section {
+    padding: 2rem 1rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .gallery-thumbnails {
+    gap: 8px;
+  }
+  
+  .thumbnail {
+    width: 50px;
+    height: 38px;
+  }
 }
+
+/* === Dostępność i fokus === */
+.car-page-container button:focus,
+.car-page-container a:focus,
+.cta-button:focus,
+.thumbnail:focus,
+.arrow:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* === Animacje przy przewijaniu === */
+@media (prefers-reduced-motion: no-preference) {
+  .experience-block,
+  .highlight-entry {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .experience-block.visible,
+  .highlight-entry.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animacja dla bloków opóźnionych */
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.delay-4 {
+  transition-delay: 0.4s;
+}
+
+/* === Dodatkowe efekty wizualne === */
+.experience-block:nth-child(odd):before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-secondary-light);
+  opacity: 0.2;
+  border-radius: 50%;
+}
+
+.experience-block:nth-child(even):after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: -5px;
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-secondary-light);
+  opacity: 0.2;
+  border-radius: 50%;
+}
+
+/* Dodaje styl Roboto z Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');

@@ -273,6 +273,9 @@
   text-align: center;
   margin: 5rem auto;
   padding: 4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
@@ -303,10 +306,11 @@
 
 .container-call a {
   display: inline-block;
-  margin-top: 1.5rem;
+  margin: 1.5rem auto;
   padding: 1.2rem 2.5rem;
   background: #111;
   color: #fff;
+  width: 600px;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;

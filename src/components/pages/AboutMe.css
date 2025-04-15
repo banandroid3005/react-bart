@@ -1,212 +1,388 @@
+/* AboutMe.css - Premium Taxi Style */
+
+/* === Using the same CSS variables from Car.css === */
 :root {
-  --primary-color: #2d3e50;
-  --secondary-color: #f9f9f9;
-  --accent-color: #3498db;
-  --highlight-color: #e74c3c;
-  --background-color: #f2f2f2;
-  --text-color: #555;
-  --border-radius: 12px;
-  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --color-primary: #1a1a1a;
+  --color-primary-light: #333333;
+  --color-secondary: #1a1a1a;
+  --color-secondary-light: #333333;
+  --color-light: #ffffff;
+  --color-light-gray: #f8f8f8;
+  --color-gray: #e0e0e0;
+  --color-dark-gray: #555555;
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Roboto', sans-serif;
+  --transition-slow: 0.5s ease;
+  --transition-normal: 0.3s ease;
+  --shadow-light: 0 2px 15px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 12px;
 }
 
-
+/* === About Me Section === */
 .about-me-container {
-  background-color: var(--secondary-color);
-  padding: 60px 20px;
   max-width: 1200px;
-  margin: 40px auto;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  min-height: 40vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  animation: fadeIn 1.2s ease-out forwards;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  background-color: var(--color-light);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-light);
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.about-me-container:before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(var(--color-secondary-light), transparent 70%);
+  opacity: 0.05;
+  top: -50px;
+  right: -50px;
+  border-radius: 50%;
 }
 
 .about-me-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
+  position: relative;
+  border-radius: var(--radius-medium);
   overflow: hidden;
-  margin-bottom: 30px;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  box-shadow: var(--shadow-medium);
 }
 
 .about-me-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  transition: transform var(--transition-slow);
+}
+
+.about-me-photo img:hover {
+  transform: scale(1.03);
 }
 
 .about-me-text {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  text-align: justify;
-  color: var(--text-color);
-  margin-bottom: 40px;
-  max-width: 800px;
-  padding: 0 20px;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards;
+  padding: 1rem 0;
 }
 
 .about-me-text p {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: var(--color-dark-gray);
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
 }
 
-.about-me-container h3 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--primary-color);
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-}
-
+/* === Services Section === */
 .services-container {
-  background-color: var(--secondary-color);
-  padding: 40px 20px;
-  margin-top: 60px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 3rem 2rem;
+  background-color: var(--color-light-gray);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-light);
+  text-align: center;
 }
 
 .services-container h3 {
   font-size: 2rem;
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--primary-color);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+  font-weight: 500;
+}
+
+.services-container h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  border-radius: 3px;
 }
 
 .services-list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .service {
-  width: 30%;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 30px;
+  background-color: var(--color-light);
+  padding: 2rem;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
   text-align: center;
+  border: 1px solid var(--color-gray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .service:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--color-secondary-light);
 }
 
 .service-icon {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  color: var(--color-secondary);
+  margin-bottom: 1.2rem;
+  height: 70px;
+  width: 70px;
+  line-height: 70px;
+  background-color: var(--color-light-gray);
+  border-radius: 50%;
+  position: relative;
+}
+
+.service-icon:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--color-secondary-light);
+  border-radius: 50%;
+  top: -5px;
+  left: -5px;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(1.05);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
 }
 
 .service-text h4 {
-  font-size: 1.6rem;
-  color: var(--primary-color);
-  margin-bottom: 10px;
+  margin: 1rem 0;
+  color: var(--color-primary);
+  position: relative;
+  padding-bottom: 0.8rem;
+  font-family: var(--font-secondary);
+  font-weight: 500;
+}
+
+.service-text h4:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .service-text p {
-  font-size: 1.1rem;
-  color: var(--text-color);
+  color: var(--color-dark-gray);
+  line-height: 1.7;
+  font-family: var(--font-primary);
 }
 
+/* === FAQ Section === */
 .faq-container {
-  margin-top: 60px;
-  background-color: var(--secondary-color);
-  padding: 40px 20px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  opacity: 0;
-  animation: fadeInUp 1.5s ease-out forwards;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 3rem 2rem;
+  background-color: var(--color-light);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-light);
+  text-align: center;
 }
 
 .faq-container h3 {
   font-size: 2rem;
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--primary-color);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+  font-weight: 500;
+}
+
+.faq-container h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  border-radius: 3px;
 }
 
 .faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .faq-item {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--color-light-gray);
+  padding: 2rem;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-normal);
+  position: relative;
+  text-align: left;
+  border-left: 3px solid var(--color-secondary);
 }
 
 .faq-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  transform: translateX(5px);
+  box-shadow: var(--shadow-medium);
 }
 
 .faq-item h4 {
-  font-size: 1.4rem;
-  color: var(--accent-color);
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  position: relative;
+  padding-bottom: 0.8rem;
+  font-family: var(--font-secondary);
+  font-weight: 500;
+}
+
+.faq-item h4:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  bottom: 0;
+  left: 0;
 }
 
 .faq-item p {
-  font-size: 1.1rem;
-  color: var(--text-color);
+  color: var(--color-dark-gray);
+  line-height: 1.7;
+  font-family: var(--font-primary);
+}
+
+/* === Media Queries for responsiveness === */
+@media (max-width: 992px) {
+  .about-me-container {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+  
+  .about-me-photo {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .services-list,
+  .faq-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
-  .service {
-    width: 45%;
+  .about-me-container,
+  .services-container,
+  .faq-container {
+    padding: 2rem 1rem;
+    margin: 3rem auto;
   }
-
-  .faq-item {
-    padding: 20px;
+  
+  .services-container h3,
+  .faq-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .services-list,
+  .faq-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
-@media (max-width: 480px) {
-  .service {
-    width: 100%;
+@media (max-width: 576px) {
+  .about-me-container,
+  .services-container,
+  .faq-container {
+    padding: 1.5rem 1rem;
+    margin: 2rem auto;
   }
-
+  
+  .services-container h3,
+  .faq-container h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service,
   .faq-item {
-    padding: 15px;
+    padding: 1.5rem 1rem;
   }
 }
+
+/* === Accessibility and focus === */
+button:focus,
+a:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* === Animations on scroll === */
+@media (prefers-reduced-motion: no-preference) {
+  .service,
+  .faq-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .service.visible,
+  .faq-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for delayed blocks */
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.3s;
+}
+
+/* Google Fonts import for Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');

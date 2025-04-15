@@ -4,15 +4,11 @@ import "./AirPort.css";
 import chopin from "../images/chopin.webp";
 import krakow from "../images/krakow.webp";
 import katowice from "../images/katowice.webp";
-import modlin from "../images/modlin.webp";
 import lublin from "../images/lublin.webp";
-import bydgosz from "../images/bydgosz.webp";
 import szczecin from "../images/szczecin.webp";
-import lodz from "../images/lodz.webp";
 import rzeszow from "../images/rzeszow.webp";
 import gdansk from "../images/gdansk.webp";
 import wroclaw from "../images/wroclaw.webp";
-import poznan from "../images/poznan.webp";
 
 function AirPort() {
   return (

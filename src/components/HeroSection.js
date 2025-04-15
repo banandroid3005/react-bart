@@ -61,7 +61,7 @@ function HeroSection() {
             <h3>Masz pytanie?</h3>
             <a href="/contact">Zadzwoń lub skontaktuj się ze mną drogą email</a>
           </div>
-        </div>
+        </div> 
   )
 }
 
