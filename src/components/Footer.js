@@ -9,7 +9,6 @@ import {
   FaTiktok,
   FaWhatsapp,
 } from "react-icons/fa";
-import { FaI } from "react-icons/fa6";
 
 function Footer() {
   const footerRef = useRef(null);
@@ -46,7 +45,6 @@ function Footer() {
         <h3>Bart Premium Services</h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
       </section>
-
       <div className="footer-links">
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
@@ -86,27 +84,30 @@ function Footer() {
           <div className="footer-link-items">
             <h3>Kontakt</h3>
             <p>
-              <div className="fa-icon">
+              <span className="fa-icon">
                 <FaPhoneAlt />{" "}
-              </div>
+              </span>
               +48 660 866 047
             </p>
+
             <p>
-              <div className="fa-icon">
+              <span className="fa-icon">
                 <FaPhoneAlt />{" "}
-              </div>
+              </span>
               +44 7425 931918
             </p>
+
             <p>
-              <div className="fa-icon">
+              <span className="fa-icon">
                 <FaEnvelope />{" "}
-              </div>
+              </span>
               baju.24@gmail.com
             </p>
+
             <p>
-              <div className="fa-icon">
+              <span className="fa-icon">
                 <FaWhatsapp />{" "}
-              </div>
+              </span>
               Whatsapp
             </p>
           </div>

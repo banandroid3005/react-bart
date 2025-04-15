@@ -494,6 +494,10 @@
   }
   
   .container-call a {
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.5rem; /* Zmniejszony padding */
+    font-size: 0.9rem; /* Zmniejszony rozmiar czcionki */
+    width: auto; /* Usuń szerokość, aby dopasować do zawartości */
+    max-width: 90%; /* Ogranicz szerokość przycisku do 90% ekranu */
+    word-wrap: break-word; /* Zapewnij łamanie tekstu, jeśli jest za długi */
   }
 }

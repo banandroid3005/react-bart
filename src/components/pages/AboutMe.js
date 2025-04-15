@@ -1,6 +1,8 @@
 import React from "react";
 import "./AboutMe.css";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCrown, faPlaneDeparture, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 
 function AboutMe() {
   return (
@@ -21,6 +23,7 @@ function AboutMe() {
           />
         </div>
         <div className="about-me-text">
+          <h2>O Mnie</h2> {/* Dodano nagłówek h2 */}
           <p>
             Mam duże doświadczenie jako kierowca, specjalizując się w usługach
             premium. Przez wiele lat miałem okazję pracować z klientami z
@@ -49,7 +52,7 @@ function AboutMe() {
         <div className="services-list">
           <div className="service">
             <div className="service-icon">
-              <i className="fas fa-crown"></i>
+              <FontAwesomeIcon icon={faCrown} /> {/* Użyto komponentu FontAwesomeIcon */}
             </div>
             <div className="service-text">
               <h4>Transport VIP</h4>
@@ -61,7 +64,7 @@ function AboutMe() {
           </div>
           <div className="service">
             <div className="service-icon">
-              <i className="fas fa-plane-departure"></i>
+              <FontAwesomeIcon icon={faPlaneDeparture} /> {/* Użyto komponentu FontAwesomeIcon */}
             </div>
             <div className="service-text">
               <h4>Przewóz na lotnisko</h4>
@@ -73,7 +76,7 @@ function AboutMe() {
           </div>
           <div className="service">
             <div className="service-icon">
-              <i className="fas fa-calendar-check"></i>
+              <FontAwesomeIcon icon={faCalendarCheck} /> {/* Użyto komponentu FontAwesomeIcon */}
             </div>
             <div className="service-text">
               <h4>Transfery na eventy</h4>
@@ -92,7 +95,7 @@ function AboutMe() {
             <h4>Jakie usługi oferujesz?</h4>
             <p>
               Oferujemy transport VIP, przewóz na lotniska, transfery na eventy
-              oraz indywidualne usługi transportowe.
+              oraz indywidualne usługi transportowe. 
             </p>
           </div>
           <div className="faq-item">

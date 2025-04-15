@@ -90,7 +90,7 @@ function NavBar() {
       <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            Bart Premium Services
+            Bart Premium Services {/*<img src={require('./../images/logo 5 finish.png')} alt="Logo" />*/}
           </Link>
           <div className="language-switcher">
             <button onClick={resetTranslation} className="lang-btn">
