@@ -1,6 +1,13 @@
 import React from "react";
 import "./WhyUs.css";
-import { FaCar, FaClock, FaShieldAlt, FaGlobe, FaUserTie, FaStar } from "react-icons/fa";
+import {
+  FaCar,
+  FaClock,
+  FaShieldAlt,
+  FaGlobe,
+  FaUserTie,
+  FaStar,
+} from "react-icons/fa";
 
 function WhyUs() {
   return (

@@ -32,18 +32,16 @@ function NavBar() {
   }, []);
 
   const removeGoogleTranslateBar = () => {
-    // Usuń iframe z paskiem Google Translate
     const frame = document.querySelector("iframe.goog-te-banner-frame");
     if (frame) {
       frame.remove();
     }
-  
-    // Usuń inne elementy Google Translate
+
     const menuFrame = document.querySelector(".goog-te-menu-frame");
     if (menuFrame) {
       menuFrame.remove();
     }
-  
+
     const menu = document.querySelector(".goog-te-menu2");
     if (menu) {
       menu.remove();
@@ -53,10 +51,10 @@ function NavBar() {
   const translateToEnglish = () => {
     const select = document.querySelector(".goog-te-combo");
     if (select) {
-      select.value = "en"; // Ustaw język angielski
+      select.value = "en";
       select.dispatchEvent(new Event("change"));
     }
-    removeGoogleTranslateBar(); // Usuń pasek tłumaczenia
+    removeGoogleTranslateBar();
   };
 
   const resetTranslation = () => {
@@ -71,26 +69,25 @@ function NavBar() {
 
     const select = document.querySelector(".goog-te-combo");
     if (select) {
-      select.value = ""; // Resetuj język do domyślnego
+      select.value = "";
       select.dispatchEvent(new Event("change"));
     }
 
-    removeGoogleTranslateBar(); // Usuń pasek tłumaczenia
-    window.location.reload(); // Odśwież stronę, aby upewnić się, że tłumaczenie zostało zresetowane
+    removeGoogleTranslateBar();
+    window.location.reload();
   };
 
   useEffect(() => {
-    removeGoogleTranslateBar(); // Usuń pasek tłumaczenia po załadowaniu strony
+    removeGoogleTranslateBar();
   }, []);
-
-
 
   return (
     <>
       <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            Bart Premium Services {/*<img src={require('./../images/logo 5 finish.png')} alt="Logo" />*/}
+            Bart Premium Services{" "}
+            {/*<img src={require('./../images/logo 5 finish.png')} alt="Logo" />*/}
           </Link>
           <div className="language-switcher">
             <button onClick={resetTranslation} className="lang-btn">

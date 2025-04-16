@@ -7,7 +7,7 @@ function CnInfo() {
   return (
     <div className="cninfo-container">
       <div className="cninfo-item">
-        <FiGlobe />
+        <MdPhone />
         <strong>PL:</strong>
         <a href="tel:+48660866047">+48 500 600 800</a>
       </div>

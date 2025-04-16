@@ -1,112 +1,113 @@
 .airport-section {
-    padding: 60px 20px;
-    background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
-    text-align: center;
-    animation: fadeInUp 1s ease-in-out;
-  }
-  
-  .airport-section h2 {
-    font-size: 2.4rem;
-    margin-bottom: 10px;
-    color: #222;
-  }
-  
-  .airport-description {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 40px;
-  }
-  
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+  text-align: center;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.airport-section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.airport-description {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.airport-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 90px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.airport-item {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.airport-item:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.airport-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.airport-item p {
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.airport-note {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #444;
+  animation: fadeIn 1.5s ease-in-out;
+  padding: 0 10px;
+}
+
+@media (max-width: 1024px) {
   .airport-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 90px;
-    justify-content: center;
-    align-items: stretch;
-    max-width: 1600px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
   .airport-item {
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .airport-item:hover {
-    transform: scale(1.04);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  .airport-item img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
   }
-  
-  .airport-item p {
-    padding: 10px 0;
-    font-size: 1rem;
-    color: #333;
+  .airport-item img {
+    height: 180px;
+    width: 100%;
   }
-  
+}
+
+@media (max-width: 600px) {
+  .airport-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .airport-item img {
+    height: 160px;
+  }
+
+  .airport-section h2 {
+    font-size: 2rem;
+  }
+
+  .airport-description,
   .airport-note {
-    margin-top: 30px;
-    font-size: 1.1rem;
-    color: #444;
-    animation: fadeIn 1.5s ease-in-out;
-    padding: 0 10px;
+    font-size: 1rem;
   }
-  
-  /* RESPONSYWNOŚĆ */
-  @media (max-width: 1024px) {
-    .airport-gallery {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .airport-item{
-      width: 100%;;
-    }
-    .airport-item img {
-      height: 180px;
-      width: 100%;
-    }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  @media (max-width: 600px) {
-    .airport-gallery {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .airport-item img {
-      height: 160px;
-    }
-  
-    .airport-section h2 {
-      font-size: 2rem;
-    }
-  
-    .airport-description,
-    .airport-note {
-      font-size: 1rem;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* ANIMACJE */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  to {
+    opacity: 1;
   }
-  
+}

@@ -1,431 +1,406 @@
-:root {
-  --color-primary: #1a1a1a;
-  --color-primary-light: #333333;
-  --color-secondary: #1a1a1a;
-  --color-secondary-light: #333333;
-  --color-light: #ffffff;
-  --color-light-gray: #f8f8f8;
-  --color-gray: #e0e0e0;
-  --color-dark-gray: #555555;
-  --font-primary: 'Roboto', sans-serif;
-  --font-secondary: 'Roboto', sans-serif;
-  --transition-slow: 0.5s ease;
-  --transition-normal: 0.3s ease;
-  --transition-fast: 0.15s ease; /* Added faster transition for hover */
-  --shadow-light: 0 2px 15px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
-  --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.15);
-  --radius-small: 4px;
-  --radius-medium: 8px;
-  --radius-large: 12px;
+.services-background {
+  max-width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f2f2f2 100%);
+  padding: 3rem 0;
 }
 
-/* === Services Container === */
 .services-container {
-  max-width: 1600px;
-  margin: 5rem auto;
-  padding: 3rem 2rem;
-  background-color: var(--color-light);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow-light);
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  font-family: "Roboto", sans-serif;
+  background-attachment: fixed;
   position: relative;
-  overflow: hidden;
 }
 
-.services-container:before {
-  content: '';
+.services-container::before {
+  content: "";
   position: absolute;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(var(--color-secondary-light), transparent 70%);
-  opacity: 0.05;
-  top: -50px;
-  right: -50px;
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #222, transparent);
+  opacity: 0.15;
 }
 
-/* === Services Heading === */
 .services-heading {
   text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-  padding-bottom: 1.5rem;
+  margin-bottom: 6rem;
 }
 
 .services-heading h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  color: var(--color-primary);
-  font-family: var(--font-secondary);
-  font-weight: 500;
+  font-size: 3.2rem;
+  color: #111;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.services-heading h2::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #111, #666);
+  bottom: -15px;
+  left: 20%;
+  border-radius: 2px;
 }
 
 .services-heading p {
-  color: var(--color-dark-gray);
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  color: #333;
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
 }
 
-.services-heading:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  border-radius: 3px;
-}
-
-/* === Services Grid === */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
   margin-bottom: 4rem;
 }
 
-/* === Service Card === */
 .service-card {
-  background-color: var(--color-light-gray);
-  padding: 2.5rem 2rem;
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-light);
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 3.5rem 3rem;
+  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.03);
   text-align: center;
-  border: 1px solid transparent;
-  /* Separate transitions for different properties */
-  transition: 
-    transform var(--transition-fast), 
-    box-shadow var(--transition-fast), 
-    border-color var(--transition-fast), 
-    background-color var(--transition-fast);
 }
 
-/* Hover effect with no delay */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.02) 0%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  z-index: -1;
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 12px;
+}
+
 .service-card:hover {
-  transform: translateY(-7px);
-  box-shadow: var(--shadow-medium);
-  border-color: var(--color-secondary-light);
-  background-color: var(--color-light);
-  transition-delay: 0s !important; /* Override any delay on hover */
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
-/* === Service Icon === */
+.service-card:hover::before {
+  transform: scale(1);
+}
+
 .service-icon {
-  font-size: 2.2rem;
-  color: var(--color-secondary);
-  margin-bottom: 1.2rem;
-  height: 80px;
-  width: 80px;
-  line-height: 80px;
-  background-color: var(--color-light);
-  border-radius: 50%;
-  margin: 0 auto 1.5rem;
-  position: relative;
+  font-size: 3rem;
+  color: #111;
+  margin-bottom: 2rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
+  justify-content: center;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.15) rotate(5deg);
+  color: #333;
+}
+
+.service-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #000;
+  position: relative;
+  padding-bottom: 1rem;
+  font-weight: 600;
+}
+
+.service-card h3::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, #111, #666);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+  border-radius: 1.5px;
+}
+
+.service-card:hover h3::after {
+  width: 120px;
+}
+
+.service-card p {
+  color: #444;
+  line-height: 1.8;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.services-contact-buttons-container {
+  margin-top: 3rem;
+  background: linear-gradient(135deg, #f0f2f5 0%, #dde1e7 100%);
+  padding: 5rem 4rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-contact-buttons-container::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(30deg);
+}
+
+.services-contact-prompt {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services-contact-prompt h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+
+.services-contact-prompt p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #444;
+  line-height: 1.6;
+}
+
+.services-contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.services-btn-contact {
+  padding: 1.4rem 3.5rem;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-light);
+  gap: 0.8rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  min-width: 250px;
 }
 
-.service-icon:after {
-  content: '';
+.services-btn-contact::before {
+  content: "";
   position: absolute;
-  width: 90px;
-  height: 90px;
-  border: 1px solid var(--color-secondary-light);
-  border-radius: 50%;
-  top: -5px;
-  left: -5px;
-  opacity: 0.3;
-  animation: pulse 2s infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.services-btn-contact:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.services-btn-contact:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.services-btn-contact.whatsapp {
+  background: #25d366;
+}
+
+.services-btn-contact.whatsapp::before {
+  background: #128c7e;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card {
+  animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  opacity: 0;
+}
+
+.service-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.service-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.service-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.service-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.service-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.service-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.service-card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.service-card:nth-child(8) {
+  animation-delay: 0.8s;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(0.95);
-    opacity: 0.5;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
   }
   70% {
-    transform: scale(1.05);
-    opacity: 0.2;
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
   }
   100% {
-    transform: scale(0.95);
-    opacity: 0.5;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 
-/* === Service Text === */
-.service-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  color: var(--color-primary);
-  position: relative;
-  padding-bottom: 0.8rem;
-  font-family: var(--font-secondary);
-  font-weight: 500;
+.services-btn-contact:active {
+  animation: pulse 0.8s ease-out;
+  transform: scale(0.98);
 }
 
-.service-card h3:after {
-  content: '';
-  position: absolute;
-  width: 40px;
-  height: 2px;
-  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.service-card p {
-  color: var(--color-dark-gray);
-  line-height: 1.7;
-  font-family: var(--font-primary);
-}
-
-/* === Services Contact Section === */
-.services-contact {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  color: var(--color-light);
-  text-align: center;
-  padding: 3rem 2rem;
-  border-radius: var(--radius-large);
-  margin-top: 3rem;
-  box-shadow: var(--shadow-dark);
-  position: relative;
-  overflow: hidden;
-}
-
-.services-contact:before {
-  content: '';
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(var(--color-secondary-light), transparent 70%);
-  opacity: 0.1;
-  top: -50px;
-  right: -50px;
-  border-radius: 50%;
-}
-
-.services-contact h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--color-light);
-  font-family: var(--font-secondary);
-  font-weight: 500;
-}
-
-.services-contact p {
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: var(--font-primary);
-}
-
-/* === Contact Buttons === */
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.btn-contact {
-  display: inline-block;
-  background-color: var(--color-light);
-  color: var(--color-primary);
-  font-weight: 500;
-  padding: 1rem 2.5rem;
-  border-radius: var(--radius-medium);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: all var(--transition-fast); /* Faster transition for hover */
-  border: 2px solid transparent;
-  font-family: var(--font-secondary);
-  text-decoration: none;
-}
-
-.btn-contact:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  background-color: var(--color-secondary-light);
-  color: var(--color-light);
-  transition-delay: 0s !important; /* Ensure no delay on hover */
-}
-
-.btn-contact.secondary {
-  background-color: transparent;
-  border: 2px solid var(--color-light);
-  color: var(--color-light);
-}
-
-.btn-contact.secondary:hover {
-  background-color: var(--color-light);
-  color: var(--color-primary);
-  transition-delay: 0s !important;
-}
-
-/* === Responsive Design === */
 @media (max-width: 1200px) {
   .services-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+  }
+
+  .service-card {
+    padding: 3rem 2.5rem;
   }
 }
 
-@media (max-width: 992px) {
-  .services-heading h2 {
-    font-size: 2rem;
+@media (max-width: 1024px) {
+  .services-container {
+    max-width: 95%;
   }
-  
+
   .services-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
-  
-  .service-card {
-    padding: 2rem 1.5rem;
-  }
-  
-  .service-icon {
-    height: 70px;
-    width: 70px;
-    line-height: 70px;
-    font-size: 2rem;
-  }
-  
-  .service-icon:after {
-    width: 80px;
-    height: 80px;
+
+  .services-heading h2 {
+    font-size: 2.8rem;
   }
 }
 
 @media (max-width: 768px) {
+  .services-background {
+    height: auto;
+  }
+
   .services-container {
-    padding: 2rem 1.5rem;
-    margin: 3rem auto;
+    max-width: 95%;
+    padding: 4rem 1.5rem;
   }
-  
+
   .services-heading {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
-  
+
   .services-heading h2 {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
   }
-  
-  .services-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+
+  .services-heading p {
+    font-size: 1.2rem;
   }
-  
-  .services-contact {
-    padding: 2.5rem 1.5rem;
+
+  .services-contact-buttons-container {
+    padding: 4rem 2rem;
   }
-  
-  .services-contact h3 {
-    font-size: 1.8rem;
+
+  .services-contact-buttons {
+    gap: 2rem;
   }
 }
 
 @media (max-width: 576px) {
-  .services-container {
-    padding: 1.5rem 1rem;
-    margin: 2rem auto;
-  }
-  
-  .services-heading h2 {
-    font-size: 1.6rem;
-  }
-  
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 2.2rem;
   }
-  
+
+  .services-heading h2 {
+    font-size: 2.2rem;
+  }
+
+  .services-heading p {
+    font-size: 1.1rem;
+  }
+
   .service-card {
-    padding: 1.8rem 1.2rem;
+    padding: 2.5rem;
   }
-  
-  .service-card h3 {
-    font-size: 1.3rem;
+
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
   }
-  
-  .btn-contact {
-    padding: 0.8rem 1.8rem;
-    font-size: 0.9rem;
-    width: 100%;
-    margin-bottom: 10px;
+
+  .services-btn-contact {
+    padding: 1.2rem 2.5rem;
+    min-width: 200px;
   }
-  
-  .contact-buttons {
-    flex-direction: column;
-    gap: 15px;
+
+  .services-contact-buttons {
+    gap: 1.5rem;
   }
 }
-
-/* === Animations on scroll === */
-@media (prefers-reduced-motion: no-preference) {
-  .service-card {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 
-      opacity 0.6s ease, 
-      transform 0.6s ease,
-      box-shadow var(--transition-fast), 
-      border-color var(--transition-fast), 
-      background-color var(--transition-fast);
-  }
-  
-  .service-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Ensure hover effects are immediate even when card is becoming visible */
-  .service-card:hover {
-    transition: 
-      transform var(--transition-fast), 
-      box-shadow var(--transition-fast), 
-      border-color var(--transition-fast), 
-      background-color var(--transition-fast);
-  }
-}
-
-/* Animation delays for staggered effect ONLY for initial load/scroll */
-.service-card:nth-child(1) { transition-delay: 0.1s; }
-.service-card:nth-child(2) { transition-delay: 0.2s; }
-.service-card:nth-child(3) { transition-delay: 0.3s; }
-.service-card:nth-child(4) { transition-delay: 0.4s; }
-.service-card:nth-child(5) { transition-delay: 0.5s; }
-.service-card:nth-child(6) { transition-delay: 0.6s; }
-.service-card:nth-child(7) { transition-delay: 0.7s; }
-.service-card:nth-child(8) { transition-delay: 0.8s; }
-.service-card:nth-child(9) { transition-delay: 0.9s; }
-
-/* Override delay on hover state for all cards */
-.service-card:hover {
-  transition-delay: 0s !important;
-}
-
-/* === Accessibility === */
-a:focus,
-.btn-contact:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Add FontAwesome icons size styling */
-.service-icon svg {
-  font-size: 2rem;
-}
-
-/* Google Fonts import for Roboto */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');

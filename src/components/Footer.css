@@ -106,8 +106,6 @@
   transition: 0.3s ease-out;
 }
 
-
-/* RESPONSYWNOŚĆ */
 @media (max-width: 768px) {
   .footer-links {
     flex-direction: column;

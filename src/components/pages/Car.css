@@ -1,17 +1,14 @@
-/* Car.css - Premium Taxi Style */
-
-/* === Zmienne CSS dla łatwego zarządzania kolorami === */
 :root {
   --color-primary: #1a1a1a;
   --color-primary-light: #333333;
-  --color-secondary: #1a1a1a; /* Zmiana ze złotego na czarny */
-  --color-secondary-light: #333333; /* Zmiana ze złotego na ciemny szary */
+  --color-secondary: #1a1a1a;
+  --color-secondary-light: #333333;
   --color-light: #ffffff;
   --color-light-gray: #f8f8f8;
   --color-gray: #e0e0e0;
   --color-dark-gray: #555555;
-  --font-primary: 'Roboto', sans-serif; /* Zmiana na Roboto */
-  --font-secondary: 'Roboto', sans-serif; /* Zmiana na Roboto */
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
   --transition-slow: 0.5s ease;
   --transition-normal: 0.3s ease;
   --shadow-light: 0 2px 15px rgba(0, 0, 0, 0.05);
@@ -22,10 +19,14 @@
   --radius-large: 12px;
 }
 
-
-.car-page-container h1, h2, h3, h4, h5, h6 {
+.car-page-container h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-secondary);
-  font-weight: 500; /* Lżejsza waga dla Roboto */
+  font-weight: 500;
   line-height: 1.3;
   margin-bottom: 1rem;
 }
@@ -45,7 +46,7 @@
 .car-page-container p {
   margin-bottom: 1rem;
 }
- 
+
 .car-page-container a {
   color: var(--color-secondary);
   text-decoration: none;
@@ -62,7 +63,6 @@
   display: block;
 }
 
-/* === Layout główny === */
 .car-page-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -82,18 +82,22 @@
 }
 
 .section-heading:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%); /* Gradient zamiast jednolitego koloru */
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  ); 
   border-radius: 3px;
 }
 
-.section-heading h1, 
+.section-heading h1,
 .section-heading h2 {
   margin-bottom: 0.5rem;
   color: var(--color-primary);
@@ -106,7 +110,6 @@
   margin: 0 auto;
 }
 
-/* === Sekcja Wprowadzająca === */
 .car-intro-section {
   background-color: var(--color-light-gray);
   border-radius: var(--radius-large);
@@ -120,13 +123,16 @@
 .intro-heading h1 {
   font-size: 2.8rem;
   margin-bottom: 0.8rem;
-  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* === Galeria === */
 .car-gallery-wrapper {
   margin: 3rem 0;
   position: relative;
@@ -224,7 +230,6 @@
   border-color: var(--color-secondary);
 }
 
-/* === Animacja galerii === */
 .animate-once {
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -240,7 +245,6 @@
   }
 }
 
-/* === Loader dla galerii === */
 .gallery-loading {
   display: flex;
   flex-direction: column;
@@ -267,7 +271,6 @@
   }
 }
 
-/* === Lightbox === */
 .lightbox {
   position: fixed;
   top: 0;
@@ -281,6 +284,7 @@
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
+  animation: fadeIn 0.5s ease-in-out;
   transition: all var(--transition-normal);
 }
 
@@ -291,8 +295,8 @@
 
 .lightbox-content {
   position: relative;
-  max-width: 95%; /* Zwiększona szerokość */
-  max-height: 95%; /* Zwiększona wysokość */
+  max-width: 95%; 
+  max-height: 95%; 
   margin: auto;
 }
 
@@ -322,13 +326,12 @@
 }
 
 .lightbox .car-img {
-  max-height: 85vh; /* Zwiększona wysokość obrazu */
+  max-height: 85vh; 
   width: auto;
   object-fit: contain;
   border-radius: var(--radius-small);
 }
 
-/* === Sekcja Doświadczenia === */
 .car-experience-section {
   background-color: var(--color-light);
   padding: 4rem 2rem;
@@ -374,7 +377,7 @@
 }
 
 .experience-icon:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 80px;
   height: 80px;
@@ -409,11 +412,15 @@
 }
 
 .experience-block h3:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 40px;
   height: 2px;
-  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%); /* Gradient */
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -424,7 +431,6 @@
   line-height: 1.7;
 }
 
-/* === Sekcja Kluczowych Atutów === */
 .car-highlights-section {
   background-color: var(--color-light-gray);
   border-radius: var(--radius-large);
@@ -453,7 +459,11 @@
   box-shadow: var(--shadow-light);
   transition: all var(--transition-normal);
   border-left: 3px solid var(--color-secondary);
-  background: linear-gradient(to right, var(--color-light) 0%, rgba(248, 248, 248, 0.5) 100%); /* Subtelny gradient */
+  background: linear-gradient(
+    to right,
+    var(--color-light) 0%,
+    rgba(248, 248, 248, 0.5) 100%
+  ); 
 }
 
 .highlight-entry:hover {
@@ -472,9 +482,12 @@
   color: var(--color-primary);
 }
 
-/* === Sekcja CTA === */
 .car-cta-section {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
   color: var(--color-light);
   text-align: center;
   padding: 4rem 2rem;
@@ -486,7 +499,7 @@
 }
 
 .car-cta-section:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 200px;
   height: 200px;
@@ -498,7 +511,7 @@
 }
 
 .car-cta-section:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 180px;
   height: 180px;
@@ -524,9 +537,13 @@
 
 .cta-button {
   display: inline-block;
-  background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary-light) 100%); /* Gradient */
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  ); /* Gradient */
   color: var(--color-light);
-  font-weight: 500; /* Lżejsza waga dla Roboto */
+  font-weight: 500; 
   padding: 1rem 2.5rem;
   border-radius: var(--radius-medium);
   text-transform: uppercase;
@@ -540,7 +557,7 @@
 }
 
 .cta-button:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -563,12 +580,11 @@
   left: 100%;
 }
 
-/* === Media Queries dla responsywności === */
 @media (max-width: 1200px) {
   .car-page-container {
     padding: 0 15px;
   }
-  
+
   .highlights-list {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
@@ -578,19 +594,19 @@
   .car-page-container h1 {
     font-size: 2.2rem;
   }
-  
+
   .car-page-container h2 {
     font-size: 1.8rem;
   }
-  
+
   .car-page-container h3 {
     font-size: 1.3rem;
   }
-  
+
   .car-gallery {
     height: 380px;
   }
-  
+
   .experience-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
@@ -601,40 +617,40 @@
     margin: 3rem 0;
     padding: 1.5rem 0;
   }
-  
+
   .section-heading {
     margin-bottom: 2rem;
   }
-  
+
   .intro-heading h1 {
     font-size: 2.2rem;
   }
-  
+
   .car-gallery {
     height: 320px;
   }
-  
+
   .thumbnail {
     width: 60px;
     height: 45px;
   }
-  
+
   .arrow {
     width: 40px;
     height: 40px;
     font-size: 1.5rem;
   }
-  
+
   .experience-grid,
   .highlights-list {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .car-cta-section h2 {
     font-size: 2rem;
   }
-  
+
   .car-cta-section p {
     font-size: 1.1rem;
   }
@@ -644,45 +660,44 @@
   .car-page-container h1 {
     font-size: 1.8rem;
   }
-  
+
   .car-page-container h2 {
     font-size: 1.6rem;
   }
-  
+
   .intro-heading h1 {
     font-size: 1.8rem;
   }
-  
+
   .car-gallery {
     height: 250px;
   }
-  
+
   .highlight-entry {
     padding: 1rem;
   }
-  
+
   .car-intro-section,
   .car-highlights-section,
   .car-cta-section {
     padding: 2rem 1rem;
   }
-  
+
   .cta-button {
     padding: 0.8rem 1.8rem;
     font-size: 0.9rem;
   }
-  
+
   .gallery-thumbnails {
     gap: 8px;
   }
-  
+
   .thumbnail {
     width: 50px;
     height: 38px;
   }
 }
 
-/* === Dostępność i fokus === */
 .car-page-container button:focus,
 .car-page-container a:focus,
 .cta-button:focus,
@@ -692,7 +707,6 @@
   outline-offset: 2px;
 }
 
-/* === Animacje przy przewijaniu === */
 @media (prefers-reduced-motion: no-preference) {
   .experience-block,
   .highlight-entry {
@@ -700,7 +714,7 @@
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  
+
   .experience-block.visible,
   .highlight-entry.visible {
     opacity: 1;
@@ -708,7 +722,6 @@
   }
 }
 
-/* Animacja dla bloków opóźnionych */
 .delay-1 {
   transition-delay: 0.1s;
 }
@@ -725,9 +738,8 @@
   transition-delay: 0.4s;
 }
 
-/* === Dodatkowe efekty wizualne === */
 .experience-block:nth-child(odd):before {
-  content: '';
+  content: "";
   position: absolute;
   top: -5px;
   right: -5px;
@@ -739,7 +751,7 @@
 }
 
 .experience-block:nth-child(even):after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: -5px;
@@ -750,5 +762,4 @@
   border-radius: 50%;
 }
 
-/* Dodaje styl Roboto z Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");

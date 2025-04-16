@@ -41,7 +41,6 @@
   transition: all 0.3s ease-out;
 }
 
-/* RESPONSYWNOŚĆ */
 @media screen and (max-width: 768px) {
   .btn {
     width: 100%;
