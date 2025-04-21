@@ -6,6 +6,11 @@ import {
   faCrown,
   faPlaneDeparture,
   faCalendarCheck,
+  faClock,
+  faCar,
+  faShieldAlt,
+  faMusic,
+  faLanguage
 } from "@fortawesome/free-solid-svg-icons";
 
 function AboutMe() {
@@ -18,11 +23,11 @@ function AboutMe() {
   const faqItemRefs = useRef([]);
 
   useEffect(() => {
-    const handleIntersection = (entries, observer) => {
+    const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          console.log("Dodano klasę visible do:", entry.target);
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
         }
       });
     };
@@ -33,7 +38,6 @@ function AboutMe() {
       rootMargin: "0px",
     });
 
-    // Observe main sections
     if (aboutMeContainerRef.current)
       observer.observe(aboutMeContainerRef.current);
     if (aboutMePhotoRef.current) observer.observe(aboutMePhotoRef.current);
@@ -49,12 +53,6 @@ function AboutMe() {
       }
     });
 
-    faqItemRefs.current.forEach((ref, index) => {
-      if (ref) {
-        ref.classList.add(`delay-${(index % 3) + 1}`);
-        observer.observe(ref);
-      }
-    });
 
     return () => {
       observer.disconnect();
@@ -63,10 +61,6 @@ function AboutMe() {
 
   const setServiceRef = (element, index) => {
     serviceRefs.current[index] = element;
-  };
-
-  const setFaqItemRef = (element, index) => {
-    faqItemRefs.current[index] = element;
   };
 
   return (
@@ -152,29 +146,54 @@ function AboutMe() {
           </div>
         </div>
       </div>
-      <div className="aboutMe-faq-container" ref={faqContainerRef}>
-        <h3>Najczęściej zadawane pytania</h3>
-        <div className="aboutMe-faq-list">
-          <div className="aboutMe-faq-item" ref={(el) => setFaqItemRef(el, 0)}>
-            <h4>Jakie usługi oferujesz?</h4>
-            <p>
-              Oferujemy transport VIP, przewóz na lotniska, transfery na eventy
-              oraz indywidualne usługi transportowe.
-            </p>
-          </div>
-          <div className="aboutMe-faq-item" ref={(el) => setFaqItemRef(el, 1)}>
-            <h4>Czy mogę zamówić taxi na długi dystans?</h4>
-            <p>
-              Oczywiście, oferujemy również transport na długie dystanse, w tym
-              transfery na lotniska w Polsce i Europie.
-            </p>
-          </div>
-          <div className="aboutMe-faq-item" ref={(el) => setFaqItemRef(el, 2)}>
-            <h4>Jak mogę zarezerwować kurs?</h4>
-            <p>Rezerwacji można dokonać telefonicznie lub poprzez mail.</p>
-          </div>
+      <section className="standards-section">
+      <div className="standards-header">
+        <h2>Moje Standardy</h2>
+        <p>Każdy kurs to nie tylko przejazd – to doświadczenie klasy premium.</p>
+      </div>
+      <div className="standards-grid">
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faClock} className="standard-icon" />
+          <h4>Punktualność</h4>
+          <p>Na miejscu zawsze kilka minut przed czasem. Zawsze.</p>
+        </div>
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faCar} className="standard-icon" />
+          <h4>Perfekcyjna Czystość</h4>
+          <p>Auto czyszczone po każdym kursie – wnętrze jak nowe.</p>
+        </div>
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faShieldAlt} className="standard-icon" />
+          <h4>Pełna Dyskrecja</h4>
+          <p>Nie pytam, nie opowiadam. Twoja prywatność jest priorytetem.</p>
+        </div>
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faMusic} className="standard-icon" />
+          <h4>Spokój i Komfort</h4>
+          <p>Subtelna muzyka lub cisza – Ty decydujesz.</p>
+        </div>
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
+          <h4>Komunikacja</h4>
+          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
+        </div>
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
+          <h4>Komunikacja</h4>
+          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
+        </div>
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
+          <h4>Komunikacja</h4>
+          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
+        </div>
+        <div className="standard-item">
+          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
+          <h4>Komunikacja</h4>
+          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
         </div>
       </div>
+    </section>
     </>
   );
 }
