@@ -87,12 +87,12 @@ function NavBar() {
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             Bart Premium Services{" "}
-            {/*<img src={require('./../images/logo 5 finish.png')} alt="Logo" />*/}
+            <img src={require('./../images/minji.png')} alt="Logo" />
           </Link>
           <div className="language-switcher">
             <button onClick={resetTranslation} className="lang-btn">
               PL
-            </button>
+            </button> 
             <button onClick={translateToEnglish} className="lang-btn">
               EN
             </button>

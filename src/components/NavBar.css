@@ -91,7 +91,19 @@
   );
   transition: width var(--transition-normal);
 }
+.navbar-logo img {
+  height: 40px; /* Wysokość loga na desktop */
+  width: auto; /* Zachowanie proporcji */
+  object-fit: contain; /* Dopasowanie obrazu */
+  margin-left: 8px; /* Odstęp między tekstem a logo */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Animacja transformacji i filtru */
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)); /* Subtelny biały cień/poświata dla lepszej widoczności */
+}
 
+.navbar-logo:hover img {
+  transform: scale(1.1); /* Powiększenie logo przy najechaniu */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)); /* Lekko większy cień na hover */
+}
 .navbar-logo:hover:after {
   width: 100%;
 }
@@ -100,6 +112,12 @@
   font-size: 1.6rem;
   color: var(--color-light-gray);
 }
+
+.navbar--scrolled .navbar-logo img {
+    /* Możesz tu zmniejszyć logo po przewinięciu jeśli chcesz */
+    height: 35px;
+}
+
 
 .navbar::after {
   content: "";
@@ -211,7 +229,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 20px; /* Odstęp przed menu */
 }
 
 .lang-btn {
@@ -279,59 +297,83 @@ body {
   .navbar-container {
     padding: 0 30px;
   }
-  
+
   .nav-menu {
     gap: 12px;
   }
-  
+
   .nav-links {
     padding: 0.5rem 0.8rem;
   }
+    /* Adjust logo size slightly if needed on larger screens */
+    .navbar-logo img {
+        height: 38px;
+    }
+    .navbar--scrolled .navbar-logo img {
+        height: 33px;
+    }
 }
 
 @media screen and (max-width: 960px) {
   .navbar {
     height: var(--navbar-height-mobile);
   }
-  
+
   .navbar--scrolled {
     height: var(--navbar-height-mobile);
   }
-  
+
   .navbar-container {
     padding: 0 16px;
   }
-  
+
   .navbar-logo {
     font-size: 1.5rem;
     z-index: 10;
   }
-  
+
   .navbar--scrolled .navbar-logo {
     font-size: 1.4rem;
   }
-  
+
+    /* Adjust logo size for mobile menu breakpoint */
+    .navbar-logo img {
+        height: 45px; /* Zwiększona wysokość na mobile */
+        margin-left: 6px; /* Dostosuj odstęp */
+    }
+    /* Logo size should usually be consistent on mobile regardless of scroll */
+     .navbar--scrolled .navbar-logo img {
+        height: 45px; /* Utrzymaj ten sam rozmiar na mobile po przewinięciu */
+    }
+
+
   .language-switcher {
-    position: relative;
-    margin: 25px 0;
+    /* Styles for mobile menu language switcher */
+    display: flex; /* Upewnij się, że jest display: flex */
+    position: relative; /* Może wymagać dostosowania, jeśli jest w menu */
+    margin: 25px auto; /* Centrowanie w menu mobilnym */
     justify-content: center;
     gap: 15px;
     width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Pozwoli przyciskom przejść do nowej linii */
+    padding: 0 20px; /* Dodaj padding horyzontalny */
+    box-sizing: border-box; /* Upewnij się, że padding nie zwiększa szerokości ponad 100% */
   }
-  
+
   .lang-btn {
     font-size: 1rem;
     padding: 8px 14px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-medium);
-    margin: 0 5px;
+    margin: 0 5px; /* Odstęp między przyciskami */
+    /* Usuń :after dla mobile, bo jest niepotrzebny z tłem */
+    &:after { display: none; }
   }
-  
+
   .lang-btn:after {
     display: none;
   }
-  
+
   .lang-btn.active {
     background-color: rgba(255, 255, 255, 0.15);
     transform: scale(1.05);
@@ -340,7 +382,7 @@ body {
   .nav-item {
     height: auto;
   }
-  
+
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -358,29 +400,29 @@ body {
     transition: all 0.3s ease;
     z-index: 100;
     justify-content: flex-start;
-    padding: 20px 0;
-    gap: 0;
+    padding: 20px 0; /* Dodaj padding na górze i dole */
+    gap: 0; /* Usuń gap między elementami listy */
     overflow-y: auto;
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-dark);
   }
-  
+
   .nav-menu.active {
     left: 0;
     opacity: 1;
   }
-  
+
   .nav-item {
     width: 100%;
     margin: 0;
     padding: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  
+
   .nav-item:last-child {
     border-bottom: none;
   }
-  
+
   .nav-links {
     text-align: center;
     padding: 1.2rem 1rem;
@@ -389,19 +431,19 @@ body {
     justify-content: center;
     font-size: 1.1rem;
   }
-  
+
   .nav-links:after {
     bottom: 10px;
   }
-  
+
   .nav-links:hover {
     background-color: rgba(255, 255, 255, 0.05);
   }
-  
+
   .nav-links:hover:after {
     width: 40%;
   }
-  
+
   .menu-icon {
     display: flex;
     align-items: center;
@@ -410,11 +452,11 @@ body {
     z-index: 10;
     font-size: 1.6rem;
   }
-  
+
   .fa-times {
     color: var(--color-light);
   }
-  
+
   .nav-links-mobile {
     display: block;
     text-align: center;
@@ -432,28 +474,28 @@ body {
     text-transform: uppercase;
     font-weight: 500;
   }
-  
+
   .nav-links-mobile:hover {
     background: var(--color-light);
     color: var(--color-primary);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
-  
-  /* Animation for menu items */
-  .nav-menu.active .nav-item {
+
+  /* Animation for mobile menu items */
+  .nav-menu .nav-menu.active .nav-item {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.4s forwards;
   }
-  
+
   @keyframes fadeInUp {
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   .nav-menu.active .nav-item:nth-child(1) {
     animation-delay: 0.1s;
   }
@@ -478,42 +520,52 @@ body {
   .navbar {
     height: var(--navbar-height-mobile);
   }
-  
+
   .navbar-container {
     padding: 0 12px;
   }
-  
+
   .navbar-logo {
     font-size: 1.3rem;
   }
-  
+
   .navbar--scrolled .navbar-logo {
     font-size: 1.2rem;
   }
-  
+
+    /* Adjust logo size for smaller mobile screens */
+    .navbar-logo img {
+        height: 40px; /* Nieco mniejsze niż na 960px, ale większe niż desktop */
+        margin-left: 5px;
+    }
+     .navbar--scrolled .navbar-logo img {
+        height: 40px; /* Utrzymaj ten sam rozmiar */
+    }
+
   .menu-icon {
     font-size: 1.4rem;
     padding: 6px;
   }
-  
+
   .nav-links-mobile {
     width: 85%;
     font-size: 1rem;
     padding: 10px 16px;
   }
-  
+
   .language-switcher {
-    margin: 10px 0;
+    /* Mobile menu language switcher */
+    margin: 10px auto; /* Odstęp w menu mobilnym */
     padding: 0 15px;
     gap: 6px;
   }
-  
+
   .lang-btn {
     font-size: 0.9rem;
     padding: 6px 10px;
     margin: 5px 3px;
   }
-  
+
   .nav-links {
     padding: 1rem;
     font-size: 1rem;
@@ -523,31 +575,41 @@ body {
 @media screen and (max-width: 360px) {
   .navbar-logo {
     font-size: 1.2rem;
-    max-width: 70%;
+    max-width: 70%; /* Zapobiega nachodzeniu na inne elementy */
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* Dodaje ... jeśli tekst się nie mieści */
   }
-  
+
   .navbar--scrolled .navbar-logo {
     font-size: 1.1rem;
   }
-  
+    /* Adjust logo size for very small screens */
+     .navbar-logo img {
+        height: 35px; /* Mniejsze na bardzo małych ekranach */
+        margin-left: 4px;
+    }
+     .navbar--scrolled .navbar-logo img {
+        height: 35px; /* Utrzymaj ten sam rozmiar */
+    }
+
+
   .menu-icon {
     font-size: 1.3rem;
   }
-  
+
   .nav-links {
     padding: 0.9rem 0.7rem;
     font-size: 0.95rem;
   }
-  
+
   .language-switcher {
-    flex-direction: row;
-    flex-wrap: wrap;
+    /* Mobile menu language switcher */
+    flex-direction: row; /* Upewnij się, że są w rzędzie */
+    flex-wrap: wrap; /* Mogą się zawijać */
     justify-content: center;
     padding: 0 10px;
   }
-  
+
   .lang-btn {
     font-size: 0.85rem;
     padding: 5px 8px;
@@ -570,5 +632,3 @@ body {
 .menu-icon:focus:not(:focus-visible) {
   outline: none;
 }
-
-/* Reduce motion preference */
