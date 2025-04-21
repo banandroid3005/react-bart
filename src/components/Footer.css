@@ -1,4 +1,3 @@
-/* Footer.css */
 :root {
   --color-primary: #1a1a1a;
   --color-primary-light: #333333;
@@ -35,7 +34,8 @@
   backdrop-filter: blur(4px);
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity var(--transition-normal), transform var(--transition-normal);
+  transition: opacity var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .footer-container.visible {
@@ -114,15 +114,15 @@
   transform: translateY(20px);
 }
 
-.footer-link-items:nth-child(1) {
+.footer-link-wrapper > .footer-link-items:nth-child(1) {
   animation-delay: 0.1s;
 }
 
-.footer-link-items:nth-child(2) {
+.footer-link-wrapper > .footer-link-items:nth-child(2) {
   animation-delay: 0.2s;
 }
 
-.footer-link-items:nth-child(3) {
+.footer-link-wrapper > .footer-link-items:nth-child(3) {
   animation-delay: 0.3s;
 }
 
@@ -198,6 +198,7 @@
   margin-right: 12px;
   font-size: 1rem;
   min-width: 20px;
+  text-align: center;
   transition: transform var(--transition-fast);
 }
 
@@ -228,50 +229,59 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
   }
-  
-  .footer-link-items:nth-child(3) {
+
+  .footer-link-wrapper > .footer-link-items:last-child:nth-child(odd) {
     grid-column: span 2;
+  }
+
+  .footer-link-items:nth-child(3) {
+    grid-column: auto;
   }
 }
 
 @media screen and (max-width: 576px) {
   .footer-container {
     padding: 3rem 0 1.5rem;
+    padding-bottom: 0%;
   }
-  
+
   .footer-top h3 {
     font-size: 1.65rem;
   }
-  
+
   .footer-top p {
     font-size: 1rem;
   }
-  
+
   .footer-link-wrapper {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  
+
+  .footer-link-wrapper > .footer-link-items:last-child:nth-child(odd) {
+    grid-column: span 1;
+  }
   .footer-link-items:nth-child(3) {
     grid-column: span 1;
   }
-  
+
   .footer-link-items h3 {
     font-size: 1.2rem;
   }
-  
+
   .footer-links {
     padding: 0 1rem;
   }
-  
+
   .footer-bottom {
     margin-top: 3rem;
     font-size: 0.8rem;
+    padding-bottom: 20px;
   }
 }
 
-.footer-link-items a:focus,
-.social-icon:focus {
+.footer-link-items a:focus-visible {
   outline: 2px solid var(--color-light);
   outline-offset: 2px;
+  border-radius: var(--radius-small);
 }

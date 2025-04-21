@@ -79,6 +79,7 @@ h6 {
   margin-bottom: 3rem;
   position: relative;
   padding-bottom: 1.5rem;
+  animation: fadeIn 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .section-heading:after {
@@ -93,7 +94,7 @@ h6 {
     to right,
     var(--color-primary) 0%,
     var(--color-primary-light) 100%
-  ); 
+  );
   border-radius: 3px;
 }
 
@@ -118,6 +119,7 @@ h6 {
   margin-top: 3rem;
   position: relative;
   overflow: hidden;
+  animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .intro-heading h1 {
@@ -148,6 +150,7 @@ h6 {
   align-items: center;
   justify-content: center;
   background-color: var(--color-light);
+  animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .image-wrapper {
@@ -295,8 +298,8 @@ h6 {
 
 .lightbox-content {
   position: relative;
-  max-width: 95%; 
-  max-height: 95%; 
+  max-width: 95%;
+  max-height: 95%;
   margin: auto;
 }
 
@@ -326,7 +329,7 @@ h6 {
 }
 
 .lightbox .car-img {
-  max-height: 85vh; 
+  max-height: 85vh;
   width: auto;
   object-fit: contain;
   border-radius: var(--radius-small);
@@ -463,7 +466,7 @@ h6 {
     to right,
     var(--color-light) 0%,
     rgba(248, 248, 248, 0.5) 100%
-  ); 
+  );
 }
 
 .highlight-entry:hover {
@@ -537,13 +540,9 @@ h6 {
 
 .cta-button {
   display: inline-block;
-  background: linear-gradient(
-    to right,
-    var(--color-primary) 0%,
-    var(--color-primary-light) 100%
-  ); /* Gradient */
+  background: linear-gradient(135deg, #1a2a3a 0%, #3a5a7a 100%);
   color: var(--color-light);
-  font-weight: 500; 
+  font-weight: 500;
   padding: 1rem 2.5rem;
   border-radius: var(--radius-medium);
   text-transform: uppercase;
@@ -573,7 +572,7 @@ h6 {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   color: var(--color-light);
   border-color: var(--color-secondary-light);
-  background: var(--color-secondary-light);
+  background: linear-gradient(135deg, #3a5a7a 0%, #5a7a9a 100%);
 }
 
 .cta-button:hover:before {
@@ -705,21 +704,6 @@ h6 {
 .arrow:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .experience-block,
-  .highlight-entry {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .experience-block.visible,
-  .highlight-entry.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .delay-1 {

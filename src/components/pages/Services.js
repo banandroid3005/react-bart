@@ -25,7 +25,6 @@ function Services() {
             starannością i profesjonalizmem.
           </p>
         </div>
-
         <div className="services-grid">
           <div className="service-card">
             <div className="service-icon">
@@ -37,7 +36,6 @@ function Services() {
               wymagających klientów.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faCity} />
@@ -48,7 +46,6 @@ function Services() {
               kierowcą.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faPhoneAlt} />
@@ -59,7 +56,6 @@ function Services() {
               preferencji.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faBriefcase} />
@@ -70,7 +66,6 @@ function Services() {
               komfortu podróży.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faGlobe} />
@@ -81,7 +76,6 @@ function Services() {
               doświadczonym przewodnikiem.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faFlagCheckered} />
@@ -92,7 +86,6 @@ function Services() {
               wydarzenia specjalne.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faTaxi} />
@@ -103,7 +96,6 @@ function Services() {
               nocy.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faShieldAlt} />
@@ -114,15 +106,15 @@ function Services() {
               Ciebie i Twoich bliskich.
             </p>
           </div>
-
           <div className="service-card">
             <div className="service-icon">
               <FontAwesomeIcon icon={faShieldAlt} />
             </div>
-            <h3>Transport Bezpieczeństwa</h3>
+            <h3>Bez pośpiechu. Bez stresu. Z klasą:</h3>
             <p>
-              Usługi transportowe z najwyższym poziomem bezpieczeństwa dla
-              Ciebie i Twoich bliskich.
+              Twój czas jest dla nas najważniejszy. Dlatego każda podróż z nami
+              to gwarancja punktualności, prywatności i spokoju. Zrelaksuj się i
+              ciesz się jazdą, my zadbamy o resztę.
             </p>
           </div>
         </div>
@@ -137,11 +129,11 @@ function Services() {
             </p>
           </div>
           <div className="services-contact-buttons">
-            <a href="tel:+123456789" className="services-btn-contact">
+            <a href="tel:+48660866047" className="services-btn-contact">
               <FontAwesomeIcon icon={faPhoneAlt} /> Zadzwoń Teraz
             </a>
             <a
-              href="mailto:info@example.com"
+              href="mailto:BartPremiumServices-contact@gmail.com"
               className="services-btn-contact whatsapp"
             >
               <FontAwesomeIcon icon={faEnvelope} /> Wyślij E-mail

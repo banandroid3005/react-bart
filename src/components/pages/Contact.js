@@ -25,17 +25,15 @@ function Contact() {
           content="Skontaktuj się z naszym zespołem dla luksusowego transportu 24/7. Dostępni w Kielcach i na terenie całej Polski."
         />
       </Helmet>
-
       <div className="contact-container">
         <div className="contact-heading">
           <h2>Skontaktuj się z nami</h2>
           <p>
-            Dostępni 24/7 – luksus, styl i punktualność w każdym kursie. Nasz
-            zespół jest zawsze gotowy, aby zapewnić Ci niezapomniane
-            doświadczenie transportowe na najwyższym poziomie.
+            Dostępni 24/7 – luksus, styl i punktualność w każdym kursie.
+            Jesteśmy zawsze gotowi, aby zapewnić Ci niezapomniane doświadczenie
+            transportowe na najwyższym poziomie.
           </p>
         </div>
-
         <div className="contact-info-grid">
           <div className="contact-card">
             <div className="contact-icon">
@@ -55,13 +53,12 @@ function Contact() {
               </div>
             </div>
           </div>
-
           <div className="contact-card">
             <div className="contact-icon">
               <FaEnvelope />
             </div>
             <h3>Email</h3>
-            <p>baju24@gmail.com</p>
+            <p>BartPremiumServices-contact@gmail.com</p>
             <div className="contact-details-extra">
               <p>Odpowiadamy w ciągu 1-2 godzin</p>
               <div className="contact-availability">
@@ -70,7 +67,6 @@ function Contact() {
               </div>
             </div>
           </div>
-
           <div className="contact-card">
             <div className="contact-icon">
               <FaMapMarkerAlt />
@@ -83,7 +79,6 @@ function Contact() {
             </div>
           </div>
         </div>
-
         <div className="contact-buttons-container">
           <div className="contact-prompt">
             <h3>Jak możemy Ci pomóc?</h3>
@@ -99,7 +94,10 @@ function Contact() {
             <a href="tel:+447425931918" className="btn-contact">
               <FaPhoneAlt /> Zadzwoń UK
             </a>
-            <a href="mailto:baju24@gmail.com" className="btn-contact">
+            <a
+              href="mailto:BartPremiumServices-contact@gmail.com"
+              className="btn-contact"
+            >
               <FaEnvelope /> Napisz e-mail
             </a>
             <a
@@ -110,7 +108,6 @@ function Contact() {
             </a>
           </div>
         </div>
-
         <div className="social-media">
           <h3>Znajdź nas w mediach społecznościowych</h3>
           <p>
@@ -140,12 +137,11 @@ function Contact() {
           <div className="faq-grid">
             <div className="faq-item">
               <div className="faq-question">
-                <FaQuestion /> Jaki jest czas oczekiwania na transport?
+                <FaQuestion /> Czy muszę rezerwować przejazd z wyprzedzeniem?
               </div>
               <div className="faq-answer">
-                Standardowy czas oczekiwania to 15-30 minut, jednak zawsze
-                rekomendujemy wcześniejszą rezerwację dla zapewnienia
-                dostępności pojazdu i kierowcy.
+                Zalecam rezerwację minimum kilka godzin wcześniej, zwłaszcza
+                przy transferach lotniskowych lub przejazdach poza Kielce.
               </div>
             </div>
 
@@ -182,7 +178,6 @@ function Contact() {
             </div>
           </div>
         </div>
-
         <div
           className="contact-buttons-container"
           style={{ marginTop: "5rem" }}
@@ -199,7 +194,7 @@ function Contact() {
             <a href="tel:+48660866047" className="btn-contact">
               <FaUserTie /> Zarezerwuj przejazd
             </a>
-            <a href="#" className="btn-contact">
+            <a href="mailto:BartPremiumServices-contact@gmail.com" className="btn-contact">
               <FaClock /> Sprawdź dostępność
             </a>
           </div>

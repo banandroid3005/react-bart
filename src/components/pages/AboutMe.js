@@ -10,7 +10,10 @@ import {
   faCar,
   faShieldAlt,
   faMusic,
-  faLanguage
+  faLanguage,
+  faTools,
+  faGem,
+  faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
 
 function AboutMe() {
@@ -19,8 +22,8 @@ function AboutMe() {
   const aboutMeTextRef = useRef(null);
   const servicesContainerRef = useRef(null);
   const serviceRefs = useRef([]);
-  const faqContainerRef = useRef(null);
-  const faqItemRefs = useRef([]);
+  const standardsSectionRef = useRef(null); // Add ref for standards section
+  const standardItemRefs = useRef([]); // Add ref for individual standard items
 
   useEffect(() => {
     const handleIntersection = (entries) => {
@@ -44,7 +47,9 @@ function AboutMe() {
     if (aboutMeTextRef.current) observer.observe(aboutMeTextRef.current);
     if (servicesContainerRef.current)
       observer.observe(servicesContainerRef.current);
-    if (faqContainerRef.current) observer.observe(faqContainerRef.current);
+    // Removed the faqContainerRef observation
+    if (standardsSectionRef.current)
+      observer.observe(standardsSectionRef.current); // Observe standards section
 
     serviceRefs.current.forEach((ref, index) => {
       if (ref) {
@@ -53,6 +58,12 @@ function AboutMe() {
       }
     });
 
+    // Observe each standard item
+    standardItemRefs.current.forEach((ref) => {
+      if (ref) {
+        observer.observe(ref);
+      }
+    });
 
     return () => {
       observer.disconnect();
@@ -61,6 +72,11 @@ function AboutMe() {
 
   const setServiceRef = (element, index) => {
     serviceRefs.current[index] = element;
+  };
+
+  // Helper to set refs for standard items
+  const setStandardItemRef = (element, index) => {
+    standardItemRefs.current[index] = element;
   };
 
   return (
@@ -146,54 +162,81 @@ function AboutMe() {
           </div>
         </div>
       </div>
-      <section className="standards-section">
-      <div className="standards-header">
-        <h2>Moje Standardy</h2>
-        <p>Każdy kurs to nie tylko przejazd – to doświadczenie klasy premium.</p>
-      </div>
-      <div className="standards-grid">
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faClock} className="standard-icon" />
-          <h4>Punktualność</h4>
-          <p>Na miejscu zawsze kilka minut przed czasem. Zawsze.</p>
+      {/* Standards Section */}
+      <section className="standards-section" ref={standardsSectionRef}>
+        <div className="standards-header">
+          <h2>Moje Standardy</h2>
+          <p>
+            Każdy kurs to nie tylko przejazd – to doświadczenie klasy premium.
+          </p>
         </div>
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faCar} className="standard-icon" />
-          <h4>Perfekcyjna Czystość</h4>
-          <p>Auto czyszczone po każdym kursie – wnętrze jak nowe.</p>
+        <div className="standards-grid">
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 0)}
+          >
+            <FontAwesomeIcon icon={faClock} className="standard-icon" />
+            <h4>Punktualność</h4>
+            <p>Na miejscu zawsze kilka minut przed czasem. Zawsze.</p>
+          </div>
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 1)}
+          >
+            <FontAwesomeIcon icon={faCar} className="standard-icon" />
+            <h4>Perfekcyjna Czystość</h4>
+            <p>Auto czyszczone po każdym kursie – wnętrze jak nowe.</p>
+          </div>
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 2)}
+          >
+            <FontAwesomeIcon icon={faShieldAlt} className="standard-icon" />
+            <h4>Pełna Dyskrecja</h4>
+            <p>Nie pytam, nie opowiadam. Twoja prywatność jest priorytetem.</p>
+          </div>
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 3)}
+          >
+            <FontAwesomeIcon icon={faMusic} className="standard-icon" />
+            <h4>Spokój i Komfort</h4>
+            <p>Subtelna muzyka lub cisza – Ty decydujesz.</p>
+          </div>
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 4)}
+          >
+            <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
+            <h4>Komunikacja</h4>
+            <p>Rozmawiam po polsku i angielsku – bez barier.</p>
+          </div>
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 5)}
+          >
+            <FontAwesomeIcon icon={faTools} className="standard-icon" />
+            <h4>Zawsze przygotowany</h4>
+            <p>Auto gotowe nawet na najbardziej wymagające przejazdy.</p>
+          </div>
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 6)}
+          >
+            <FontAwesomeIcon icon={faGem} className="standard-icon" />
+            <h4>Klasa i styl</h4>
+            <p>Nie tylko pojazd, ale cała obsługa w duchu premium.</p>
+          </div>
+          <div
+            className="standard-item"
+            ref={(el) => setStandardItemRef(el, 7)}
+          >
+            <FontAwesomeIcon icon={faSlidersH} className="standard-icon" />
+            <h4>Drobiazgi mają znaczenie</h4>
+            <p>Od temperatury wnętrza po muzykę — wszystko pod Ciebie.</p>
+          </div>
         </div>
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faShieldAlt} className="standard-icon" />
-          <h4>Pełna Dyskrecja</h4>
-          <p>Nie pytam, nie opowiadam. Twoja prywatność jest priorytetem.</p>
-        </div>
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faMusic} className="standard-icon" />
-          <h4>Spokój i Komfort</h4>
-          <p>Subtelna muzyka lub cisza – Ty decydujesz.</p>
-        </div>
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
-          <h4>Komunikacja</h4>
-          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
-        </div>
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
-          <h4>Komunikacja</h4>
-          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
-        </div>
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
-          <h4>Komunikacja</h4>
-          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
-        </div>
-        <div className="standard-item">
-          <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
-          <h4>Komunikacja</h4>
-          <p>Rozmawiam po polsku i angielsku – bez barier.</p>
-        </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 }

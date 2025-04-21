@@ -21,25 +21,31 @@ function Footer() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.unobserve(footerRef.current);
+            // Usuwamy obserwację po pierwszym pojawieniu się, aby animacja nie powtarzała się
+            if (footerRef.current) {
+               observer.unobserve(footerRef.current);
+            }
           }
         });
       },
       {
-        threshold: 0.1,
+        threshold: 0.1, // Uruchom, gdy 10% elementu jest widoczne
       }
     );
 
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
+    // Sprawdzamy, czy footerRef.current istnieje przed rozpoczęciem obserwacji
+    const currentRef = footerRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
+    // Funkcja czyszcząca - usuwa obserwację, gdy komponent jest odmontowywany
     return () => {
-      if (footerRef.current) {
-        observer.unobserve(footerRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, []); // Pusta tablica zależności - useEffect uruchomi się tylko raz po zamontowaniu
 
   return (
     <div
@@ -50,7 +56,6 @@ function Footer() {
         <h3>Bart Premium Services</h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
       </section>
-
       <div className="footer-links">
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
@@ -80,9 +85,9 @@ function Footer() {
               O mnie
             </Link>
           </div>
-
           <div className="footer-link-items">
             <h3>Social Media</h3>
+            {/* UWAGA: Linki social media nadal prowadzą do '/', zaktualizuj je */}
             <Link to="/">
               <span className="fa-icon">
                 <FaInstagram />
@@ -108,33 +113,32 @@ function Footer() {
               Whatsapp
             </Link>
           </div>
-
           <div className="footer-link-items">
             <h3>Kontakt</h3>
-            <p>
+            <a href="tel:+48660866047">
               <span className="fa-icon">
                 <FaPhoneAlt />
               </span>
               +48 660 866 047
-            </p>
-            <p>
+            </a>
+            <a href="tel:+447425931918">
               <span className="fa-icon">
                 <FaPhoneAlt />
               </span>
               +44 7425 931918
-            </p>
-            <p>
+            </a>
+            <a href="mailto:BartPremiumServices-contact@gmail.com">
               <span className="fa-icon">
                 <FaEnvelope />
               </span>
-              baju.24@gmail.com
-            </p>
-            <p>
-              <span className="fa-icon">
-                <FaWhatsapp />
-              </span>
-              Whatsapp
-            </p>
+              BartPremiumServices-contact@gmail.com
+            </a>
+            <a href="https://wa.me/48660866047" target="_blank" rel="noopener noreferrer">
+               <span className="fa-icon">
+                 <FaWhatsapp />
+               </span>
+               Whatsapp
+             </a>
           </div>
         </div>
       </div>

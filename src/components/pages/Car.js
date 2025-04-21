@@ -255,11 +255,11 @@ function Car() {
             <div className="experience-icon">
               <i className="fas fa-gem"></i>
             </div>
-            <h3>Elegancja w Każdym Calu</h3>
+            <h3> Nienaganna estetyka i dyskretna elegancja</h3>
             <p>
-              Perłowy lakier, dynamiczna linia nadwozia i starannie
-              zaprojektowane wnętrze z ambientowym oświetleniem sprawią, że
-              poczujesz się wyjątkowo, przybywając na miejsce z klasą.
+              Każdy detal – od czystości wnętrza po wygląd kierowcy – jest
+              dopracowany z myślą o najwyższych standardach. U nas luksus nie
+              rzuca się w oczy – on po prostu jest.
             </p>
           </div>
           <div className="experience-block">

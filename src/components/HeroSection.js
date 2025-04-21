@@ -12,7 +12,7 @@ function HeroSection() {
         Lexus ES 300h | Usługi premium taxi | Kielce i cała Polska
       </div>
       <div className="hero-btn">
-        <a href="tel:+48666478312">Zarezerwuj przejazd</a>
+        <a href="tel:+48660866047">Zarezerwuj przejazd</a>
       </div>
       <section className="hero-columns">
         <div className="hero-column">
@@ -38,21 +38,20 @@ function HeroSection() {
         <div className="hero-column-offer">
           <h2>Co oferujemy</h2>
           <p>
-            Oferuję komfortowy transport luksusowym Lexusem ES300h 2021,
-            idealnym zarówno na spotkania biznesowe, jak i prywatne wyjazdy.
-            Jako doświadczony kierowca dbam o każdy detal podróży – od
-            punktualności po atmosferę sprzyjającą relaksowi lub pracy. Dzięki
-            cichej i oszczędnej technologii hybrydowej jazda jest wyjątkowo
-            płynna, a wnętrze pojazdu – z najwyższej klasy skórzanymi fotelami i
-            systemem multimedialnym – gwarantuje wygodę na najwyższym poziomie.
-            Obsługuję transfery lotniskowe, przejazdy między miastami oraz
-            przewóz osób na wyjątkowe wydarzenia, takie jak śluby, konferencje
-            czy kolacje biznesowe. Działam jako prywatny kierowca premium,
-            zapewniając indywidualne podejście, dyskrecję i pełne zaangażowanie.
-            Samochód jest regularnie serwisowany, a każda podróż realizowana
-            jest z dbałością o najwyższe standardy. Transport dostępny jest
-            24/7, wyłącznie na rezerwację – to usługa dla tych, którzy cenią
-            niezawodność i jakość.
+            Oferuję komfortowy transport luksusowym Lexusem ES300h, idealnym
+            zarówno na spotkania biznesowe, jak i prywatne wyjazdy. Jako
+            doświadczony kierowca dbam o każdy detal podróży – od punktualności
+            po atmosferę sprzyjającą relaksowi lub pracy. Dzięki cichej i
+            oszczędnej technologii hybrydowej jazda jest wyjątkowo płynna, a
+            wnętrze pojazdu – z najwyższej klasy skórzanymi fotelami i systemem
+            multimedialnym – gwarantuje wygodę na najwyższym poziomie. Obsługuję
+            transfery lotniskowe, przejazdy między miastami oraz przewóz osób na
+            wyjątkowe wydarzenia, takie jak śluby, konferencje czy kolacje
+            biznesowe. Działam jako prywatny kierowca, zapewniając indywidualne
+            podejście, dyskrecję i pełne zaangażowanie. Samochód jest regularnie
+            serwisowany, a każda podróż realizowana jest z dbałością o najwyższe
+            standardy. Transport dostępny jest 24/7, wyłącznie na rezerwację –
+            to usługa dla tych, którzy cenią niezawodność i jakość.
           </p>
         </div>
       </section>
