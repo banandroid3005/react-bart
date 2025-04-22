@@ -116,16 +116,36 @@ function Contact() {
             pojazdów.
           </p>
           <div className="social-icons">
-            <a href="#" className="social-icon facebook">
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon facebook"
+            >
               <FaFacebookF />
             </a>
-            <a href="#" className="social-icon instagram">
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon instagram"
+            >
               <FaInstagram />
             </a>
-            <a href="#" className="social-icon tiktok">
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon tiktok"
+            >
               <FaTiktok />
             </a>
-            <a href="#" className="social-icon whatsapp">
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon whatsapp"
+            >
               <FaWhatsapp />
             </a>
           </div>
@@ -194,7 +214,10 @@ function Contact() {
             <a href="tel:+48660866047" className="btn-contact">
               <FaUserTie /> Zarezerwuj przejazd
             </a>
-            <a href="mailto:BartPremiumServices-contact@gmail.com" className="btn-contact">
+            <a
+              href="mailto:BartPremiumServices-contact@gmail.com"
+              className="btn-contact"
+            >
               <FaClock /> Sprawdź dostępność
             </a>
           </div>

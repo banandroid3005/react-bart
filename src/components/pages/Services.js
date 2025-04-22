@@ -11,6 +11,7 @@ import {
   faTaxi,
   faShieldAlt,
   faEnvelope,
+  faGem
 } from "@fortawesome/free-solid-svg-icons";
 
 function Services() {
@@ -108,7 +109,7 @@ function Services() {
           </div>
           <div className="service-card">
             <div className="service-icon">
-              <FontAwesomeIcon icon={faShieldAlt} />
+              <FontAwesomeIcon icon={faGem} />
             </div>
             <h3>Bez pośpiechu. Bez stresu. Z klasą:</h3>
             <p>

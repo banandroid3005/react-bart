@@ -607,3 +607,40 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 380px) {
+  .contact-heading h2 {
+    font-size: 2rem;
+  }
+
+  .contact-heading p {
+    font-size: 1rem;
+  }
+
+  .contact-card {
+    padding: 2rem;
+  }
+
+  .contact-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-contact {
+    padding: 1rem 2rem;
+    min-width: 180px;
+  }
+
+  .contact-buttons {
+    gap: 1rem;
+  }
+  .social-media h3{
+    font-size: 1.8rem;
+  }
+
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}

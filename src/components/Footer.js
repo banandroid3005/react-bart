@@ -21,7 +21,6 @@ function Footer() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // Usuwamy obserwację po pierwszym pojawieniu się, aby animacja nie powtarzała się
             if (footerRef.current) {
               observer.unobserve(footerRef.current);
             }
@@ -29,23 +28,21 @@ function Footer() {
         });
       },
       {
-        threshold: 0.1, // Uruchom, gdy 10% elementu jest widoczne
+        threshold: 0.1,
       }
     );
 
-    // Sprawdzamy, czy footerRef.current istnieje przed rozpoczęciem obserwacji
     const currentRef = footerRef.current;
     if (currentRef) {
       observer.observe(currentRef);
     }
 
-    // Funkcja czyszcząca - usuwa obserwację, gdy komponent jest odmontowywany
     return () => {
       if (currentRef) {
         observer.unobserve(currentRef);
       }
     };
-  }, []); // Pusta tablica zależności - useEffect uruchomi się tylko raz po zamontowaniu
+  }, []);
 
   return (
     <div
@@ -56,7 +53,7 @@ function Footer() {
         <h3>
           Bart Premium Services{" "}
           <div className="footer-logo">
-            <img src={require("./../images/minji.png")} alt="Logo" />
+            <img src={require("./../images/logo.png")} alt="Logo" />
           </div>
         </h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
@@ -92,31 +89,46 @@ function Footer() {
           </div>
           <div className="footer-link-items">
             <h3>Social Media</h3>
-            {/* UWAGA: Linki social media nadal prowadzą do '/', zaktualizuj je */}
-            <Link to="/">
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="fa-icon">
                 <FaInstagram />
               </span>
               Instagram
-            </Link>
-            <Link to="/">
+            </a>
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="fa-icon">
                 <FaFacebookF />
               </span>
               Facebook
-            </Link>
-            <Link to="/">
+            </a>
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="fa-icon">
                 <FaTiktok />
               </span>
               Tiktok
-            </Link>
-            <Link to="/">
+            </a>
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="fa-icon">
                 <FaWhatsapp />
               </span>
               Whatsapp
-            </Link>
+            </a>
           </div>
           <div className="footer-link-items">
             <h3>Kontakt</h3>
