@@ -23,7 +23,7 @@ function Footer() {
             setIsVisible(true);
             // Usuwamy obserwację po pierwszym pojawieniu się, aby animacja nie powtarzała się
             if (footerRef.current) {
-               observer.unobserve(footerRef.current);
+              observer.unobserve(footerRef.current);
             }
           }
         });
@@ -53,7 +53,12 @@ function Footer() {
       ref={footerRef}
     >
       <section className="footer-top">
-        <h3>Bart Premium Services</h3>
+        <h3>
+          Bart Premium Services{" "}
+          <div className="footer-logo">
+            <img src={require("./../images/minji.png")} alt="Logo" />
+          </div>
+        </h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
       </section>
       <div className="footer-links">
@@ -133,12 +138,16 @@ function Footer() {
               </span>
               BartPremiumServices-contact@gmail.com
             </a>
-            <a href="https://wa.me/48660866047" target="_blank" rel="noopener noreferrer">
-               <span className="fa-icon">
-                 <FaWhatsapp />
-               </span>
-               Whatsapp
-             </a>
+            <a
+              href="https://wa.me/48660866047"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="fa-icon">
+                <FaWhatsapp />
+              </span>
+              Whatsapp
+            </a>
           </div>
         </div>
       </div>

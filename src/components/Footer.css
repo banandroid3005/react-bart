@@ -60,6 +60,10 @@
   text-align: center;
   margin-bottom: 3rem;
   padding: 0 2rem;
+  display: flex; /* Ustawienie elementów w jednej linii */
+  justify-content: center; /* Wyśrodkowanie elementów */
+  align-items: center; /* Wyrównanie w pionie */
+  gap: 10px; /* Odstęp między logo a nagłówkiem */
 }
 
 .footer-top h3 {
@@ -67,12 +71,25 @@
   font-size: 2rem;
   position: relative;
   display: inline-block;
-  margin-bottom: 1.5rem;
+  margin: 0; /* Usuń marginesy */
   letter-spacing: 0.5px;
   font-weight: 500;
   font-family: var(--font-secondary);
 }
 
+.footer-logo img {
+  height: 40px; /* Dopasowanie wysokości logo */
+  width: auto; /* Zachowanie proporcji */
+  object-fit: contain; /* Dopasowanie obrazu */
+  margin: 0; /* Usuń marginesy */
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+}
+
+.footer-logo:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
 .footer-top h3::after {
   content: "";
   position: absolute;

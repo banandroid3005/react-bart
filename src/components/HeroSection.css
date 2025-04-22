@@ -63,6 +63,25 @@
   animation-delay: 0.4s;
   opacity: 0;
 }
+.hero-logo {
+  text-align: center;
+  margin: 2rem auto 4rem;
+  animation: fadeInUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: 0.4s;
+}
+.hero-logo img {
+  size: 10rem;
+  margin: 0 auto;
+  display: block;
+}
+.hero-logo img:hover {
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
+}
+.hero-logo img:active {
+  animation: pulse 0.8s ease-out;
+  transform: scale(0.98);
+}
 
 .hero-btn a {
   padding: 1.4rem 3.5rem;
@@ -441,10 +460,14 @@
   }
 
   .hero-sub-heading {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
   }
-
+  .hero-logo {
+    max-width: 80%;
+    margin: 0 auto 0.5rem;
+    
+  }
   .hero-columns {
     grid-template-columns: 1fr;
     gap: 2.5rem;
