@@ -99,7 +99,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/services"
+                to="/Usługi"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
@@ -107,13 +107,13 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/car" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/Auto" className="nav-links" onClick={closeMobileMenu}>
                 Auto
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                to="/contact"
+                to="/Kontakt"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
@@ -122,7 +122,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/about-me"
+                to="/O-mnie"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >

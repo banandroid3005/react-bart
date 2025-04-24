@@ -62,25 +62,25 @@ function Footer() {
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
             <h3>O nas</h3>
-            <Link to="/car">
+            <Link to="/Auto">
               <span className="fa-icon">
                 <FaChevronRight />
               </span>
               O Aucie
             </Link>
-            <Link to="/pricing">
+            <Link to="/Usługi">
               <span className="fa-icon">
                 <FaChevronRight />
               </span>
-              Cennik
+              Usługi
             </Link>
-            <Link to="/contact">
+            <Link to="/Kontakt">
               <span className="fa-icon">
                 <FaChevronRight />
               </span>
               Kontakt
             </Link>
-            <Link to="/about-me">
+            <Link to="/O-mnie">
               <span className="fa-icon">
                 <FaChevronRight />
               </span>

@@ -23,10 +23,10 @@ function App() {
       <CnInfo />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/services' element={<Services />} />
-        <Route path='/car' element={<Car />} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/about-me' element={<AboutMe />} />
+        <Route path='/Usługi' element={<Services />} />
+        <Route path='/Auto' element={<Car />} />
+        <Route path='/Kontakt' element={<Contact/>} />
+        <Route path='/O-mnie' element={<AboutMe />} />
       </Routes>
       <Footer />
       </Router>
