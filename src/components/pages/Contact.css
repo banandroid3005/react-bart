@@ -607,8 +607,12 @@
     font-size: 1rem;
   }
 }
-
-@media (max-width: 380px) {
+@media (max-width: 450px) {
+  .social-media h3 {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 390px) {
   .contact-heading h2 {
     font-size: 2rem;
   }

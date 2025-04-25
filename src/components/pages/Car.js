@@ -368,7 +368,7 @@ function Car() {
           Zarezerwuj przejazd naszym Lexusem ES300h i doświadcz komfortu, na
           jaki zasługujesz.
         </p>
-        <a href="/contact" className="cta-button">
+        <a href="/Kontakt" className="cta-button">
           Zamów Przejazd Teraz
         </a>
       </section>

@@ -34,7 +34,7 @@ function HeroSection() {
             klimatyzacja czterostrefowa i hybrydowy napęd. Idealny do przejazdów
             biznesowych i długodystansowych.
           </p>
-          <a href="/car">Zobacz więcej</a>
+          <a href="/Auto">Zobacz więcej</a>
         </div>
       </section>
       <section className="hero-columns">
@@ -61,7 +61,7 @@ function HeroSection() {
 
       <div className="container-call">
         <h3>Masz pytanie?</h3>
-        <a href="/contact">Zadzwoń lub skontaktuj się ze mną drogą email</a>
+        <a href="/Kontakt">Zadzwoń lub skontaktuj się ze mną drogą email</a>
       </div>
     </div>
   );

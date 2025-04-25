@@ -145,7 +145,7 @@ h6 {
   border-radius: var(--radius-medium);
   overflow: hidden;
   box-shadow: var(--shadow-medium);
-  height: 450px;
+  height: 750px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -540,7 +540,7 @@ h6 {
 
 .cta-button {
   display: inline-block;
-  background: linear-gradient(135deg, #1a2a3a 0%, #3a5a7a 100%);
+  background: linear-gradient(135deg, #1a1a1a, #bfa76f); /* Poprawiony gradient */
   color: var(--color-light);
   font-weight: 500;
   padding: 1rem 2.5rem;
@@ -572,7 +572,7 @@ h6 {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   color: var(--color-light);
   border-color: var(--color-secondary-light);
-  background: linear-gradient(135deg, #3a5a7a 0%, #5a7a9a 100%);
+  background: linear-gradient(135deg, #2a2a2a, #d4b97d); /* Poprawiony gradient */
 }
 
 .cta-button:hover:before {

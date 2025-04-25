@@ -22,8 +22,8 @@ function AboutMe() {
   const aboutMeTextRef = useRef(null);
   const servicesContainerRef = useRef(null);
   const serviceRefs = useRef([]);
-  const standardsSectionRef = useRef(null); // Add ref for standards section
-  const standardItemRefs = useRef([]); // Add ref for individual standard items
+  const standardsSectionRef = useRef(null); 
+  const standardItemRefs = useRef([]); 
 
   useEffect(() => {
     const handleIntersection = (entries) => {
@@ -47,9 +47,8 @@ function AboutMe() {
     if (aboutMeTextRef.current) observer.observe(aboutMeTextRef.current);
     if (servicesContainerRef.current)
       observer.observe(servicesContainerRef.current);
-    // Removed the faqContainerRef observation
     if (standardsSectionRef.current)
-      observer.observe(standardsSectionRef.current); // Observe standards section
+      observer.observe(standardsSectionRef.current); 
 
     serviceRefs.current.forEach((ref, index) => {
       if (ref) {
@@ -58,7 +57,6 @@ function AboutMe() {
       }
     });
 
-    // Observe each standard item
     standardItemRefs.current.forEach((ref) => {
       if (ref) {
         observer.observe(ref);
@@ -74,7 +72,6 @@ function AboutMe() {
     serviceRefs.current[index] = element;
   };
 
-  // Helper to set refs for standard items
   const setStandardItemRef = (element, index) => {
     standardItemRefs.current[index] = element;
   };
@@ -162,7 +159,6 @@ function AboutMe() {
           </div>
         </div>
       </div>
-      {/* Standards Section */}
       <section className="standards-section" ref={standardsSectionRef}>
         <div className="standards-header">
           <h2>Moje Standardy</h2>

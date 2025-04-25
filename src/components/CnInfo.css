@@ -4,30 +4,35 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
-  padding: 12px 24px;
+  padding: 16px 28px;
   background: linear-gradient(to bottom, #ffffff, #f8f8f8);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   animation: fadeInCnInfo 0.8s ease forwards;
   opacity: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .cninfo-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 1rem;
   color: #333;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 
 .cninfo-item:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .cninfo-item strong {
   font-weight: 600;
   color: #000;
+  letter-spacing: 0.02em;
 }
 
 .cninfo-item a {
@@ -35,11 +40,27 @@
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 0.3s ease, border-bottom 0.3s ease;
+  position: relative;
 }
 
 .cninfo-item a:hover {
   color: #000;
   border-bottom: 1px solid #ccc;
+}
+
+.cninfo-item a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -1px;
+  left: 0;
+  background-color: #333;
+  transition: width 0.3s ease;
+}
+
+.cninfo-item a:hover:after {
+  width: 100%;
 }
 
 @keyframes fadeInCnInfo {
@@ -53,14 +74,40 @@
   }
 }
 
+/* Improved responsiveness with multiple breakpoints */
+@media (max-width: 992px) {
+  .cninfo-container {
+    gap: 20px;
+    padding: 14px 24px;
+  }
+  
+  .cninfo-item {
+    font-size: 0.98rem;
+  }
+}
+
 @media (max-width: 768px) {
   .cninfo-container {
     flex-direction: column;
-    gap: 10px;
-    padding: 10px 16px;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 20px;
   }
-
+  
   .cninfo-item {
     font-size: 0.95rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cninfo-container {
+    padding: 10px 16px;
+    gap: 8px;
+  }
+  
+  .cninfo-item {
+    font-size: 0.9rem;
+    padding: 4px 8px;
   }
 }
