@@ -74,7 +74,6 @@
   }
 }
 
-/* Improved responsiveness with multiple breakpoints */
 @media (max-width: 992px) {
   .cninfo-container {
     gap: 20px;
