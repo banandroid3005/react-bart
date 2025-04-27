@@ -58,7 +58,7 @@ function Contact() {
               <FaEnvelope />
             </div>
             <h3>Email</h3>
-            <p>BartPremiumServices-contact@gmail.com</p>
+            <p>bartpremiumservices@gmail.com</p>
             <div className="contact-details-extra">
               <p>Odpowiadamy w ciągu 1-2 godzin</p>
               <div className="contact-availability">
@@ -95,7 +95,7 @@ function Contact() {
               <FaPhoneAlt /> Zadzwoń UK
             </a>
             <a
-              href="mailto:BartPremiumServices-contact@gmail.com"
+              href="mailto:bartpremiumservices@gmail.com"
               className="btn-contact"
             >
               <FaEnvelope /> Napisz e-mail
@@ -215,7 +215,7 @@ function Contact() {
               <FaUserTie /> Zarezerwuj przejazd
             </a>
             <a
-              href="mailto:BartPremiumServices-contact@gmail.com"
+              href="mailto:bartpremiumservices@gmail.com"
               className="btn-contact"
             >
               <FaClock /> Sprawdź dostępność

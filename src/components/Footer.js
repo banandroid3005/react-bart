@@ -144,11 +144,11 @@ function Footer() {
               </span>
               +44 7425 931918
             </a>
-            <a href="mailto:BartPremiumServices-contact@gmail.com">
+            <a href="mailto:bartpremiumservices@gmail.com">
               <span className="fa-icon">
                 <FaEnvelope />
               </span>
-              BartPremiumServices-contact@gmail.com
+              bartpremiumservices@gmail.com
             </a>
             <a
               href="https://wa.me/48660866047"

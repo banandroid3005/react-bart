@@ -11,7 +11,7 @@ import {
   faTaxi,
   faShieldAlt,
   faEnvelope,
-  faGem
+  faGem,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Services() {
@@ -134,7 +134,7 @@ function Services() {
               <FontAwesomeIcon icon={faPhoneAlt} /> Zadzwoń Teraz
             </a>
             <a
-              href="mailto:BartPremiumServices-contact@gmail.com"
+              href="mailto:bartpremiumservices@gmail.com"
               className="services-btn-contact whatsapp"
             >
               <FontAwesomeIcon icon={faEnvelope} /> Wyślij E-mail

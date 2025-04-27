@@ -32,7 +32,7 @@ function HeroSection() {
           <p>
             Lexus ES300h 2021 – luksus, cisza i wygoda. Skórzana tapicerka,
             klimatyzacja czterostrefowa i hybrydowy napęd. Idealny do przejazdów
-            biznesowych i długodystansowych.
+            biznesowych i długodystansowych. 
           </p>
           <a href="/Auto">Zobacz więcej</a>
         </div>

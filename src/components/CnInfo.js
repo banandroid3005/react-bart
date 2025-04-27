@@ -20,8 +20,8 @@ function CnInfo() {
       <div className="cninfo-item">
         <MdEmail />
         <strong>Email:</strong>
-        <a href="mailto:BartPremiumServices-contact@gmail.com">
-          BartPremiumServices-contact@gmail.com
+        <a href="mailto:bartpremiumservices@gmail.com">
+        bartpremiumservices@gmail.com
         </a>
       </div>
       <div className="cninfo-item">
