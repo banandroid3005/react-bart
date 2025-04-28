@@ -117,7 +117,7 @@ function Contact() {
           </p>
           <div className="social-icons">
             <a
-              href="https://wa.me/48660866047"
+              href="https://www.facebook.com/bartpremiumservices?locale=pl_PL"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon facebook"
@@ -125,7 +125,7 @@ function Contact() {
               <FaFacebookF />
             </a>
             <a
-              href="https://wa.me/48660866047"
+              href="https://www.instagram.com/bartpremiumservices/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon instagram"

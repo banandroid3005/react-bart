@@ -1,92 +1,199 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  useMemo,
+} from "react";
 import "./Car.css";
-import lexusImage1 from "../../images/lexus.webp";
-import lexusImage2 from "../../images/face.webp";
-import lexusImage3 from "../../images/lexus.webp";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCouch,
+  faGem,
+  faShieldAlt,
+  faWifi,
+  faClock,
+  faUserShield,
+  faLeaf,
+  faChair,
+  faThermometerHalf,
+  faVolumeUp,
+  faStar,
+  faWind,
+  faUserTie,
+  faCalendarCheck,
+} from "@fortawesome/free-solid-svg-icons";
+
+// Dane statyczne przeniesione poza komponent
+const imageListPaths = [
+  "/images/front-doors.webp",
+  "/images/interior.webp",
+  "/images/interior-driver.webp",
+  "/images/side.webp",
+  "/images/trunk.webp",
+];
 
 const imageDescriptions = [
   "Elegancka sylwetka Lexusa ES300h",
   "Komfortowe wnętrze premium",
   "Nowoczesny design i dbałość o detale",
+  "Widok boczny Lexusa ES300h",
+  "Pojemny bagażnik Lexusa ES300h",
 ];
 
-function Car() {
-  const [currentImage, setCurrentImage] = useState(0);
+// Dane dla sekcji "Experience"
+const experienceData = [
+  {
+    icon: faCouch,
+    title: "Oaza Spokoju i Komfortu",
+    text: "Zrelaksuj się w przestronnym wnętrzu wykończonym miękką skórą. Podgrzewane i wentylowane fotele oraz cichy napęd hybrydowy zapewnią Ci idealne warunki do odpoczynku lub pracy.",
+  },
+  {
+    icon: faGem,
+    title: "Nienaganna estetyka i dyskretna elegancja",
+    text: "Każdy detal – od czystości wnętrza po wygląd kierowcy – jest dopracowany z myślą o najwyższych standardach. U nas luksus nie rzuca się w oczy – on po prostu jest.",
+  },
+  {
+    icon: faShieldAlt,
+    title: "Podróżuj Bezpiecznie",
+    text: "Twoje bezpieczeństwo jest dla nas priorytetem. Lexus ES300h wyposażony jest w zaawansowany pakiet Lexus Safety System +, który dba o Twój spokój podczas całej podróży.",
+  },
+  {
+    icon: faWifi,
+    title: "Nowoczesne Udogodnienia",
+    text: "Korzystaj z nowoczesnego systemu multimedialnego, wysokiej klasy nagłośnienia i automatycznej klimatyzacji z funkcją oczyszczania powietrza Nanoe™ X. Dostępne porty USB naładują Twoje urządzenia.",
+  },
+  {
+    icon: faClock,
+    title: "Zawsze na Czas",
+    text: "Cenimy Twój czas. Gwarantujemy punktualność i niezawodność, dzięki czemu możesz bez stresu planować swoje spotkania biznesowe, podróże lotnicze czy ważne wydarzenia.",
+  },
+  {
+    icon: faUserShield,
+    title: "Dyskrecja i Prywatność",
+    text: "Zapewniamy pełną dyskrecję podczas każdej podróży. Ciemne szyby oraz profesjonalne podejście naszego kierowcy gwarantują prywatność i komfortowe warunki do rozmów lub odpoczynku.",
+  },
+];
+
+// Dane dla sekcji "Highlights"
+const highlightsData = [
+  { icon: faLeaf, text: "Cichy i Ekologiczny Napęd Hybrydowy" },
+  { icon: faChair, text: "Luksusowa Skórzana Tapicerka" },
+  { icon: faThermometerHalf, text: "Fotele Podgrzewane i Wentlowane" },
+  { icon: faVolumeUp, text: "Nagłośnienie Klasy Premium" },
+  { icon: faStar, text: "Najwyższy Standard Bezpieczeństwa" },
+  { icon: faWind, text: "Klimatyzacja z Oczyszczaniem Powietrza Nanoe™ X" },
+  { icon: faUserTie, text: "Profesjonalny i Dyskretny Kierowca" },
+  { icon: faCalendarCheck, text: "Gwarancja Punktualności" },
+];
+
+const Car = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImagesLoaded, setIsImagesLoaded] = useState(false);
-  const [images, setImages] = useState([]);
+  const [loadedImages, setLoadedImages] = useState([]);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const lightboxRef = useRef(null);
   const [touchStart, setTouchStart] = useState(null);
-  const [hasAnimated, setHasAnimated] = useState(true);
 
+  // Optymalizacja preloadingu obrazów
   useEffect(() => {
-    const imagesList = [lexusImage1, lexusImage2, lexusImage3];
+    const controller = new AbortController();
     const loadImages = async () => {
       try {
-        const promises = imagesList.map((src) => {
-          return new Promise((resolve, reject) => {
+        // Najpierw ładujemy tylko pierwsze zdjęcie dla szybszego renderowania
+        const firstImg = new Image();
+        firstImg.src = imageListPaths[0];
+        await new Promise((resolve) => {
+          firstImg.onload = resolve;
+          firstImg.onerror = resolve; // Kontynuuj nawet przy błędzie
+        });
+
+        if (controller.signal.aborted) return;
+        setLoadedImages([imageListPaths[0]]);
+        setIsImagesLoaded(true);
+
+        // Następnie ładujemy resztę obrazów w tle
+        const otherImagePromises = imageListPaths.slice(1).map((src) => {
+          return new Promise((resolve) => {
             const img = new Image();
             img.src = src;
             img.onload = () => resolve(src);
-            img.onerror = () =>
-              reject(new Error(`Failed to load image: ${src}`));
+            img.onerror = () => resolve(null); // Kontynuuj z null przy błędzie
           });
         });
 
-        await Promise.all(promises);
-        setImages(imagesList);
-        setIsImagesLoaded(true);
+        const otherLoadedImages = await Promise.all(otherImagePromises);
+        if (controller.signal.aborted) return;
+
+        // Filtrujemy null wartości (błędne zdjęcia) i dodajemy do stanu
+        const validImages = otherLoadedImages.filter((img) => img !== null);
+        setLoadedImages((prev) => [...prev, ...validImages]);
       } catch (error) {
         console.error("Problem z ładowaniem obrazów:", error);
-        setImages(imagesList);
-        setIsImagesLoaded(true);
+        if (!controller.signal.aborted) {
+          setIsImagesLoaded(true); // Pozwalamy UI zareagować
+        }
       }
     };
 
     loadImages();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
+
+  // Memoizacja currentImageSrc
+  const currentImageSrc = useMemo(() => {
+    if (!isImagesLoaded || loadedImages.length === 0) return "";
+    return loadedImages[currentImageIndex] || imageListPaths[currentImageIndex];
+  }, [isImagesLoaded, loadedImages, currentImageIndex]);
 
   const openLightbox = useCallback(
     (index) => {
       if (!isImagesLoaded) return;
-      setCurrentImage(index);
+      setCurrentImageIndex(index);
       setIsLightboxOpen(true);
-      setHasAnimated(true);
-      document.body.style.overflow = "hidden";
+      // Używamy klasy CSS zamiast bezpośrednio manipulować stylem
+      document.body.classList.add("lightbox-open");
     },
     [isImagesLoaded]
   );
 
   const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
-    document.body.style.overflow = "auto";
+    document.body.classList.remove("lightbox-open");
   }, []);
 
   const nextImage = useCallback(() => {
-    if (!isImagesLoaded || images.length === 0) return;
-    setCurrentImage((prev) => (prev + 1) % images.length);
-    setHasAnimated(true);
-  }, [images, isImagesLoaded]);
+    if (!isImagesLoaded || loadedImages.length === 0) return;
+    setCurrentImageIndex((prev) => (prev + 1) % loadedImages.length);
+  }, [isImagesLoaded, loadedImages.length]);
 
   const prevImage = useCallback(() => {
-    if (!isImagesLoaded || images.length === 0) return;
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
-    setHasAnimated(true);
-  }, [images, isImagesLoaded]);
+    if (!isImagesLoaded || loadedImages.length === 0) return;
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + loadedImages.length) % loadedImages.length
+    );
+  }, [isImagesLoaded, loadedImages.length]);
 
+  // Obsługa dotknięć - zoptymalizowana
   const handleTouchStart = useCallback((e) => {
     setTouchStart(e.touches[0].clientX);
   }, []);
 
   const handleTouchEnd = useCallback(
     (e) => {
-      if (!touchStart) return;
+      if (touchStart === null) return;
       const touchEnd = e.changedTouches[0].clientX;
       const swipeThreshold = 50;
-      if (touchStart - touchEnd > swipeThreshold) {
+      const deltaX = touchEnd - touchStart;
+
+      if (deltaX < -swipeThreshold) {
         nextImage();
-      } else if (touchEnd - touchStart > swipeThreshold) {
+      } else if (deltaX > swipeThreshold) {
         prevImage();
       }
       setTouchStart(null);
@@ -94,28 +201,34 @@ function Car() {
     [touchStart, nextImage, prevImage]
   );
 
+  // Obsługa klawiatury
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!isLightboxOpen) return;
+    if (!isLightboxOpen) return;
 
-      if (e.key === "ArrowRight") {
-        nextImage();
-      } else if (e.key === "ArrowLeft") {
-        prevImage();
-      } else if (e.key === "Escape") {
-        closeLightbox();
+    const handleKeyDown = (e) => {
+      switch (e.key) {
+        case "ArrowRight":
+          nextImage();
+          break;
+        case "ArrowLeft":
+          prevImage();
+          break;
+        case "Escape":
+          closeLightbox();
+          break;
+        default:
+          break;
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isLightboxOpen, nextImage, prevImage, closeLightbox]);
 
+  // Upewnienie się, że overflow jest resetowany przy odmontowaniu
   useEffect(() => {
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.classList.remove("lightbox-open");
     };
   }, []);
 
@@ -127,7 +240,10 @@ function Car() {
           name="description"
           content="Doświadcz najwyższego komfortu i stylu podróżując naszym Lexusem ES300h. Zamów przejazd premium taxi w Kielcach i poczuj różnicę."
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preload" href="/images/front-doors.webp" as="image" />
       </Helmet>
+
       <section className="car-intro-section">
         <div className="section-heading intro-heading">
           <h1>Podróżuj w Klasie Premium</h1>
@@ -137,101 +253,147 @@ function Car() {
           </p>
         </div>
         <div className="car-gallery-wrapper">
-          {isImagesLoaded ? (
+          {!isImagesLoaded ? (
+            <div className="gallery-loading">
+              <div className="loader"></div>
+              <p>Ładowanie galerii...</p>
+            </div>
+          ) : loadedImages.length > 0 ? (
             <>
               <div
                 className="car-gallery"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
-                <div className="arrow prev" onClick={prevImage}>
+                <button
+                  type="button"
+                  className="arrow prev"
+                  onClick={prevImage}
+                  aria-label="Poprzednie zdjęcie"
+                >
                   &#8249;
-                </div>
+                </button>
                 <div
                   className="image-wrapper"
-                  onClick={() => openLightbox(currentImage)}
+                  onClick={() => openLightbox(currentImageIndex)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) =>
+                    e.key === "Enter" && openLightbox(currentImageIndex)
+                  }
+                  aria-label={`Otwórz powiększenie - ${
+                    imageDescriptions[currentImageIndex] ||
+                    `Widok ${currentImageIndex + 1}`
+                  }`}
                 >
                   <img
-                    src={images[currentImage]}
+                    src={currentImageSrc}
                     alt={`Lexus ES300h - ${
-                      imageDescriptions[currentImage] ||
-                      `Widok ${currentImage + 1}`
+                      imageDescriptions[currentImageIndex] ||
+                      `Widok ${currentImageIndex + 1}`
                     }`}
                     className="car-img"
-                    loading="eager"
+                    loading={currentImageIndex === 0 ? "eager" : "lazy"}
+                    fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
+                    width="800"
+                    height="533"
                   />
                 </div>
-                <div className="arrow next" onClick={nextImage}>
+                <button
+                  type="button"
+                  className="arrow next"
+                  onClick={nextImage}
+                  aria-label="Następne zdjęcie"
+                >
                   &#8250;
-                </div>
+                </button>
               </div>
               <div className="gallery-thumbnails">
-                {images.map((img, index) => (
+                {imageListPaths.map((img, index) => (
                   <img
-                    key={index}
+                    key={`thumb-${index}`}
                     src={img}
                     alt={`Miniatura ${index + 1}`}
                     className={`thumbnail ${
-                      index === currentImage ? "active" : ""
+                      index === currentImageIndex ? "active" : ""
                     }`}
-                    onClick={() => {
-                      setCurrentImage(index);
-                      setHasAnimated(true);
-                    }}
-                    loading="eager"
+                    onClick={() => setCurrentImageIndex(index)}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" && setCurrentImageIndex(index)
+                    }
+                    loading="lazy"
+                    width="100"
+                    height="67"
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`Wybierz zdjęcie ${index + 1}`}
+                    aria-pressed={index === currentImageIndex}
                   />
                 ))}
               </div>
             </>
           ) : (
-            <div className="gallery-loading">
-              <div className="loader"></div>
-              <p>Ładowanie galerii...</p>
+            <div className="gallery-error">
+              <p>Nie udało się załadować galerii.</p>
             </div>
           )}
         </div>
       </section>
-      {isLightboxOpen && isImagesLoaded && (
+
+      {/* Lightbox - załadowany tylko gdy potrzebny */}
+      {isLightboxOpen && loadedImages.length > 0 && (
         <div
-          className={`lightbox ${isLightboxOpen ? "visible" : ""}`}
+          className="lightbox visible"
           ref={lightboxRef}
-          onClick={(e) => {
-            if (e.target === lightboxRef.current) closeLightbox();
-          }}
+          onClick={(e) => e.target === lightboxRef.current && closeLightbox()}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="lightbox-heading"
         >
           <div className="lightbox-content">
-            <span className="close-btn" onClick={closeLightbox}>
+            <button
+              type="button"
+              className="close-btn"
+              onClick={closeLightbox}
+              aria-label="Zamknij galerię"
+            >
               &times;
-            </span>
+            </button>
             <img
-              src={images[currentImage]}
+              src={currentImageSrc}
               alt={`Lexus ES300h - ${
-                imageDescriptions[currentImage] || `Widok ${currentImage + 1}`
+                imageDescriptions[currentImageIndex] ||
+                `Widok ${currentImageIndex + 1}`
               } (powiększenie)`}
-              className={`car-img ${hasAnimated ? "animate-once" : ""}`}
-              onAnimationEnd={() => setHasAnimated(false)}
+              className="car-img"
+              id="lightbox-heading"
             />
-            <div
+            <button
+              type="button"
               className="arrow prev lightbox-arrow"
               onClick={(e) => {
                 e.stopPropagation();
                 prevImage();
               }}
+              aria-label="Poprzednie zdjęcie"
             >
               &#8249;
-            </div>
-            <div
+            </button>
+            <button
+              type="button"
               className="arrow next lightbox-arrow"
               onClick={(e) => {
                 e.stopPropagation();
                 nextImage();
               }}
+              aria-label="Następne zdjęcie"
             >
               &#8250;
-            </div>
+            </button>
           </div>
         </div>
       )}
+
       <section className="car-experience-section">
         <div className="section-heading">
           <h2>Poczuj Różnicę Premium</h2>
@@ -240,74 +402,18 @@ function Car() {
           </p>
         </div>
         <div className="experience-grid">
-          <div className="experience-block">
-            <div className="experience-icon">
-              <i className="fas fa-couch"></i>
+          {experienceData.map((item, index) => (
+            <div className="experience-block" key={`exp-${index}`}>
+              <div className="experience-icon">
+                <FontAwesomeIcon icon={item.icon} />
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </div>
-            <h3>Oaza Spokoju i Komfortu</h3>
-            <p>
-              Zrelaksuj się w przestronnym wnętrzu wykończonym miękką skórą.
-              Podgrzewane i wentylowane fotele oraz cichy napęd hybrydowy
-              zapewnią Ci idealne warunki do odpoczynku lub pracy.
-            </p>
-          </div>
-          <div className="experience-block">
-            <div className="experience-icon">
-              <i className="fas fa-gem"></i>
-            </div>
-            <h3> Nienaganna estetyka i dyskretna elegancja</h3>
-            <p>
-              Każdy detal – od czystości wnętrza po wygląd kierowcy – jest
-              dopracowany z myślą o najwyższych standardach. U nas luksus nie
-              rzuca się w oczy – on po prostu jest.
-            </p>
-          </div>
-          <div className="experience-block">
-            <div className="experience-icon">
-              <i className="fas fa-shield-alt"></i>
-            </div>
-            <h3>Podróżuj Bezpiecznie</h3>
-            <p>
-              Twoje bezpieczeństwo jest dla nas priorytetem. Lexus ES300h
-              wyposażony jest w zaawansowany pakiet Lexus Safety System +, który
-              dba o Twój spokój podczas całej podróży.
-            </p>
-          </div>
-          <div className="experience-block">
-            <div className="experience-icon">
-              <i className="fas fa-wifi"></i>
-            </div>
-            <h3>Nowoczesne Udogodnienia</h3>
-            <p>
-              Korzystaj z nowoczesnego systemu multimedialnego, wysokiej klasy
-              nagłośnienia i automatycznej klimatyzacji z funkcją oczyszczania
-              powietrza Nanoe™ X. Dostępne porty USB naładują Twoje urządzenia.
-            </p>
-          </div>
-          <div className="experience-block">
-            <div className="experience-icon">
-              <i className="fas fa-clock"></i>
-            </div>
-            <h3>Zawsze na Czas</h3>
-            <p>
-              Cenimy Twój czas. Gwarantujemy punktualność i niezawodność, dzięki
-              czemu możesz bez stresu planować swoje spotkania biznesowe,
-              podróże lotnicze czy ważne wydarzenia.
-            </p>
-          </div>
-          <div className="experience-block">
-            <div className="experience-icon">
-              <i className="fas fa-user-shield"></i>
-            </div>
-            <h3>Dyskrecja i Prywatność</h3>
-            <p>
-              Zapewniamy pełną dyskrecję podczas każdej podróży. Ciemne szyby
-              oraz profesjonalne podejście naszego kierowcy gwarantują
-              prywatność i komfortowe warunki do rozmów lub odpoczynku.
-            </p>
-          </div>
+          ))}
         </div>
       </section>
+
       <section className="car-highlights-section">
         <div className="section-heading">
           <h2>Kluczowe Atuty Naszego Lexusa</h2>
@@ -315,65 +421,28 @@ function Car() {
         </div>
         <div className="highlights-list-container">
           <ul className="highlights-list">
-            <li className="highlight-entry">
-              <i className="fas fa-leaf highlight-icon"></i>
-              <span className="highlight-text">
-                Cichy i Ekologiczny Napęd Hybrydowy
-              </span>
-            </li>
-            <li className="highlight-entry">
-              <i className="fas fa-chair highlight-icon"></i>
-              <span className="highlight-text">
-                Luksusowa Skórzana Tapicerka
-              </span>
-            </li>
-            <li className="highlight-entry">
-              <i className="fas fa-thermometer-half highlight-icon"></i>
-              <span className="highlight-text">
-                Fotele Podgrzewane i Wentlowane
-              </span>
-            </li>
-            <li className="highlight-entry">
-              <i className="fas fa-volume-up highlight-icon"></i>
-              <span className="highlight-text">Nagłośnienie Klasy Premium</span>
-            </li>
-            <li className="highlight-entry">
-              <i className="fas fa-star highlight-icon"></i>
-              <span className="highlight-text">
-                Najwyższy Standard Bezpieczeństwa
-              </span>
-            </li>
-            <li className="highlight-entry">
-              <i className="fas fa-wind highlight-icon"></i>
-              <span className="highlight-text">
-                Klimatyzacja z Oczyszczaniem Powietrza Nanoe™ X
-              </span>
-            </li>
-            <li className="highlight-entry">
-              <i className="fas fa-user-tie highlight-icon"></i>
-              <span className="highlight-text">
-                Profesjonalny i Dyskretny Kierowca
-              </span>
-            </li>
-            <li className="highlight-entry">
-              <i className="fas fa-calendar-check highlight-icon"></i>
-              <span className="highlight-text">Gwarancja Punktualności</span>
-            </li>
+            {highlightsData.map((item, index) => (
+              <li className="highlight-entry" key={`highlight-${index}`}>
+                <FontAwesomeIcon icon={item.icon} className="highlight-icon" />
+                <span className="highlight-text">{item.text}</span>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
+
       <section className="car-cta-section">
         <h2>Gotowy na Podróż Klasy Premium?</h2>
         <p>
           Zarezerwuj przejazd naszym Lexusem ES300h i doświadcz komfortu, na
           jaki zasługujesz.
         </p>
-        <a href="/Kontakt" className="cta-button">
+        <Link to="/Kontakt" className="cta-button">
           Zamów Przejazd Teraz
-        </a>
+        </Link>
       </section>
     </div>
   );
-}
+};
 
-export default Car;
+export default React.memo(Car);

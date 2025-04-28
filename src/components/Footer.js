@@ -53,7 +53,7 @@ function Footer() {
         <h3>
           Bart Premium Services{" "}
           <div className="footer-logo">
-            <img src={require("./../images/logo.png")} alt="Logo" />
+            <img src="/images/logo.png" alt="Logo" />
           </div>
         </h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
@@ -90,7 +90,7 @@ function Footer() {
           <div className="footer-link-items">
             <h3>Social Media</h3>
             <a
-              href="https://wa.me/48660866047"
+              href="https://www.instagram.com/bartpremiumservices/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -100,7 +100,7 @@ function Footer() {
               Instagram
             </a>
             <a
-              href="https://wa.me/48660866047"
+              href="https://www.facebook.com/bartpremiumservices?locale=pl_PL"
               target="_blank"
               rel="noopener noreferrer"
             >

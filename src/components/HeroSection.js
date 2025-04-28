@@ -12,7 +12,7 @@ function HeroSection() {
         Lexus ES 300h | Usługi premium taxi | Kielce i cała Polska
       </div>
       <div className="hero-logo">
-      <img src={require('./../images/logo.png')} alt="Logo" />
+      <img src="/images/logo.png" alt="Logo" />
       </div>
       <div className="hero-btn">
         <a href="tel:+48660866047">Zarezerwuj przejazd</a>

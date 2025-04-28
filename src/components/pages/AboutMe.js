@@ -29,7 +29,6 @@ function AboutMe() {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log("Dodano klasę visible do:", entry.target);
           entry.target.classList.add("visible");
         }
       });
@@ -88,7 +87,7 @@ function AboutMe() {
         </Helmet>
         <div className="about-me-photo" ref={aboutMePhotoRef}>
           <img
-            src={require("../../images/face.webp")}
+            src="/images/driver-side.webp"
             alt="Moje zdjecie"
             loading="lazy"
           />
