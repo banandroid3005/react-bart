@@ -1,134 +1,137 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useGoogleTranslate } from './hooks/useGoogleTranslate.js'; // Upewnij się, że ścieżka jest poprawna
 import "./NavBar.css";
+
+// Definicja linków nawigacyjnych
+const navItems = [
+  { to: "/", text: "Home" },
+  { to: "/Usługi", text: "Usługi" },
+  { to: "/Auto", text: "Auto" },
+  { to: "/Kontakt", text: "Kontakt" },
+  { to: "/O-mnie", text: "O mnie" },
+];
+
+// Prosta implementacja throttle
+const throttle = (func, limit) => {
+  let inThrottle;
+  return function(...args) {
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+};
 
 function NavBar() {
   const [click, setClick] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { resetTranslation, switchToLanguage, removeGoogleTranslateWidgetParts } = useGoogleTranslate();
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  // Używamy ref, aby uniknąć dodawania throttledScrollHandler do zależności useEffect
+  const throttledScrollHandlerRef = useRef(null);
 
+  // Funkcje obsługi menu
+  const handleClick = useCallback(() => setClick((prevClick) => !prevClick), []);
+  const closeMobileMenu = useCallback(() => setClick(false), []);
+
+  // Efekt do obsługi scrolla i początkowego czyszczenia widżetu GT
   useEffect(() => {
+    // Funkcja sprawdzająca pozycję scrolla
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Tworzymy throttled handler tylko raz
+    if (!throttledScrollHandlerRef.current) {
+        throttledScrollHandlerRef.current = throttle(handleScroll, 150); // Throttle co 150ms
+    }
+
+    // Wywołaj raz na początku, aby ustawić stan
     handleScroll();
+    // Dodaj listener
+    window.addEventListener("scroll", throttledScrollHandlerRef.current);
 
+    // Początkowe usunięcie paska GT (z opóźnieniem, na wypadek gdyby ładował się asynchronicznie)
+    const initialCleanupTimeout = setTimeout(removeGoogleTranslateWidgetParts, 500);
+
+    // Cleanup function
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (throttledScrollHandlerRef.current) {
+          window.removeEventListener("scroll", throttledScrollHandlerRef.current);
+      }
+      clearTimeout(initialCleanupTimeout);
     };
-  }, []);
+  }, [removeGoogleTranslateWidgetParts]); // removeGoogleTranslateWidgetParts jest zależnością
 
-  const removeGoogleTranslateBar = () => {
-    const frame = document.querySelector("iframe.goog-te-banner-frame");
-    if (frame) {
-      frame.remove();
-    }
-    const menuFrame = document.querySelector(".goog-te-menu-frame");
-    if (menuFrame) {
-      menuFrame.remove();
-    }
-    const menu = document.querySelector(".goog-te-menu2");
-    if (menu) {
-      menu.remove();
-    }
-  };
+  // Wywołanie funkcji z hooka dla przycisków
+  const handleResetLang = useCallback(() => {
+      resetTranslation();
+      closeMobileMenu(); // Zamknij menu mobilne, jeśli było otwarte
+  }, [resetTranslation, closeMobileMenu]);
 
-  const translateToEnglish = () => {
-    const select = document.querySelector(".goog-te-combo");
-    if (select) {
-      select.value = "en";
-      select.dispatchEvent(new Event("change"));
-    }
-    removeGoogleTranslateBar();
-  };
+  const handleSwitchToEn = useCallback(() => {
+      switchToLanguage('en');
+      closeMobileMenu(); // Zamknij menu mobilne
+  }, [switchToLanguage, closeMobileMenu]);
 
-  const resetTranslation = () => {
-    document.cookie =
-      "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie =
-      "googtrans=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    const url = new URL(window.location.href);
-    url.searchParams.delete("googtrans");
-    window.history.replaceState({}, document.title, url.toString());
-    const select = document.querySelector(".goog-te-combo");
-    if (select) {
-      select.value = "";
-      select.dispatchEvent(new Event("change"));
-    }
-    removeGoogleTranslateBar();
-    window.location.reload();
-  };
-
-  useEffect(() => {
-    removeGoogleTranslateBar();
-  }, []);
 
   return (
     <>
       <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+          {/* Logo - kliknięcie resetuje język i zamyka menu */}
+          <Link to="/" className="navbar-logo" onClick={handleResetLang}>
             <span>Bart Premium Services</span>
-            <img src="/images/logo.webp" alt="Logo" loading="lazy"/>
+            {/* Dodaj rzeczywiste wymiary, aby uniknąć CLS */}
+            <img
+              src="/images/logo.webp"
+              alt="Logo Bart Premium Services"
+              loading="lazy"
+              width="150" /* Przykładowa szerokość */
+              height="50" /* Przykładowa wysokość */
+            />
           </Link>
 
           <div className="navbar-controls-right">
+            {/* Przełącznik języków */}
             <div className="language-switcher">
-              <button onClick={resetTranslation} className="lang-btn">
+              <button onClick={handleResetLang} className="lang-btn" aria-label="Przełącz na język polski">
                 PL
               </button>
-              <button onClick={translateToEnglish} className="lang-btn">
+              <button onClick={handleSwitchToEn} className="lang-btn" aria-label="Switch to English language">
                 EN
               </button>
             </div>
 
-            <div className="menu-icon" onClick={handleClick}>
-              <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+            {/* Ikona Menu */}
+            <div
+              className="menu-icon"
+              onClick={handleClick}
+              role="button"
+              aria-label={click ? "Zamknij menu nawigacyjne" : "Otwórz menu nawigacyjne"}
+              aria-expanded={click}
+              tabIndex={0} // Umożliwia fokusowanie
+            >
+              <i className={click ? "fas fa-times" : "fas fa-bars"} aria-hidden="true"></i> {/* Ikona jest dekoracyjna */}
             </div>
           </div>
 
+          {/* Menu nawigacyjne */}
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/Usługi"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Usługi
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/Auto" className="nav-links" onClick={closeMobileMenu}>
-                Auto
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/Kontakt"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Kontakt
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/O-mnie"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                O mnie
-              </Link>
-            </li>
+            {navItems.map((item) => (
+              <li className="nav-item" key={item.to}>
+                <Link
+                  to={item.to}
+                  className="nav-links"
+                  onClick={closeMobileMenu} // Zamyka menu po kliknięciu linku
+                >
+                  {item.text}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import "../../App.css";
 import "./Contact.css";
 import {
   FaPhoneAlt,

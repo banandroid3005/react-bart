@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Home – Taxi Lexus ES300h Kielce</title>
+        <title>Zamów luksusowy przejazd, transfer lotniskowy lub transport biznesowy</title>
         <meta
           name="description"
           content="Skontaktuj się z nami, aby zamówić usługę taxi Lexus ES300h w Kielcach. Dostępność, informacje o rezerwacjach, oraz kontakt telefoniczny."

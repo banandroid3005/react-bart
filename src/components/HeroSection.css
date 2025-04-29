@@ -1,3 +1,5 @@
+/* HeroSection.css - zoptymalizowany */
+
 .hero-container {
   max-width: 100%;
   min-height: 100vh;
@@ -18,12 +20,13 @@
   opacity: 0.15;
 }
 
-.hero-heading {
+/* Header section */
+.hero-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.hero-heading h2 {
+.hero-heading h1 {
   font-size: 3.2rem;
   color: #111;
   position: relative;
@@ -33,7 +36,7 @@
   animation: fadeInDown 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-.hero-heading h2::after {
+.hero-heading h1::after {
   content: "";
   position: absolute;
   width: 60%;
@@ -45,7 +48,6 @@
 }
 
 .hero-sub-heading {
-  text-align: center;
   font-size: 1.5rem;
   color: #333;
   max-width: 900px;
@@ -56,31 +58,32 @@
   opacity: 0;
 }
 
-.hero-btn {
-  text-align: center;
-  margin: 3rem auto 5rem;
-  animation: fadeInUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  animation-delay: 0.4s;
-  opacity: 0;
-}
 .hero-logo {
-  text-align: center;
   margin: 2rem auto 4rem;
   animation: fadeInUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   animation-delay: 0.4s;
 }
+
 .hero-logo img {
-  size: 10rem;
   margin: 0 auto;
   display: block;
-}
-.hero-logo img:hover {
-  transform: scale(1.2);
   transition: transform 0.5s ease;
 }
+
+.hero-logo img:hover {
+  transform: scale(1.2);
+}
+
 .hero-logo img:active {
   animation: pulse 0.8s ease-out;
   transform: scale(0.98);
+}
+
+.hero-btn {
+  margin: 3rem auto 5rem;
+  animation: fadeInUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
 }
 
 .hero-btn a {
@@ -133,6 +136,7 @@
   transform: scale(0.98);
 }
 
+/* Columns layout */
 .hero-columns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -144,8 +148,15 @@
   opacity: 0;
 }
 
+/* Services section */
+.hero-services {
+  max-width: 90%;
+  margin: 0 auto 4rem;
+}
+
+/* Column styles - shared properties */
+.hero-column,
 .hero-column-offer {
-  grid-column: span 2;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -155,21 +166,9 @@
   overflow: hidden;
   z-index: 1;
   border: 1px solid rgba(0, 0, 0, 0.03);
-  animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  animation-delay: 0.8s;
-  opacity: 0;
 }
 
 .hero-column {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  padding: 3.5rem 3rem;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  border: 1px solid rgba(0, 0, 0, 0.03);
   animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
@@ -177,7 +176,14 @@
   animation-delay: 0.6s;
   opacity: 0;
 }
+
 .hero-column:nth-child(2) {
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.hero-column-offer {
+  animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   animation-delay: 0.8s;
   opacity: 0;
 }
@@ -250,12 +256,13 @@
   margin-bottom: 1.5rem;
 }
 
-.hero-column ul {
+/* Benefits list */
+.benefits-list {
   padding-left: 0;
   list-style-type: none;
 }
 
-.hero-column ul li {
+.benefits-list li {
   color: #444;
   line-height: 1.8;
   font-size: 1.15rem;
@@ -264,11 +271,13 @@
   transition: transform 0.3s ease;
 }
 
-.hero-column ul li:hover {
+.benefits-list li:hover {
   transform: translateX(5px);
 }
 
-.hero-column a {
+/* Links */
+.learn-more-link,
+.contact-link {
   display: inline-block;
   color: #111;
   font-weight: 600;
@@ -278,7 +287,7 @@
   padding: 0.5rem 0;
 }
 
-.hero-column a::after {
+.learn-more-link::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -289,19 +298,19 @@
   transition: width 0.3s ease;
 }
 
-.hero-column a:hover {
+.learn-more-link:hover {
   color: #333;
 }
 
-.hero-column a:hover::after {
+.learn-more-link:hover::after {
   width: 100%;
 }
 
+/* Call to action section */
 .container-call {
   text-align: center;
   margin: 5rem auto;
   padding: 4rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -332,13 +341,13 @@
   border-radius: 1.5px;
 }
 
-.container-call a {
+.container-call .contact-link {
   display: inline-block;
   margin: 1.5rem auto;
   padding: 1.2rem 2.5rem;
   background: #111;
   color: #fff;
-  width: 600px;
+  max-width: 600px;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
@@ -349,7 +358,7 @@
   z-index: 1;
 }
 
-.container-call a::before {
+.container-call .contact-link::before {
   content: "";
   position: absolute;
   top: 0;
@@ -363,16 +372,17 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.container-call a:hover::before {
+.container-call .contact-link:hover::before {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.container-call a:hover {
+.container-call .contact-link:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Animations */
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -416,6 +426,7 @@
   }
 }
 
+/* Media queries */
 @media (max-width: 1200px) {
   .hero-columns {
     gap: 3rem;
@@ -432,7 +443,7 @@
     max-width: 95%;
   }
 
-  .hero-heading h2 {
+  .hero-heading h1 {
     font-size: 2.8rem;
   }
 
@@ -451,11 +462,11 @@
     padding: 4rem 1.5rem;
   }
 
-  .hero-heading {
+  .hero-header {
     margin-bottom: 2.5rem;
   }
 
-  .hero-heading h2 {
+  .hero-heading h1 {
     font-size: 2.4rem;
   }
 
@@ -463,17 +474,19 @@
     font-size: 1rem;
     margin-bottom: 2rem;
   }
+
   .hero-logo {
     max-width: 80%;
     margin: 0 auto 0.5rem;
   }
+
   .hero-columns {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
-  .hero-column-offer {
-    grid-column: span 1;
+  .hero-services {
+    max-width: 100%;
   }
 
   .hero-btn {
@@ -491,7 +504,7 @@
 }
 
 @media (max-width: 576px) {
-  .hero-heading h2 {
+  .hero-heading h1 {
     font-size: 2.2rem;
   }
 
@@ -511,7 +524,7 @@
 
   .hero-column p,
   .hero-column-offer p,
-  .hero-column ul li {
+  .benefits-list li {
     font-size: 1rem;
   }
 
@@ -528,10 +541,9 @@
     font-size: 1.6rem;
   }
 
-  .container-call a {
+  .container-call .contact-link {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
-    width: auto;
     max-width: 90%;
     word-wrap: break-word;
   }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback, memo } from "react";
 import "./AboutMe.css";
 import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,15 +16,36 @@ import {
   faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
 
-function AboutMe() {
-  const aboutMeContainerRef = useRef(null);
-  const aboutMePhotoRef = useRef(null);
-  const aboutMeTextRef = useRef(null);
-  const servicesContainerRef = useRef(null);
-  const serviceRefs = useRef([]);
-  const standardsSectionRef = useRef(null); 
-  const standardItemRefs = useRef([]); 
+const Service = memo(({ icon, title, description, index }) => {
+  const serviceRef = useRef(null);
 
+  useEffect(() => {
+    serviceRef.current?.classList.add(`delay-${(index % 3) + 1}`);
+  }, [index]);
+
+  return (
+    <div className="aboutMe-service" ref={serviceRef} data-aos="fade-up">
+      <div className="aboutMe-service-icon">
+        <FontAwesomeIcon icon={icon} />
+      </div>
+      <div className="aboutMe-service-text">
+        <h4>{title}</h4>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+});
+
+// Memoized StandardItem component
+const StandardItem = memo(({ icon, title, description }) => (
+  <div className="standard-item" data-aos="fade-up">
+    <FontAwesomeIcon icon={icon} className="standard-icon" />
+    <h4>{title}</h4>
+    <p>{description}</p>
+  </div>
+));
+
+function AboutMe() {
   useEffect(() => {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
@@ -40,44 +61,82 @@ function AboutMe() {
       rootMargin: "0px",
     });
 
-    if (aboutMeContainerRef.current)
-      observer.observe(aboutMeContainerRef.current);
-    if (aboutMePhotoRef.current) observer.observe(aboutMePhotoRef.current);
-    if (aboutMeTextRef.current) observer.observe(aboutMeTextRef.current);
-    if (servicesContainerRef.current)
-      observer.observe(servicesContainerRef.current);
-    if (standardsSectionRef.current)
-      observer.observe(standardsSectionRef.current); 
-
-    serviceRefs.current.forEach((ref, index) => {
-      if (ref) {
-        ref.classList.add(`delay-${(index % 3) + 1}`);
-        observer.observe(ref);
-      }
-    });
-
-    standardItemRefs.current.forEach((ref) => {
-      if (ref) {
-        observer.observe(ref);
-      }
-    });
+    const elementsToObserve = document.querySelectorAll('[data-aos="fade-up"]');
+    elementsToObserve.forEach((el) => observer.observe(el));
 
     return () => {
       observer.disconnect();
     };
   }, []);
 
-  const setServiceRef = (element, index) => {
-    serviceRefs.current[index] = element;
-  };
+  const services = [
+    {
+      icon: faCrown,
+      title: "Transport VIP",
+      description:
+        "Oferujemy przewóz osób VIP, w tym celebrytów, sportowców i osób wymagających najwyższej jakości usług.",
+    },
+    {
+      icon: faPlaneDeparture,
+      title: "Przewóz na lotnisko",
+      description:
+        "Zapewniamy komfortowy transport na lotniska w Polsce i za granicą, z pełnym profesjonalizmem i punktualnością.",
+    },
+    {
+      icon: faCalendarCheck,
+      title: "Transfery na eventy",
+      description:
+        "Oferujemy usługi transportowe na wszelkiego rodzaju eventy, konferencje, wesela, koncerty i inne ważne wydarzenia.",
+    },
+  ];
 
-  const setStandardItemRef = (element, index) => {
-    standardItemRefs.current[index] = element;
-  };
+  const standards = [
+    {
+      icon: faClock,
+      title: "Punktualność",
+      description: "Na miejscu zawsze kilka minut przed czasem. Zawsze.",
+    },
+    {
+      icon: faCar,
+      title: "Perfekcyjna Czystość",
+      description: "Auto czyszczone po każdym kursie – wnętrze jak nowe.",
+    },
+    {
+      icon: faShieldAlt,
+      title: "Pełna Dyskrecja",
+      description:
+        "Nie pytam, nie opowiadam. Twoja prywatność jest priorytetem.",
+    },
+    {
+      icon: faMusic,
+      title: "Spokój i Komfort",
+      description: "Subtelna muzyka lub cisza – Ty decydujesz.",
+    },
+    {
+      icon: faLanguage,
+      title: "Komunikacja",
+      description: "Rozmawiam po polsku i angielsku – bez barier.",
+    },
+    {
+      icon: faTools,
+      title: "Zawsze przygotowany",
+      description: "Auto gotowe nawet na najbardziej wymagające przejazdy.",
+    },
+    {
+      icon: faGem,
+      title: "Klasa i styl",
+      description: "Nie tylko pojazd, ale cała obsługa w duchu premium.",
+    },
+    {
+      icon: faSlidersH,
+      title: "Drobiazgi mają znaczenie",
+      description: "Od temperatury wnętrza po muzykę — wszystko pod Ciebie.",
+    },
+  ];
 
   return (
     <>
-      <div className="about-me-container" ref={aboutMeContainerRef}>
+      <div className="about-me-container" data-aos="fade-up">
         <Helmet>
           <title>O mnie – Taxi Premium Lexus ES300h Kielce</title>
           <meta
@@ -85,14 +144,16 @@ function AboutMe() {
             content="Poznaj właściciela i kierowcę usługi premium taxi Lexus ES300h w Kielcach. Dowiedz się, dlaczego warto skorzystać z naszej oferty."
           />
         </Helmet>
-        <div className="about-me-photo" ref={aboutMePhotoRef}>
+        <div className="about-me-photo" data-aos="fade-up">
           <img
             src="/images/driver-side.webp"
             alt="Moje zdjecie"
             loading="lazy"
+            width="400"
+            height="600"
           />
         </div>
-        <div className="about-me-text" ref={aboutMeTextRef}>
+        <div className="about-me-text" data-aos="fade-up">
           <h2>O Mnie</h2>
           <p>
             Mam duże doświadczenie jako kierowca, specjalizując się w usługach
@@ -117,48 +178,21 @@ function AboutMe() {
           </p>
         </div>
       </div>
-      <div className="aboutMe-services-container" ref={servicesContainerRef}>
+      <div className="aboutMe-services-container" data-aos="fade-up">
         <h3>Nasze Usługi</h3>
         <div className="aboutMe-services-list">
-          <div className="aboutMe-service" ref={(el) => setServiceRef(el, 0)}>
-            <div className="aboutMe-service-icon">
-              <FontAwesomeIcon icon={faCrown} />
-            </div>
-            <div className="aboutMe-service-text">
-              <h4>Transport VIP</h4>
-              <p>
-                Oferujemy przewóz osób VIP, w tym celebrytów, sportowców i osób
-                wymagających najwyższej jakości usług.
-              </p>
-            </div>
-          </div>
-          <div className="aboutMe-service" ref={(el) => setServiceRef(el, 1)}>
-            <div className="aboutMe-service-icon">
-              <FontAwesomeIcon icon={faPlaneDeparture} />
-            </div>
-            <div className="aboutMe-service-text">
-              <h4>Przewóz na lotnisko</h4>
-              <p>
-                Zapewniamy komfortowy transport na lotniska w Polsce i za
-                granicą, z pełnym profesjonalizmem i punktualnością.
-              </p>
-            </div>
-          </div>
-          <div className="aboutMe-service" ref={(el) => setServiceRef(el, 2)}>
-            <div className="aboutMe-service-icon">
-              <FontAwesomeIcon icon={faCalendarCheck} />
-            </div>
-            <div className="aboutMe-service-text">
-              <h4>Transfery na eventy</h4>
-              <p>
-                Oferujemy usługi transportowe na wszelkiego rodzaju eventy,
-                konferencje, wesela, koncerty i inne ważne wydarzenia.
-              </p>
-            </div>
-          </div>
+          {services.map((service, index) => (
+            <Service
+              key={index}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              index={index}
+            />
+          ))}
         </div>
       </div>
-      <section className="standards-section" ref={standardsSectionRef}>
+      <section className="standards-section" data-aos="fade-up">
         <div className="standards-header">
           <h2>Moje Standardy</h2>
           <p>
@@ -166,74 +200,18 @@ function AboutMe() {
           </p>
         </div>
         <div className="standards-grid">
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 0)}
-          >
-            <FontAwesomeIcon icon={faClock} className="standard-icon" />
-            <h4>Punktualność</h4>
-            <p>Na miejscu zawsze kilka minut przed czasem. Zawsze.</p>
-          </div>
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 1)}
-          >
-            <FontAwesomeIcon icon={faCar} className="standard-icon" />
-            <h4>Perfekcyjna Czystość</h4>
-            <p>Auto czyszczone po każdym kursie – wnętrze jak nowe.</p>
-          </div>
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 2)}
-          >
-            <FontAwesomeIcon icon={faShieldAlt} className="standard-icon" />
-            <h4>Pełna Dyskrecja</h4>
-            <p>Nie pytam, nie opowiadam. Twoja prywatność jest priorytetem.</p>
-          </div>
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 3)}
-          >
-            <FontAwesomeIcon icon={faMusic} className="standard-icon" />
-            <h4>Spokój i Komfort</h4>
-            <p>Subtelna muzyka lub cisza – Ty decydujesz.</p>
-          </div>
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 4)}
-          >
-            <FontAwesomeIcon icon={faLanguage} className="standard-icon" />
-            <h4>Komunikacja</h4>
-            <p>Rozmawiam po polsku i angielsku – bez barier.</p>
-          </div>
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 5)}
-          >
-            <FontAwesomeIcon icon={faTools} className="standard-icon" />
-            <h4>Zawsze przygotowany</h4>
-            <p>Auto gotowe nawet na najbardziej wymagające przejazdy.</p>
-          </div>
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 6)}
-          >
-            <FontAwesomeIcon icon={faGem} className="standard-icon" />
-            <h4>Klasa i styl</h4>
-            <p>Nie tylko pojazd, ale cała obsługa w duchu premium.</p>
-          </div>
-          <div
-            className="standard-item"
-            ref={(el) => setStandardItemRef(el, 7)}
-          >
-            <FontAwesomeIcon icon={faSlidersH} className="standard-icon" />
-            <h4>Drobiazgi mają znaczenie</h4>
-            <p>Od temperatury wnętrza po muzykę — wszystko pod Ciebie.</p>
-          </div>
+          {standards.map((standard, index) => (
+            <StandardItem
+              key={index}
+              icon={standard.icon}
+              title={standard.title}
+              description={standard.description}
+            />
+          ))}
         </div>
       </section>
     </>
   );
 }
 
-export default AboutMe;
+export default memo(AboutMe);

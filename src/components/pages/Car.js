@@ -26,7 +26,6 @@ import {
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
-// Dane statyczne przeniesione poza komponent
 const imageListPaths = [
   "/images/front-doors.webp",
   "/images/interior.webp",
@@ -43,7 +42,6 @@ const imageDescriptions = [
   "Pojemny bagażnik Lexusa ES300h",
 ];
 
-// Dane dla sekcji "Experience"
 const experienceData = [
   {
     icon: faCouch,
@@ -77,7 +75,6 @@ const experienceData = [
   },
 ];
 
-// Dane dla sekcji "Highlights"
 const highlightsData = [
   { icon: faLeaf, text: "Cichy i Ekologiczny Napęd Hybrydowy" },
   { icon: faChair, text: "Luksusowa Skórzana Tapicerka" },
@@ -97,43 +94,39 @@ const Car = () => {
   const lightboxRef = useRef(null);
   const [touchStart, setTouchStart] = useState(null);
 
-  // Optymalizacja preloadingu obrazów
   useEffect(() => {
     const controller = new AbortController();
     const loadImages = async () => {
       try {
-        // Najpierw ładujemy tylko pierwsze zdjęcie dla szybszego renderowania
         const firstImg = new Image();
         firstImg.src = imageListPaths[0];
         await new Promise((resolve) => {
           firstImg.onload = resolve;
-          firstImg.onerror = resolve; // Kontynuuj nawet przy błędzie
+          firstImg.onerror = resolve;
         });
 
         if (controller.signal.aborted) return;
         setLoadedImages([imageListPaths[0]]);
         setIsImagesLoaded(true);
 
-        // Następnie ładujemy resztę obrazów w tle
         const otherImagePromises = imageListPaths.slice(1).map((src) => {
           return new Promise((resolve) => {
             const img = new Image();
             img.src = src;
             img.onload = () => resolve(src);
-            img.onerror = () => resolve(null); // Kontynuuj z null przy błędzie
+            img.onerror = () => resolve(null);
           });
         });
 
         const otherLoadedImages = await Promise.all(otherImagePromises);
         if (controller.signal.aborted) return;
 
-        // Filtrujemy null wartości (błędne zdjęcia) i dodajemy do stanu
         const validImages = otherLoadedImages.filter((img) => img !== null);
         setLoadedImages((prev) => [...prev, ...validImages]);
       } catch (error) {
         console.error("Problem z ładowaniem obrazów:", error);
         if (!controller.signal.aborted) {
-          setIsImagesLoaded(true); // Pozwalamy UI zareagować
+          setIsImagesLoaded(true);
         }
       }
     };
@@ -145,7 +138,6 @@ const Car = () => {
     };
   }, []);
 
-  // Memoizacja currentImageSrc
   const currentImageSrc = useMemo(() => {
     if (!isImagesLoaded || loadedImages.length === 0) return "";
     return loadedImages[currentImageIndex] || imageListPaths[currentImageIndex];
@@ -156,7 +148,6 @@ const Car = () => {
       if (!isImagesLoaded) return;
       setCurrentImageIndex(index);
       setIsLightboxOpen(true);
-      // Używamy klasy CSS zamiast bezpośrednio manipulować stylem
       document.body.classList.add("lightbox-open");
     },
     [isImagesLoaded]
@@ -179,7 +170,6 @@ const Car = () => {
     );
   }, [isImagesLoaded, loadedImages.length]);
 
-  // Obsługa dotknięć - zoptymalizowana
   const handleTouchStart = useCallback((e) => {
     setTouchStart(e.touches[0].clientX);
   }, []);
@@ -201,7 +191,6 @@ const Car = () => {
     [touchStart, nextImage, prevImage]
   );
 
-  // Obsługa klawiatury
   useEffect(() => {
     if (!isLightboxOpen) return;
 
@@ -225,7 +214,6 @@ const Car = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isLightboxOpen, nextImage, prevImage, closeLightbox]);
 
-  // Upewnienie się, że overflow jest resetowany przy odmontowaniu
   useEffect(() => {
     return () => {
       document.body.classList.remove("lightbox-open");
@@ -339,8 +327,6 @@ const Car = () => {
           )}
         </div>
       </section>
-
-      {/* Lightbox - załadowany tylko gdy potrzebny */}
       {isLightboxOpen && loadedImages.length > 0 && (
         <div
           className="lightbox visible"
@@ -430,7 +416,6 @@ const Car = () => {
           </ul>
         </div>
       </section>
-
       <section className="car-cta-section">
         <h2>Gotowy na Podróż Klasy Premium?</h2>
         <p>

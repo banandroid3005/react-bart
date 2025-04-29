@@ -11,7 +11,6 @@ import AboutMe from './components/pages/AboutMe';
 import './components/CnInfo.css';
 import './components/ScrollToTop';
 import ScrollToTop from './components/ScrollToTop';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import CnInfo from './components/CnInfo';
 
 function App() {
