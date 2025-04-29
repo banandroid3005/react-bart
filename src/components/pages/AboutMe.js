@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, memo } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import "./AboutMe.css";
 import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
