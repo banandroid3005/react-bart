@@ -73,7 +73,7 @@ function NavBar() {
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             <span>Bart Premium Services</span>
-            <img src="/images/logo.png" alt="Logo" />
+            <img src="/images/logo.webp" alt="Logo" loading="lazy"/>
           </Link>
 
           <div className="navbar-controls-right">

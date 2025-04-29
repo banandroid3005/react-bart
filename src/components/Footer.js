@@ -53,7 +53,7 @@ function Footer() {
         <h3>
           Bart Premium Services{" "}
           <div className="footer-logo">
-            <img src="/images/logo.png" alt="Logo" />
+            <img src="/images/logo.webp" alt="Logo" loading="lazy"/>
           </div>
         </h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>

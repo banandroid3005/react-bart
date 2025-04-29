@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./AboutMe.css";
 import { Helmet } from "react-helmet";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCrown,
   faPlaneDeparture,
