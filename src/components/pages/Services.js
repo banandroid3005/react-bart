@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import "./Services.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,6 +18,13 @@ import {
 function Services() {
   return (
     <div className="services-background">
+      <Helmet>
+        <title>Usługi premium, przejazdy, transfery lotniskowe, transport na eventy w Bart Premium Services</title>
+        <meta
+          name="description"
+          content="Skontaktuj się z nami, aby zamówić premium usługę taxi w Kielcach. Dostępność, informacje o rezerwacjach, oraz kontakt telefoniczny."
+        />
+      </Helmet>
       <div className="services-container">
         <div className="services-heading">
           <h2>Nasze Usługi</h2>

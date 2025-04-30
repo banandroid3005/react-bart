@@ -138,7 +138,7 @@ function AboutMe() {
     <>
       <div className="about-me-container" data-aos="fade-up">
         <Helmet>
-          <title>O mnie – Taxi Premium Lexus ES300h Kielce</title>
+          <title>O mnie – Kierowca Bart Premium Services</title>
           <meta
             name="description"
             content="Poznaj właściciela i kierowcę usługi premium taxi Lexus ES300h w Kielcach. Dowiedz się, dlaczego warto skorzystać z naszej oferty."

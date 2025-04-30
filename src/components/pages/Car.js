@@ -223,13 +223,11 @@ const Car = () => {
   return (
     <div className="car-page-container">
       <Helmet>
-        <title>Lexus ES300h | Twoja Podróż Premium w Kielcach</title>
+        <title>Zamów przejazd premium w Lexusie ES 300h</title>
         <meta
           name="description"
           content="Doświadcz najwyższego komfortu i stylu podróżując naszym Lexusem ES300h. Zamów przejazd premium taxi w Kielcach i poczuj różnicę."
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preload" href="/images/front-doors.webp" as="image" />
       </Helmet>
 
       <section className="car-intro-section">

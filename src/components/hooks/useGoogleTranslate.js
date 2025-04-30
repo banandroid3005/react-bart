@@ -1,97 +1,238 @@
-import { useCallback } from 'react';
+import { useCallback, useRef } from "react";
 
 // Stałe dla selektorów i nazwy cookie
-const GOOGLE_TRANSLATE_COMBO_SELECTOR = '.goog-te-combo';
-const GOOGLE_TRANSLATE_BANNER_SELECTOR = 'iframe.goog-te-banner-frame';
-const GOOGLE_TRANSLATE_MENU_FRAME_SELECTOR = '.goog-te-menu-frame';
-const GOOGLE_TRANSLATE_MENU_SELECTOR = '.goog-te-menu2';
-const GOOGLE_TRANSLATE_COOKIE_NAME = 'googtrans';
-
-// Funkcja pomocnicza do usuwania elementu z DOM
-const removeElement = (selector) => {
-  try {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.remove();
-      // Czasami Google dodaje styl 'top' do body, resetujemy go
-      if (selector === GOOGLE_TRANSLATE_BANNER_SELECTOR) {
-          document.body.style.top = '';
-      }
-    }
-  } catch (error) {
-    console.error(`Error removing Google Translate element (${selector}):`, error);
-  }
+const SELECTORS = {
+  combo: ".goog-te-combo",
+  banner: "iframe.goog-te-banner-frame",
+  menuFrame: ".goog-te-menu-frame",
+  menu: ".goog-te-menu2",
 };
 
-// Funkcja pomocnicza do usuwania ciasteczka
-const deleteCookie = (name) => {
-    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    document.cookie = `${name}=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`; // Czasami potrzebny jest też taki format
-};
+const COOKIE_NAME = "googtrans";
 
+/**
+ * Hook do zarządzania Google Translate na stronie
+ *
+ * @returns {Object} Interfejs do zarządzania Google Translate
+ */
 export const useGoogleTranslate = () => {
+  // Używamy referencji do timeoutów, aby móc je anulować
+  const timeoutsRef = useRef([]);
 
+  /**
+   * Czyści wszystkie zarejestrowane timeouty
+   */
+  const clearAllTimeouts = useCallback(() => {
+    while (timeoutsRef.current.length) {
+      clearTimeout(timeoutsRef.current.pop());
+    }
+  }, []);
+
+  /**
+   * Usuwa element z DOM na podstawie selektora
+   *
+   * @param {string} selector - Selektor CSS elementu do usunięcia
+   */
+  const removeElement = useCallback((selector) => {
+    try {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.remove();
+        // Przywracamy normalne zachowanie strony jeśli to był banner
+        if (selector === SELECTORS.banner) {
+          document.body.style.removeProperty("top");
+          document.body.style.removeProperty("position");
+        }
+      }
+    } catch (error) {
+      console.error(`Błąd podczas usuwania elementu (${selector}):`, error);
+    }
+  }, []);
+
+  /**
+   * Usuwa wszystkie elementy Google Translate z DOM
+   */
   const removeGoogleTranslateWidgetParts = useCallback(() => {
-    // Usuwa różne części widżetu Google Translate
-    removeElement(GOOGLE_TRANSLATE_BANNER_SELECTOR);
-    removeElement(GOOGLE_TRANSLATE_MENU_FRAME_SELECTOR);
-    removeElement(GOOGLE_TRANSLATE_MENU_SELECTOR);
+    // Usuwamy widoczne elementy interfejsu Google Translate
+    removeElement(SELECTORS.banner);
+    removeElement(SELECTORS.menuFrame);
+
+    // Próbujemy dostać się do menu wewnątrz iframe (jeśli istnieje)
+    const menuFrames = document.querySelectorAll(SELECTORS.menuFrame);
+    menuFrames.forEach((frame) => {
+      try {
+        if (frame.contentDocument) {
+          const menu = frame.contentDocument.querySelector(SELECTORS.menu);
+          if (menu) menu.remove();
+        }
+      } catch (e) {
+        // Ignorujemy błędy CORS
+      }
+    });
+
+    // Przywracamy normalne zachowanie dokumentu
+    document.body.style.removeProperty("top");
+    document.body.style.removeProperty("position");
+    document.body.classList.remove("translated-ltr", "translated-rtl");
+
+    // Usuwamy style Google Translate, jeśli istnieją
+    const gtStyleElem = document.getElementById(":1.container");
+    if (gtStyleElem) gtStyleElem.remove();
+  }, [removeElement]);
+
+  /**
+   * Usuwa ciasteczka Google Translate
+   */
+  const deleteCookies = useCallback(() => {
+    // Lista domen i ścieżek do wyczyszczenia ciasteczek
+    const domains = [
+      document.location.hostname,
+      `.${document.location.hostname}`,
+      "",
+    ];
+    const paths = ["/", ""];
+    const cookieValues = ["", "/", "/auto/pl", "/pl/en", "/en/pl"];
+
+    // Systematycznie usuwamy wszystkie możliwe warianty ciasteczek
+    domains.forEach((domain) => {
+      paths.forEach((path) => {
+        cookieValues.forEach((value) => {
+          const cookieString = `${COOKIE_NAME}=${value}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path}${
+            domain ? `; domain=${domain}` : ""
+          };`;
+          document.cookie = cookieString;
+        });
+      });
+    });
   }, []);
 
-  const triggerGoogleTranslateChange = useCallback((langValue) => {
-    // Wyzwala zmianę języka w widżecie Google
+  /**
+   * Wywołuje zmianę języka w widżecie Google Translate
+   *
+   * @param {string} langCode - Kod języka (np. 'en', 'pl' lub '' dla resetowania)
+   * @returns {boolean} - True jeśli operacja zakończyła się powodzeniem
+   */
+  const triggerGoogleTranslateChange = useCallback((langCode) => {
     try {
-      const select = document.querySelector(GOOGLE_TRANSLATE_COMBO_SELECTOR);
-      if (select) {
-        select.value = langValue;
-        select.dispatchEvent(new Event('change'));
+      const select = document.querySelector(SELECTORS.combo);
+      if (!select) {
+        return false;
+      }
+
+      // Ustawiamy wartość i wywołujemy zdarzenie
+      select.value = langCode;
+
+      // Obsługa nowoczesnych i starszych przeglądarek
+      if (typeof Event === "function") {
+        select.dispatchEvent(new Event("change"));
       } else {
-        console.warn('Google Translate select element not found.');
+        const event = document.createEvent("Event");
+        event.initEvent("change", true, true);
+        select.dispatchEvent(event);
       }
+
+      return true;
     } catch (error) {
-      console.error('Error triggering Google Translate change:', error);
+      console.error("Błąd podczas zmiany języka:", error);
+      return false;
     }
   }, []);
 
+  /**
+   * Resetuje tłumaczenie do języka polskiego
+   */
   const resetTranslation = useCallback(() => {
-    // Resetuje tłumaczenie - UWAGA: Manipulacja DOM, ciasteczkami, historią
-    console.log('Attempting to reset translation without reload...');
-    try {
-      // 1. Wyczyść ciasteczka Google Translate
-      deleteCookie(GOOGLE_TRANSLATE_COOKIE_NAME);
+    // Anulujemy wszystkie timeouty, które mogą być w toku
+    clearAllTimeouts();
 
-      // 2. Usuń parametr 'googtrans' z URL bez przeładowania
+    try {
+      // Czyszczenie ciasteczek
+      deleteCookies();
+
+      // Usuwamy parametr googtrans z URL
       const url = new URL(window.location.href);
-      if (url.searchParams.has(GOOGLE_TRANSLATE_COOKIE_NAME)) {
-          url.searchParams.delete(GOOGLE_TRANSLATE_COOKIE_NAME);
-          window.history.replaceState({}, document.title, url.toString());
-          console.log('Removed googtrans from URL');
+      if (url.searchParams.has(COOKIE_NAME)) {
+        url.searchParams.delete(COOKIE_NAME);
+        window.history.replaceState({}, document.title, url.toString());
       }
 
-      triggerGoogleTranslateChange('');
-      console.log('Triggered change event on select');
+      // Bezpośrednio usuwamy wszystkie ślady po Google Translate
+      // Nie próbujemy już zmieniać wartości w <select>
+      removeGoogleTranslateWidgetParts();
 
-      setTimeout(removeGoogleTranslateWidgetParts, 150);
+      // Dodajemy opóźnione wywołanie czyszczenia dla pewności,
+      // gdyby GT próbowało coś przywrócić asynchronicznie.
+      // Możesz dostosować lub usunąć ten timeout, jeśli nie jest potrzebny.
+      const ensureCleanupTimeout = setTimeout(removeGoogleTranslateWidgetParts, 350); // Niewielkie opóźnienie
+      timeoutsRef.current.push(ensureCleanupTimeout);
 
-      // 5. OSTATECZNOŚĆ: Jeśli powyższe kroki nie działają, odkomentuj poniższą linię.
-      // Pamiętaj, że przeładowanie strony jest bardzo nieefektywne w SPA.
-      window.location.reload();
-      // console.log('Reload fallback was required (or is still commented out).');
+      // Ustawiamy język dokumentu na polski (oryginalny)
+      document.documentElement.setAttribute("lang", "pl");
 
     } catch (error) {
-      console.error('Error resetting translation:', error);
-      // W razie błędu, można rozważyć przeładowanie jako fallback
-      // window.location.reload();
+      console.error("Błąd podczas resetowania tłumaczenia (powrót do oryginału):", error);
     }
-  }, [removeGoogleTranslateWidgetParts, triggerGoogleTranslateChange]);
+    window.location.reload(); // Odświeżamy stronę, aby zastosować zmiany
+  }, [
+    clearAllTimeouts,
+    deleteCookies,
+    removeGoogleTranslateWidgetParts, // triggerGoogleTranslateChange usunięty z zależności
+  ]);
+  /**
+   * Przełącza na wybrany język
+   *
+   * @param {string} langCode - Kod języka (np. 'en')
+   */
+  const switchToLanguage = useCallback(
+    (langCode) => {
+      // Anulujemy wszystkie timeouty
+      clearAllTimeouts();
 
-  const switchToLanguage = useCallback((langCode) => {
-      // Przełącza na wybrany język
-      triggerGoogleTranslateChange(langCode);
-      // Usuń pasek po zmianie (może się pojawić ponownie)
-      setTimeout(removeGoogleTranslateWidgetParts, 150);
-  }, [removeGoogleTranslateWidgetParts, triggerGoogleTranslateChange]);
+      try {
+        // Czyszczenie ciasteczek i URL
+        deleteCookies();
 
-  // Zwracamy funkcje, które komponent NavBar będzie mógł użyć
-  return { resetTranslation, switchToLanguage, removeGoogleTranslateWidgetParts };
+        // Usuwamy parametr googtrans z URL
+        const url = new URL(window.location.href);
+        if (url.searchParams.has(COOKIE_NAME)) {
+          url.searchParams.delete(COOKIE_NAME);
+          window.history.replaceState({}, document.title, url.toString());
+        }
+
+        // Przełączamy na wybrany język
+        if (triggerGoogleTranslateChange(langCode)) {
+          // Usuwamy elementy UI Google Translate z opóźnieniem
+          const timeoutId = setTimeout(() => {
+            removeGoogleTranslateWidgetParts();
+
+            // Drugi timeout dla pewności
+            const secondTimeoutId = setTimeout(
+              removeGoogleTranslateWidgetParts,
+              300
+            );
+            timeoutsRef.current.push(secondTimeoutId);
+          }, 100);
+
+          timeoutsRef.current.push(timeoutId);
+        }
+
+        // Ustawiamy atrybuty dokumentu dla dostępności
+        document.documentElement.setAttribute("lang", langCode);
+      } catch (error) {
+        console.error(`Błąd podczas przełączania na język ${langCode}:`, error);
+      }
+    },
+    [
+      clearAllTimeouts,
+      deleteCookies,
+      triggerGoogleTranslateChange,
+      removeGoogleTranslateWidgetParts,
+    ]
+  );
+
+  return {
+    resetTranslation,
+    switchToLanguage,
+    removeGoogleTranslateWidgetParts,
+  };
 };

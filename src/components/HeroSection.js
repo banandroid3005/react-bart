@@ -23,9 +23,9 @@ function HeroSection() {
           <img 
             src="/images/logo.webp" 
             alt="Logo Premium Taxi" 
-            loading="lazy" 
-            width="180" 
-            height="60" 
+            width="250" 
+            height="80" 
+            fetchpriority="high"
           />
         </div>
         <div className="hero-btn">

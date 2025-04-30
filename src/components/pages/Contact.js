@@ -18,10 +18,10 @@ function Contact() {
   return (
     <div className="contact-background">
       <Helmet>
-        <title>Kontakt - Premium Transport | Kielce i cała Polska</title>
+        <title>Kontakt - Bart Premium Services, luksusowe przejzady i transfery lotniskowe</title>
         <meta
           name="description"
-          content="Skontaktuj się z naszym zespołem dla luksusowego transportu 24/7. Dostępni w Kielcach i na terenie całej Polski."
+          content="Skontaktuj się ze mną dla luksusowego transportu 24/7. Dostępny w Kielcach i na terenie całej Polski."
         />
       </Helmet>
       <div className="contact-container">
