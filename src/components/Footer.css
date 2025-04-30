@@ -20,7 +20,9 @@
   --radius-large: 12px;
 }
 
+/* Stałe wysokości dla całego footera (przeciwdziała CLS) */
 .footer-container {
+  min-height: 400px; /* Dostosuj do rzeczywistej wysokości footera */
   background: linear-gradient(
     90deg,
     rgba(18, 18, 18, 0.9) 0%,
@@ -29,28 +31,26 @@
   color: var(--color-light-gray);
   padding: 40px 24px;
   font-family: var(--font-primary);
-  transition: opacity var(--transition-slow) ease-out,
-    transform var(--transition-slow) ease-out;
-  opacity: 0;
-  transform: translateY(20px);
+  /* Usunięto animację opacity i transform, aby zapobiec CLS */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-medium);
+  /* Footer jest teraz domyślnie widoczny */
+  opacity: 1;
 }
 
-.footer-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Usunięto klasę .visible, aby footer był zawsze widoczny od początku */
 
 .footer-top {
   text-align: center;
   margin-bottom: 30px;
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+/* Zoptymalizowano animację hover używając transform */
 .footer-top:hover {
-  transform: scale(1.1);
+  transform: scale(1.02); /* Zmniejszono skalę, aby była mniej intensywna */
+  will-change: transform; /* Informuje przeglądarkę o planowanej animacji */
 }
 
 .footer-top h3 {
@@ -72,7 +72,7 @@
 
 .footer-logo img {
   height: 40px;
-  width: auto;
+  width: 40px; /* Dodano stałą szerokość */
   object-fit: contain;
   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
 }
@@ -123,7 +123,7 @@
   text-decoration: none;
   margin-bottom: 8px;
   font-size: 0.95rem;
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), color var(--transition-fast); /* Zoptymalizowano transition */
   display: flex;
   align-items: center;
 }
@@ -149,15 +149,20 @@
   color: var(--color-dark-gray);
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease; /* Zoptymalizowano transition */
+  will-change: transform, color; /* Informuje przeglądarkę o planowanej animacji */
 }
 
 .footer-bottom:hover {
-  transform: scale(1.1);
+  transform: scale(1.02); /* Zmniejszono skalę, aby była mniej intensywna */
   color: var(--color-light-gray);
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 820px) { 
+  .footer-container {
+    min-height: 600px; /* Dostosuj do responsywnej wysokości */
+  }
+  
   .footer-links {
     padding-top: 2rem;
   }
@@ -187,6 +192,7 @@
 
 @media screen and (max-width: 576px) {
   .footer-container {
+    min-height: 700px; /* Dostosuj do responsywnej wysokości */
     padding: 30px 16px;
   }
   .footer-top h3 {
@@ -198,6 +204,7 @@
   }
   .footer-logo img {
     height: 35px;
+    width: 35px; /* Dodano stałą szerokość */
   }
   .footer-top p {
     font-size: 0.9rem;
@@ -221,6 +228,7 @@
 
 @media screen and (max-width: 360px) {
   .footer-container {
+    min-height: 750px; /* Dostosuj do responsywnej wysokości */
     padding: 20px 10px;
     margin-bottom: 0px;
   }
@@ -229,6 +237,7 @@
   }
   .footer-logo img {
     height: 30px;
+    width: 30px; /* Dodano stałą szerokość */
   }
   .footer-top p {
     font-size: 0.85rem;

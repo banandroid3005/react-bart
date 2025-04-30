@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import {
@@ -12,48 +12,14 @@ import {
 } from "react-icons/fa";
 
 function Footer() {
-  const footerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            if (footerRef.current) {
-              observer.unobserve(footerRef.current);
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    const currentRef = footerRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
 
   return (
-    <div
-      className={`footer-container ${isVisible ? "visible" : ""}`}
-      ref={footerRef}
-    >
+    <div className="footer-container">
       <section className="footer-top">
         <h3>
           Bart Premium Services{" "}
           <div className="footer-logo">
-            <img src="/images/logo.webp" alt="Logo" loading="lazy"/>
+            <img src="/images/logo.webp" alt="Logo" width="250" height="80" />
           </div>
         </h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
