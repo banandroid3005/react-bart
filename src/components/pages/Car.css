@@ -1,73 +1,105 @@
+/* === Root Variables === */
 :root {
-  --color-primary: #1a1a1a;
-  --color-primary-light: #333333;
-  --color-secondary: #1a1a1a;
-  --color-secondary-light: #333333;
+  /* Core Theme Colors */
+  --navy-blue: #191970;
+  --navy-blue-light: #283593; /* Lighter for gradients if needed */
+  --navy-blue-dark: #101050; /* Darker for hover states */
+  --gold: #daa520;
+  --dark-gold: #b8860b;
 
+  /* Re-mapping Primary/Secondary */
+  --color-primary: var(--navy-blue); /* Main theme color (Navy) */
+  --color-primary-light: var(--navy-blue-light);
+  --color-secondary: var(--gold); /* Accent color (Gold) */
+  --color-secondary-light: var(--dark-gold); /* Accent hover/darker */
+
+  /* Neutrals & Backgrounds (Adopted from Services Style) */
   --color-light: #fff;
-  --color-light-gray: #f8f8f8;
-  --color-gray: #e0e0e0;
-  --color-dark-gray: #555;
+  --color-light-gray-bg: #f2f2f2; /* Light gradient end */
+  --color-medium-gray-bg: #f0f2f5; /* Alternate light bg start */
+  --color-darker-gray-bg: #dde1e7; /* Alternate light bg end */
+  --color-gray-border: rgba(0, 0, 0, 0.08); /* Subtle border */
+  --color-text-dark: #111; /* Very dark text */
+  --color-text-medium: #333; /* Medium dark text */
+  --color-text-light: #444; /* Lighter paragraph text */
 
+  /* Fonts (Keep original or adjust if needed) */
   --font-primary: "Roboto", sans-serif;
-  --font-secondary: "Roboto", sans-serif;
+  --font-secondary: "Roboto", sans-serif; /* Can be same or different */
 
-  --transition: 0.3s ease;
-  --shadow-light: 0 2px 15px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
-  --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.15);
+  /* Effects & Layout (Adopted/Adapted from Services Style) */
+  --transition: 0.4s ease; /* Slightly slower transition */
+  --transition-fast: 0.3s ease;
+  --shadow-card: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --shadow-button: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-button-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --shadow-gallery: 0 10px 30px rgba(0, 0, 0, 0.12); /* Specific shadow for gallery */
 
   --radius-small: 4px;
   --radius-medium: 8px;
-  --radius-large: 12px;
+  --radius-large: 12px; /* Consistent large radius */
+  --radius-pill: 50px; /* For buttons */
 
-  --gradient-primary: linear-gradient(
+  /* Gradients */
+  --gradient-background: linear-gradient(
+    135deg,
+    var(--color-light) 0%,
+    var(--color-light-gray-bg) 100%
+  );
+  --gradient-background-alt: linear-gradient(
+    135deg,
+    var(--color-medium-gray-bg) 0%,
+    var(--color-darker-gray-bg) 100%
+  );
+  --gradient-underline: linear-gradient(90deg, var(--gold), var(--dark-gold));
+  --gradient-text-primary: linear-gradient(
     135deg,
     var(--color-primary) 0%,
     var(--color-primary-light) 100%
-  );
-  --gradient-cta: linear-gradient(135deg, #1a1a1a, #bfa76f);
-  --gradient-cta-hover: linear-gradient(135deg, #2a2a2a, #d4b97d);
+  ); /* Keep original navy gradient for text */
 }
 
 .car-page-container {
-  max-width: 1400px;
+  max-width: 1200px; /* Slightly smaller max-width common in services */
   margin: 0 auto;
-  padding: 0 20px;
-  font-family: var(--font-primary);
+  padding: 3rem 1.5rem; /* Consistent padding */
 }
 
+/* === Typography === */
 .car-page-container h1,
 .car-page-container h2,
 .car-page-container h3 {
   font-family: var(--font-secondary);
-  font-weight: 500;
+  font-weight: 600; /* Slightly bolder headings */
   line-height: 1.3;
   margin-bottom: 1rem;
-  color: var(--color-primary);
+  color: var(--color-text-dark); /* Use very dark text for headings */
 }
 
 .car-page-container h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
 }
 .car-page-container h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 .car-page-container h3 {
-  font-size: 1.5rem;
-}
+  font-size: 1.8rem;
+} /* Larger base H3 */
+
 .car-page-container p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* More spacing */
+  font-size: 1.1rem;
 }
 
 .car-page-container a {
-  color: var(--color-secondary);
+  color: var(--color-primary); /* Navy links */
   text-decoration: none;
-  transition: all var(--transition);
+  transition: color var(--transition-fast);
 }
 
 .car-page-container a:hover {
-  color: var(--color-secondary-light);
+  color: var(--color-primary-light);
 }
 
 .car-page-container img {
@@ -76,69 +108,84 @@
   display: block;
 }
 
+/* === Sections Styling === */
 .car-page-container section {
-  margin: 5rem 0;
-  padding: 2rem 0;
+  margin: 4rem 0; /* Consistent section spacing */
+  padding: 3rem 0;
 }
 
+/* Adopted Section Heading Style */
 .section-heading {
   text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-  padding-bottom: 1.5rem;
+  margin-bottom: 4rem; /* More space after heading */
 }
 
-.section-heading:after {
+.section-heading h2 {
+  /* Using H2 for section titles */
+  font-size: 3rem; /* Larger section titles */
+  color: var(--color-primary); /* Navy color */
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.section-heading h2::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--color-primary);
-  border-radius: 3px;
+  width: 60%;
+  height: 4px;
+  background: var(--gradient-underline); /* Gold gradient underline */
+  bottom: -15px;
+  left: 20%;
+  border-radius: 2px;
 }
 
 .section-heading p {
-  color: var(--color-dark-gray);
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
+  font-size: 1.2rem; /* Larger subheading */
+  color: var(--color-text-medium);
+  max-width: 800px; /* Wider max-width */
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
 }
 
+/* === Intro Section Styling === */
 .car-intro-section {
-  background-color: var(--color-light-gray);
+  background-color: var(--color-light); /* White background */
   border-radius: var(--radius-large);
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-light);
-  margin-top: 3rem;
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-card);
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .intro-heading h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.8rem;
-  background: var(--gradient-primary);
+  font-size: 3.2rem; /* Larger intro H1 */
+  margin-bottom: 1rem;
+  background: var(--gradient-text-primary); /* Navy gradient text */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.intro-heading p {
+  font-size: 1.15rem;
+  color: var(--color-text-light);
+  max-width: 900px;
+  margin: 0 auto;
+}
 
+/* === Gallery Section Styling === */
 .car-gallery-wrapper {
-  margin: 3rem 0;
-  position: relative;
+  margin: 4rem 0;
 }
 
 .car-gallery {
   position: relative;
-  border-radius: var(--radius-medium);
+  border-radius: var(--radius-large); /* Consistent radius */
   overflow: hidden;
-  box-shadow: var(--shadow-medium);
-  height: 750px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-light);
+  box-shadow: var(--shadow-gallery); /* Specific gallery shadow */
+  height: 600px; /* Adjusted height */
+  background-color: var(--color-text-dark); /* Dark background for contrast */
 }
 
 .image-wrapper {
@@ -154,476 +201,543 @@
 .car-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition);
+  object-fit: contain; /* Use contain to show full image */
+  transition: transform var(--transition), opacity var(--transition);
+  opacity: 1;
 }
 
-.car-img:hover {
-  transform: scale(1.03);
-}
-
+/* Gallery Arrows - Services Style */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  width: 45px; /* Slightly smaller */
+  height: 45px;
   background-color: rgba(255, 255, 255, 0.8);
-  color: var(--color-primary);
+  color: var(--color-text-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
   z-index: 10;
-  border-radius: 50%;
-  box-shadow: var(--shadow-light);
-  transition: all var(--transition);
+  border-radius: var(--radius-pill); /* Pill shape */
+  box-shadow: var(--shadow-button);
+  transition: all var(--transition-fast);
   border: none;
 }
 
 .arrow:hover {
-  background-color: var(--color-secondary);
-  color: var(--color-light);
+  background-color: var(--color-secondary); /* Gold background on hover */
+  color: var(--color-light); /* White icon */
+  transform: translateY(-50%) scale(1.05); /* Slight scale up */
+  box-shadow: var(--shadow-button-hover);
 }
 
 .prev {
-  left: 15px;
+  left: 20px;
 }
 .next {
-  right: 15px;
+  right: 20px;
 }
 
+/* Gallery Thumbnails */
 .gallery-thumbnails {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 10px; /* Smaller gap */
+  margin-top: 25px;
+  flex-wrap: wrap;
 }
 
 .thumbnail {
-  width: 80px;
-  height: 60px;
+  width: 100px; /* Larger thumbnails */
+  height: 75px;
   object-fit: cover;
-  border-radius: var(--radius-small);
+  border-radius: var(--radius-medium); /* Softer radius */
   cursor: pointer;
   opacity: 0.6;
-  transition: all var(--transition);
-  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+  border: 3px solid transparent; /* Thicker border */
 }
 
 .thumbnail:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 .thumbnail.active {
   opacity: 1;
-  border-color: var(--color-secondary);
+  border-color: var(--color-secondary); /* Gold border for active */
+  box-shadow: 0 0 10px rgba(218, 165, 32, 0.5); /* Gold glow */
 }
 
+/* Gallery Loading/Error */
 .gallery-loading,
 .gallery-error {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 450px;
-  background-color: var(--color-light-gray);
-  border-radius: var(--radius-medium);
+  min-height: 300px;
+  background-color: var(--color-light-gray-bg);
+  border-radius: var(--radius-large);
+  padding: 2rem;
 }
-
 .gallery-error {
-  height: 250px;
+  min-height: 150px;
+  color: #c0392b;
 }
-
 .loader {
-  width: 50px;
-  height: 50px;
-  border: 5px solid var(--color-gray);
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-gray-border);
   border-radius: 50%;
   border-top-color: var(--color-secondary);
   animation: spin 1s infinite ease-in-out;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
+/* === Lightbox Styling (Keep functional, adjust colors) === */
 .lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* ... (keep existing lightbox structure) ... */
+  background-color: rgba(0, 0, 0, 0.92);
   z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition);
 }
-
 .lightbox.visible {
   opacity: 1;
   visibility: visible;
 }
 
-.lightbox-content {
-  position: relative;
-  max-width: 95%;
-  max-height: 95%;
-  margin: auto;
-}
-
 .close-btn {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  font-size: 2rem;
+  /* ... */
   color: var(--color-light);
-  cursor: pointer;
-  z-index: 1001;
-  opacity: 0.8;
-  transition: opacity var(--transition);
-  background: none;
-  border: none;
-}
-
-.close-btn:hover {
-  opacity: 1;
-}
-
-.lightbox-arrow {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: var(--color-light);
-}
+  top: 15px;
+  right: 15px;
+  font-size: 2.5rem;
+} /* Closer to corner */
 
 .lightbox-arrow:hover {
   background-color: var(--color-secondary);
+  color: var(--color-light);
 }
-
 .lightbox .car-img {
-  max-height: 85vh;
+  max-height: 90vh;
   width: auto;
   object-fit: contain;
   border-radius: var(--radius-small);
 }
 
+/* === Experience Section (Styled like Services Cards) === */
 .car-experience-section {
-  background-color: var(--color-light);
-  padding: 4rem 2rem;
+  /* Background handled by body */
+  padding: 4rem 0; /* Only vertical padding */
 }
 
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); /* Adjust minmax */
+  gap: 3rem; /* Consistent gap */
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Applying .service-card styles to .experience-block */
 .experience-block {
   background-color: var(--color-light);
-  padding: 2rem;
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-light);
-  transition: all var(--transition);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-card);
+  padding: 3rem 2.5rem; /* Consistent padding */
+  transition: all var(--transition) ease;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  border: 1px solid var(--color-gray-border);
   text-align: center;
-  border: 1px solid var(--color-gray);
+  /* Add fadeInUp animation like service cards */
+  opacity: 0;
+  animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* Stagger animation delays */
+.experience-block:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.experience-block:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.experience-block:nth-child(3) {
+  animation-delay: 0.3s;
+}
+/* Add more if needed */
+.experience-block:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.experience-block:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.experience-block:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.experience-block::before {
+  /* Gradient overlay like service card */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(25, 25, 112, 0.02) 0%,
+    rgba(25, 25, 112, 0.08) 100%
+  ); /* Navy tint */
+  z-index: -1;
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: var(--radius-large);
 }
 
 .experience-block:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-medium);
-  border-color: var(--color-secondary-light);
+  transform: translateY(-12px); /* Slightly less lift */
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(218, 165, 32, 0.4); /* Gold border hint */
 }
 
+.experience-block:hover::before {
+  transform: scale(1);
+}
+
+/* Applying .service-icon styles to .experience-icon */
 .experience-icon {
-  font-size: 2.2rem;
-  color: var(--color-secondary);
-  height: 70px;
-  width: 70px;
-  line-height: 70px;
-  background-color: var(--color-light-gray);
-  border-radius: 50%;
-  margin: 0 auto 1.5rem;
-  position: relative;
+  font-size: 3rem; /* Same size */
+  color: var(--color-secondary); /* Gold */
+  margin: 0 auto 2rem; /* Adjusted margin */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    color var(--transition-fast);
+  display: inline-block; /* Needed for transform */
+  height: auto;
+  width: auto;
+  line-height: 1;
+  background-color: transparent;
+  border-radius: 0; /* Remove old icon styles */
 }
-
+/* Remove pulsing border */
 .experience-icon:after {
-  content: "";
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border: 1px solid var(--color-secondary-light);
-  border-radius: 50%;
-  top: -5px;
-  left: -5px;
-  opacity: 0.3;
-  animation: pulse 2s infinite;
+  display: none;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.5;
-  }
-  70% {
-    transform: scale(1.05);
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(0.95);
-    opacity: 0.5;
-  }
+.experience-block:hover .experience-icon {
+  transform: scale(1.15) rotate(5deg);
+  color: var(--dark-gold); /* Darker gold on hover */
 }
 
+/* Applying .service-card h3 styles to .experience-block h3 */
 .experience-block h3 {
-  margin-bottom: 1rem;
+  font-size: 1.6rem; /* Adjusted size */
+  margin-bottom: 1.5rem;
+  color: var(--color-primary); /* Navy */
   position: relative;
-  padding-bottom: 0.8rem;
+  padding-bottom: 1rem;
+  font-weight: 600;
 }
 
-.experience-block h3:after {
+.experience-block h3::after {
   content: "";
   position: absolute;
-  width: 40px;
-  height: 2px;
-  background: var(--color-primary);
+  width: 70px;
+  height: 3px;
+  background: var(--gradient-underline); /* Gold gradient */
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  transition: width var(--transition) ease;
+  border-radius: 1.5px;
+}
+
+.experience-block:hover h3::after {
+  width: 120px; /* Expand underline */
 }
 
 .experience-block p {
-  color: var(--color-dark-gray);
-  line-height: 1.7;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  font-size: 1.05rem; /* Slightly smaller card text */
+  margin-bottom: 0; /* Remove bottom margin */
 }
-
+/* Remove corner dots */
 .experience-block:nth-child(odd):before,
 .experience-block:nth-child(even):after {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: var(--color-secondary-light);
-  opacity: 0.2;
-  border-radius: 50%;
+  display: none;
 }
 
-.experience-block:nth-child(odd):before {
-  top: -5px;
-  right: -5px;
-}
-
-.experience-block:nth-child(even):after {
-  bottom: -5px;
-  left: -5px;
-}
-
+/* === Highlights Section Styling === */
 .car-highlights-section {
-  background-color: var(--color-light-gray);
+  background-color: var(--color-light); /* White background */
   border-radius: var(--radius-large);
-  padding: 4rem 2rem;
-  box-shadow: var(--shadow-light);
+  padding: 4rem 2.5rem;
+  box-shadow: var(--shadow-card); /* Consistent shadow */
 }
 
 .highlights-list-container {
-  max-width: 900px;
+  max-width: 1000px; /* Wider container */
   margin: 0 auto;
 }
 
 .highlights-list {
   list-style: none;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.8rem; /* Increased gap */
 }
 
 .highlight-entry {
   background-color: var(--color-light);
-  padding: 1.2rem 1.5rem;
-  border-radius: var(--radius-medium);
+  padding: 1.5rem; /* More padding */
+  border-radius: var(--radius-medium); /* Softer radius */
   display: flex;
   align-items: center;
-  box-shadow: var(--shadow-light);
-  transition: all var(--transition);
-  border-left: 3px solid var(--color-secondary);
-  background: linear-gradient(
-    to right,
-    var(--color-light) 0%,
-    rgba(248, 248, 248, 0.5) 100%
-  );
+  box-shadow: none; /* Remove individual shadow */
+  transition: background-color var(--transition-fast),
+    transform var(--transition-fast);
+  border: 1px solid #eee; /* Softer border */
+  border-left: 4px solid var(--color-secondary); /* Gold left border */
 }
 
 .highlight-entry:hover {
-  transform: translateX(5px);
-  box-shadow: var(--shadow-medium);
+  transform: translateY(-3px); /* Subtle lift */
+  background-color: #fafafa; /* Slight bg change */
+  border-color: #e0e0e0;
+  border-left-color: var(--color-secondary-light); /* Darker gold border */
 }
 
 .highlight-icon {
-  color: var(--color-secondary);
-  font-size: 1.5rem;
-  margin-right: 1rem;
+  color: var(--color-secondary); /* Gold icon */
+  font-size: 1.8rem; /* Larger icon */
+  margin-right: 1.2rem;
+  flex-shrink: 0; /* Prevent icon shrinking */
 }
 
 .highlight-text {
   font-weight: 500;
-  color: var(--color-primary);
+  color: var(--color-text-medium);
+  font-size: 1.1rem;
 }
 
+/* === CTA Section Styling === */
+/* Adopted style from services contact section */
 .car-cta-section {
-  background: var(--gradient-primary);
-  color: var(--color-light);
+  background: var(--gradient-background-alt); /* Light grey gradient */
+  color: var(--color-text-dark); /* Dark text on light bg */
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 5rem 3rem; /* More padding */
   border-radius: var(--radius-large);
-  margin: 6rem auto;
-  box-shadow: var(--shadow-dark);
+  margin: 5rem auto;
+  box-shadow: var(--shadow-card-hover); /* Use heavier shadow */
   position: relative;
   overflow: hidden;
 }
-
+/* Keep decorative elements but adjust color? */
 .car-cta-section:before,
 .car-cta-section:after {
   content: "";
   position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    var(--color-secondary),
+    transparent 70%
+  ); /* Gold radial */
+  opacity: 0.08; /* More subtle */
+  border-radius: 50%;
+  z-index: 0;
+}
+.car-cta-section:before {
+  top: -80px;
+  right: -80px;
+}
+.car-cta-section:after {
+  bottom: -100px;
+  left: -100px;
   width: 200px;
   height: 200px;
-  background: radial-gradient(var(--color-secondary-light), transparent 70%);
-  opacity: 0.15;
-  border-radius: 50%;
-}
-
-.car-cta-section:before {
-  top: -50px;
-  right: -50px;
-}
-
-.car-cta-section:after {
-  bottom: -50px;
-  left: -50px;
-  width: 180px;
-  height: 180px;
-  opacity: 0.1;
+  opacity: 0.06;
 }
 
 .car-cta-section h2 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-light);
+  margin-bottom: 1.5rem;
+  color: var(--color-primary); /* Navy heading */
+  position: relative;
+  z-index: 1;
 }
 
 .car-cta-section p {
   font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.cta-button {
-  display: inline-block;
-  background: var(--gradient-cta);
-  color: var(--color-light);
-  font-weight: 500;
-  padding: 1rem 2.5rem;
-  border-radius: var(--radius-medium);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: all var(--transition);
-  border: 2px solid transparent;
+  max-width: 750px;
+  margin: 0 auto 2.5rem;
+  color: var(--color-text-light); /* Use standard light text color */
   position: relative;
-  overflow: hidden;
   z-index: 1;
 }
 
-.cta-button:before {
+/* Applying .services-btn-contact styles to .cta-button */
+.cta-button {
+  display: inline-flex; /* Use flex for icon alignment if needed */
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.2rem 3rem; /* Adjusted padding */
+  background: var(--color-primary); /* Navy background */
+  color: var(--color-light); /* White text */
+  text-decoration: none;
+  border-radius: var(--radius-pill); /* Pill shape */
+  font-weight: 600;
+  transition: all var(--transition-fast) ease;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-button);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  border: none; /* Remove border */
+  text-transform: none; /* Remove uppercase */
+}
+
+.cta-button::before {
+  /* Hover effect */
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transition: all 0.5s;
+  background: var(--color-secondary); /* Gold hover background */
   z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-fast) ease-in-out;
+}
+
+.cta-button:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  border-color: var(--color-secondary-light);
-  background: var(--gradient-cta-hover);
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: var(--shadow-button-hover);
+  color: var(--color-primary); /* Navy text on gold hover */
+}
+.cta-button:active {
+  animation: pulseBtn 0.8s ease-out;
+  transform: scale(0.98);
 }
 
-.cta-button:hover:before {
-  left: 100%;
+@keyframes pulseBtn {
+  /* Renamed pulse animation */
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }
 
+/* === Focus Styles === */
 .car-page-container button:focus,
 .car-page-container a:focus,
 .cta-button:focus,
 .thumbnail:focus,
 .arrow:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-secondary-light); /* Dark Gold outline */
+  outline-offset: 3px;
 }
 
-body.lightbox-open {
-  overflow: hidden;
+/* === Animations === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* === Media Queries (Adjustments for new style) === */
 @media (max-width: 1200px) {
   .car-page-container {
-    padding: 0 15px;
+    padding: 2rem 1rem;
+  }
+  .experience-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
   }
   .highlights-list {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 992px) {
   .car-page-container h1 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+  }
+  .section-heading h2 {
+    font-size: 2.5rem;
   }
   .car-page-container h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   .car-page-container h3 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
   .car-gallery {
-    height: 380px;
+    height: 450px;
   }
-  .experience-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  .experience-block {
+    padding: 2.5rem 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .car-page-container section {
     margin: 3rem 0;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
   }
   .section-heading {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
-  .intro-heading h1 {
+  .section-heading h2 {
     font-size: 2.2rem;
   }
+  .section-heading p {
+    font-size: 1.1rem;
+  }
+  .intro-heading h1 {
+    font-size: 2.5rem;
+  }
   .car-gallery {
-    height: 320px;
+    height: 350px;
   }
   .thumbnail {
-    width: 60px;
-    height: 45px;
+    width: 80px;
+    height: 60px;
   }
   .arrow {
     width: 40px;
@@ -633,46 +747,61 @@ body.lightbox-open {
   .experience-grid,
   .highlights-list {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 1.5rem;
+  }
+  .car-cta-section {
+    padding: 4rem 1.5rem;
   }
   .car-cta-section h2 {
     font-size: 2rem;
-  }
-  .car-cta-section p {
-    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 576px) {
   .car-page-container h1 {
+    font-size: 2rem;
+  }
+  .section-heading h2 {
     font-size: 1.8rem;
   }
   .car-page-container h2 {
-    font-size: 1.6rem;
-  }
-  .intro-heading h1 {
     font-size: 1.8rem;
   }
+  .car-page-container h3 {
+    font-size: 1.4rem;
+  }
+  .intro-heading h1 {
+    font-size: 2rem;
+  }
   .car-gallery {
-    height: 250px;
+    height: 280px;
   }
   .highlight-entry {
-    padding: 1rem;
+    padding: 1.2rem;
   }
   .car-intro-section,
   .car-highlights-section,
   .car-cta-section {
-    padding: 2rem 1rem;
+    padding: 2.5rem 1rem;
+  }
+  .experience-block {
+    padding: 2rem 1.5rem;
+  }
+  .experience-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
   }
   .cta-button {
-    padding: 0.8rem 1.8rem;
-    font-size: 0.9rem;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 300px; /* Button full width on small screens */
   }
   .gallery-thumbnails {
     gap: 8px;
   }
   .thumbnail {
-    width: 50px;
-    height: 38px;
+    width: 65px;
+    height: 50px;
   }
 }
