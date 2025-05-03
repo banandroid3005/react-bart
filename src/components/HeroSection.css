@@ -1,7 +1,7 @@
 .hero-container {
   max-width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffffff 0%, #f2f2f2 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f7f3e9 100%);
   padding: 3rem 0;
   font-family: "Roboto", sans-serif;
   position: relative;
@@ -14,8 +14,8 @@
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(90deg, transparent, #222, transparent);
-  opacity: 0.15;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  opacity: 0.6;
 }
 
 /* Header section */
@@ -36,6 +36,7 @@
   animation: fadeIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   animation-delay: 0.4s;
   opacity: 0;
+  text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.2);
 }
 
 .hero-heading h1::after {
@@ -43,7 +44,7 @@
   position: absolute;
   width: 60%;
   height: 4px;
-  background: linear-gradient(90deg, #111, #666);
+  background: linear-gradient(90deg, #d4af37, #ffd700);
   bottom: -15px;
   left: 20%;
   border-radius: 2px;
@@ -69,6 +70,7 @@
   margin: 0 auto;
   display: block;
   transition: transform 0.5s ease;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
 }
 
 .hero-logo img:hover {
@@ -89,8 +91,8 @@
 
 .hero-btn a {
   padding: 1.4rem 3.5rem;
-  background: #111;
-  color: #fff;
+  background: linear-gradient(to bottom, #0a0f2c, #000000);
+  color: gold;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
@@ -100,12 +102,13 @@
   justify-content: center;
   gap: 0.8rem;
   letter-spacing: 0.5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
   position: relative;
   overflow: hidden;
   z-index: 1;
   cursor: pointer;
   min-width: 250px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .hero-btn a::before {
@@ -115,7 +118,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #333;
+  background: linear-gradient(90deg, #bfa16b, #d4af37);
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
@@ -129,7 +132,7 @@
 
 .hero-btn a:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
 }
 
 .hero-btn a:active {
@@ -166,7 +169,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .hero-column {
@@ -199,8 +202,8 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.02) 0%,
-    rgba(0, 0, 0, 0.08) 100%
+    rgba(212, 175, 55, 0.05) 0%,
+    rgba(212, 175, 55, 0.1) 100%
   );
   z-index: -1;
   transform: scale(0);
@@ -212,8 +215,8 @@
 .hero-column:hover,
 .hero-column-offer:hover {
   transform: translateY(-15px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.3);
 }
 
 .hero-column:hover::before,
@@ -237,7 +240,7 @@
   position: absolute;
   width: 70px;
   height: 3px;
-  background: linear-gradient(90deg, #111, #666);
+  background: linear-gradient(90deg, #d4af37, #ffd700);
   bottom: 0;
   left: 0;
   transition: width 0.4s ease;
@@ -270,17 +273,27 @@
   margin-bottom: 1rem;
   position: relative;
   transition: transform 0.3s ease;
+  padding-left: 30px;
+}
+
+.benefits-list li:before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #d4af37;
+  font-weight: bold;
 }
 
 .benefits-list li:hover {
   transform: translateX(5px);
+  color: #333;
 }
 
 /* Links */
 .learn-more-link,
 .contact-link {
   display: inline-block;
-  color: #111;
+  color: #d4af37;
   font-weight: 600;
   text-decoration: none;
   position: relative;
@@ -295,12 +308,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #111;
+  background: #d4af37;
   transition: width 0.3s ease;
 }
 
 .learn-more-link:hover {
-  color: #333;
+  color: #ffd700;
 }
 
 .learn-more-link:hover::after {
@@ -314,13 +327,14 @@
   padding: 4rem;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #f7f3e9 100%);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
   max-width: 90%;
   animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   animation-delay: 1s;
   opacity: 0;
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .container-call h3 {
@@ -336,7 +350,7 @@
   position: absolute;
   width: 50%;
   height: 3px;
-  background: linear-gradient(90deg, #111, transparent);
+  background: linear-gradient(90deg, #d4af37, rgba(212, 175, 55, 0.2));
   bottom: -10px;
   left: 25%;
   border-radius: 1.5px;
@@ -346,17 +360,18 @@
   display: inline-block;
   margin: 1.5rem auto;
   padding: 1.2rem 2.5rem;
-  background: #111;
-  color: #fff;
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+  color: #111;
   max-width: 600px;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
   position: relative;
   overflow: hidden;
   z-index: 1;
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .container-call .contact-link::before {
@@ -366,7 +381,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #333;
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
@@ -380,7 +395,26 @@
 
 .container-call .contact-link:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Golden shimmer effect for headings on hover */
+.hero-heading h1:hover,
+.hero-column h2:hover,
+.hero-column-offer h2:hover,
+.container-call h3:hover {
+  background: linear-gradient(90deg, #d4af37, #ffd700, #d4af37);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
 }
 
 /* Animations */
@@ -417,13 +451,13 @@
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
   }
 }
 

@@ -1,7 +1,30 @@
+/* Dodano zmienne kolorów dla łatwiejszej modyfikacji */
+:root {
+  --navy-blue: #191970; /* Głęboki granat */
+  --gold: #daa520; /* Złoty (Goldenrod) */
+  --dark-gold: #b8860b; /* Ciemniejszy złoty */
+  --light-grey-bg: #f2f2f2;
+  --white: #ffffff;
+  --dark-text: #111;
+  --medium-text: #333;
+  --light-text: #444;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --card-hover-shadow: rgba(0, 0, 0, 0.15);
+  --button-shadow: rgba(0, 0, 0, 0.1);
+  --button-hover-shadow: rgba(0, 0, 0, 0.15);
+  --whatsapp-green: #25d366;
+  --whatsapp-hover: #128c7e;
+}
+
 .services-background {
   max-width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffffff 0%, #f2f2f2 100%);
+  /* Tło pozostaje subtelne, aby nie konkurować z elementami */
+  background: linear-gradient(
+    135deg,
+    var(--white) 0%,
+    var(--light-grey-bg) 100%
+  );
   padding: 3rem 0;
 }
 
@@ -21,7 +44,13 @@
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(90deg, transparent, #222, transparent);
+  /* Subtelna linia u góry - może być w kolorze granatu lub złota, ale szary jest neutralny */
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--medium-text),
+    transparent
+  );
   opacity: 0.15;
 }
 
@@ -32,7 +61,7 @@
 
 .services-heading h2 {
   font-size: 3.2rem;
-  color: #111;
+  color: var(--navy-blue); /* Zmieniono kolor nagłówka na granatowy */
   position: relative;
   display: inline-block;
   margin-bottom: 1.8rem;
@@ -44,7 +73,8 @@
   position: absolute;
   width: 60%;
   height: 4px;
-  background: linear-gradient(90deg, #111, #666);
+  /* Zmieniono podkreślenie na gradient złota */
+  background: linear-gradient(90deg, var(--gold), var(--dark-gold));
   bottom: -15px;
   left: 20%;
   border-radius: 2px;
@@ -52,7 +82,7 @@
 
 .services-heading p {
   font-size: 1.5rem;
-  color: #333;
+  color: var(--medium-text); /* Pozostawiono stonowany kolor dla czytelności */
   max-width: 900px;
   margin: 1.5rem auto 0;
   line-height: 1.7;
@@ -66,9 +96,9 @@
 }
 
 .service-card {
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px var(--card-shadow);
   padding: 3.5rem 3rem;
   transition: all 0.4s ease;
   position: relative;
@@ -85,10 +115,11 @@
   left: 0;
   width: 100%;
   height: 100%;
+  /* Subtelny gradient granatu na hover zamiast szarego */
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.02) 0%,
-    rgba(0, 0, 0, 0.08) 100%
+    rgba(25, 25, 112, 0.02) 0%,
+    /* Użyto RGBA granatu */ rgba(25, 25, 112, 0.08) 100%
   );
   z-index: -1;
   transform: scale(0);
@@ -99,8 +130,9 @@
 
 .service-card:hover {
   transform: translateY(-15px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px var(--card-hover-shadow);
+  /* Można dodać subtelną złotą ramkę na hover */
+  border-color: rgba(218, 165, 32, 0.4); /* Półprzezroczysty złoty */
 }
 
 .service-card:hover::before {
@@ -109,22 +141,23 @@
 
 .service-icon {
   font-size: 3rem;
-  color: #111;
+  color: var(--gold); /* Zmieniono kolor ikony na złoty */
   margin-bottom: 2rem;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    color 0.4s ease;
   display: flex;
   justify-content: center;
 }
 
 .service-card:hover .service-icon {
   transform: scale(1.15) rotate(5deg);
-  color: #333;
+  color: var(--dark-gold); /* Ciemniejszy złoty na hover */
 }
 
 .service-card h3 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #000;
+  color: var(--navy-blue); /* Zmieniono kolor nagłówka karty na granatowy */
   position: relative;
   padding-bottom: 1rem;
   font-weight: 600;
@@ -135,20 +168,23 @@
   position: absolute;
   width: 70px;
   height: 3px;
-  background: linear-gradient(90deg, #111, #666);
+  /* Zmieniono podkreślenie na gradient złota */
+  background: linear-gradient(90deg, var(--gold), var(--dark-gold));
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  transition: width 0.4s ease;
+  transition: width 0.4s ease, background 0.4s ease;
   border-radius: 1.5px;
 }
 
 .service-card:hover h3::after {
   width: 120px;
+  /* Można rozjaśnić gradient złota na hover */
+  /* background: linear-gradient(90deg, #FFD700, var(--gold)); */
 }
 
 .service-card p {
-  color: #444;
+  color: var(--light-text); /* Pozostawiono stonowany kolor dla czytelności */
   line-height: 1.8;
   font-size: 1.15rem;
   margin-bottom: 0.5rem;
@@ -187,14 +223,14 @@
 .services-contact-prompt h3 {
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
-  color: #111;
+  color: var(--navy-blue); /* Zmieniono kolor nagłówka na granatowy */
 }
 
 .services-contact-prompt p {
   font-size: 1.2rem;
   max-width: 800px;
   margin: 0 auto;
-  color: #444;
+  color: var(--light-text); /* Pozostawiono stonowany kolor dla czytelności */
   line-height: 1.6;
 }
 
@@ -207,8 +243,8 @@
 
 .services-btn-contact {
   padding: 1.4rem 3.5rem;
-  background: #111;
-  color: #fff;
+  background: var(--navy-blue); /* Zmieniono tło przycisku na granatowy */
+  color: var(--white); /* Biały tekst dla kontrastu */
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
@@ -218,7 +254,7 @@
   justify-content: center;
   gap: 0.8rem;
   letter-spacing: 0.5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px var(--button-shadow);
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -233,7 +269,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #333;
+  background: var(--gold); /* Zmieniono tło ::before na złote */
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
@@ -247,17 +283,24 @@
 
 .services-btn-contact:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px var(--button-hover-shadow);
+  color: var(--navy-blue); /* Zmiana koloru tekstu na granatowy na złotym tle */
 }
 
 .services-btn-contact.whatsapp {
-  background: #25d366;
+  background: var(--navy-blue); /* Pozostawiono zielony dla WhatsApp */
+  color: var(--white);
 }
 
 .services-btn-contact.whatsapp::before {
-  background: #128c7e;
+  background: var(--gold); /* Ciemniejszy zielony na hover */
 }
 
+.services-btn-contact.whatsapp:hover {
+  color: var(--navy-blue); /* Tekst pozostaje biały na hover dla WhatsApp */
+}
+
+/* Animacje */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -274,6 +317,7 @@
   opacity: 0;
 }
 
+/* Opóźnienia animacji pozostają bez zmian */
 .service-card:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -316,11 +360,11 @@
   transform: scale(0.98);
 }
 
+/* Media Queries - dostosowania rozmiarów i układu bez zmian kolorów */
 @media (max-width: 1200px) {
   .services-grid {
     gap: 3rem;
   }
-
   .service-card {
     padding: 3rem 2.5rem;
   }
@@ -330,12 +374,10 @@
   .services-container {
     max-width: 95%;
   }
-
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
   }
-
   .services-heading h2 {
     font-size: 2.8rem;
   }
@@ -343,30 +385,24 @@
 
 @media (max-width: 768px) {
   .services-background {
-    height: auto;
+    height: auto; /* Usunięto min-height */
   }
-
   .services-container {
     max-width: 95%;
     padding: 4rem 1.5rem;
   }
-
   .services-heading {
     margin-bottom: 4rem;
   }
-
   .services-heading h2 {
     font-size: 2.4rem;
   }
-
   .services-heading p {
     font-size: 1.2rem;
   }
-
   .services-contact-buttons-container {
     padding: 4rem 2rem;
   }
-
   .services-contact-buttons {
     gap: 2rem;
   }
@@ -377,29 +413,23 @@
     grid-template-columns: 1fr;
     gap: 2.2rem;
   }
-
   .services-heading h2 {
     font-size: 2.2rem;
   }
-
   .services-heading p {
     font-size: 1.1rem;
   }
-
   .service-card {
     padding: 2.5rem;
   }
-
   .service-icon {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
   }
-
   .services-btn-contact {
     padding: 1.2rem 2.5rem;
     min-width: 200px;
   }
-
   .services-contact-buttons {
     gap: 1.5rem;
   }

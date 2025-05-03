@@ -7,6 +7,7 @@
   --color-light-gray: #f8f8f8;
   --color-gray: #e0e0e0;
   --color-dark-gray: #555555;
+  --color-gold: #d4af37;
   --font-primary: "Roboto", sans-serif;
   --font-secondary: "Roboto", sans-serif;
   --transition-slow: 0.5s ease;
@@ -20,25 +21,16 @@
   --radius-large: 12px;
 }
 
-/* Stałe wysokości dla całego footera (przeciwdziała CLS) */
 .footer-container {
-  min-height: 400px; /* Dostosuj do rzeczywistej wysokości footera */
-  background: linear-gradient(
-    90deg,
-    rgba(18, 18, 18, 0.9) 0%,
-    rgba(30, 30, 30, 0.9) 100%
-  );
+  min-height: 400px;
+  background: linear-gradient(90deg, rgba(18, 18, 18, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%);
   color: var(--color-light-gray);
   padding: 40px 24px;
   font-family: var(--font-primary);
-  /* Usunięto animację opacity i transform, aby zapobiec CLS */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-medium);
-  /* Footer jest teraz domyślnie widoczny */
   opacity: 1;
 }
-
-/* Usunięto klasę .visible, aby footer był zawsze widoczny od początku */
 
 .footer-top {
   text-align: center;
@@ -47,14 +39,13 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Zoptymalizowano animację hover używając transform */
 .footer-top:hover {
-  transform: scale(1.02); /* Zmniejszono skalę, aby była mniej intensywna */
-  will-change: transform; /* Informuje przeglądarkę o planowanej animacji */
+  transform: scale(1.02);
+  will-change: transform;
 }
 
 .footer-top h3 {
-  color: var(--color-light);
+  color: var(--color-gold);
   font-size: 1.8rem;
   margin-bottom: 10px;
   display: flex;
@@ -72,7 +63,7 @@
 
 .footer-logo img {
   height: 40px;
-  width: 40px; /* Dodano stałą szerokość */
+  width: 40px;
   object-fit: contain;
   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
 }
@@ -113,7 +104,7 @@
   color: var(--color-gray);
   font-size: 1.2rem;
   font-weight: 500;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--color-gold);
   padding-bottom: 8px;
   width: 100%;
 }
@@ -123,13 +114,13 @@
   text-decoration: none;
   margin-bottom: 8px;
   font-size: 0.95rem;
-  transition: transform var(--transition-fast), color var(--transition-fast); /* Zoptymalizowano transition */
+  transition: transform var(--transition-fast), color var(--transition-fast);
   display: flex;
   align-items: center;
 }
 
 .footer-link-items a:hover {
-  color: var(--color-light);
+  color: var(--color-gold);
   transform: translateX(5px);
 }
 
@@ -140,7 +131,7 @@
 }
 
 .footer-link-items a:hover .fa-icon {
-  color: var(--color-light);
+  color: var(--color-gold);
 }
 
 .footer-bottom {
@@ -149,36 +140,32 @@
   color: var(--color-dark-gray);
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease, color 0.3s ease; /* Zoptymalizowano transition */
-  will-change: transform, color; /* Informuje przeglądarkę o planowanej animacji */
+  transition: transform 0.3s ease, color 0.3s ease;
+  will-change: transform, color;
 }
 
 .footer-bottom:hover {
-  transform: scale(1.02); /* Zmniejszono skalę, aby była mniej intensywna */
-  color: var(--color-light-gray);
+  transform: scale(1.02);
+  color: var(--color-gold);
 }
 
-@media screen and (max-width: 820px) { 
+@media screen and (max-width: 820px) {
   .footer-container {
-    min-height: 600px; /* Dostosuj do responsywnej wysokości */
+    min-height: 600px;
   }
-  
   .footer-links {
     padding-top: 2rem;
   }
-
   .footer-link-wrapper {
     flex-direction: column;
     align-items: center;
   }
-
   .footer-link-items {
     margin: 16px 0;
     width: 80%;
     align-items: center;
     text-align: center;
   }
-
   .footer-link-items h3 {
     text-align: center;
     border-bottom: none;
@@ -192,7 +179,7 @@
 
 @media screen and (max-width: 576px) {
   .footer-container {
-    min-height: 700px; /* Dostosuj do responsywnej wysokości */
+    min-height: 700px;
     padding: 30px 16px;
   }
   .footer-top h3 {
@@ -204,7 +191,7 @@
   }
   .footer-logo img {
     height: 35px;
-    width: 35px; /* Dodano stałą szerokość */
+    width: 35px;
   }
   .footer-top p {
     font-size: 0.9rem;
@@ -228,7 +215,7 @@
 
 @media screen and (max-width: 360px) {
   .footer-container {
-    min-height: 750px; /* Dostosuj do responsywnej wysokości */
+    min-height: 750px;
     padding: 20px 10px;
     margin-bottom: 0px;
   }
@@ -237,7 +224,7 @@
   }
   .footer-logo img {
     height: 30px;
-    width: 30px; /* Dodano stałą szerokość */
+    width: 30px;
   }
   .footer-top p {
     font-size: 0.85rem;
