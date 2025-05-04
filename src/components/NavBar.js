@@ -171,7 +171,7 @@ function NavBar() {
             aria-expanded={click}
             tabIndex={0}
           >
-            <i className={click ? "fas fa-times" : "fas fa-bars"} aria-hidden="true" />
+            ☰
           </div>
         </div>
 
