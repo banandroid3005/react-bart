@@ -1,26 +1,26 @@
 :root {
-  --color-primary: #1a1a1a;
-  --color-primary-light: #333333;
-  --color-secondary: #1a1a1a;
-  --color-secondary-light: #333333;
+  --color-primary: #0a2442; /* Navy blue for primary text */
+  --color-primary-light: #1c3f67; /* Lighter navy blue */
+  --color-secondary: #d4af37; /* Gold color */
+  --color-secondary-light: #e6c660; /* Lighter gold */
   --color-light: #ffffff;
   --color-light-gray: #f8f8f8;
   --color-gray: #e0e0e0;
   --color-dark-gray: #555555;
   --color-accent: linear-gradient(
     135deg,
-    #ffffff 0%,
-    #f1f1f1 50%,
-    #e0e0e0 100%
-  );
+    #d4af37 0%,
+    #e6c660 50%,
+    #f1dba1 100%
+  ); /* Gold gradient */
   --font-primary: "Roboto", sans-serif;
   --font-secondary: "Roboto", sans-serif;
   --transition-slow: 0.5s ease;
   --transition-normal: 0.3s ease;
   --transition-fast: 0.15s ease;
-  --shadow-light: 0 2px 15px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
-  --shadow-dark: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --shadow-light: 0 2px 15px rgba(10, 36, 66, 0.05); /* Navy shadow */
+  --shadow-medium: 0 5px 20px rgba(10, 36, 66, 0.1); /* Navy shadow */
+  --shadow-dark: 0 8px 30px rgba(10, 36, 66, 0.15); /* Navy shadow */
   --radius-small: 4px;
   --radius-medium: 8px;
   --radius-large: 12px;
@@ -67,11 +67,13 @@
     box-shadow var(--transition-normal);
   position: relative;
   object-fit: cover;
+  border: 3px solid rgba(212, 175, 55, 0.15); /* Subtle gold border */
 }
 
 .about-me-photo img:hover {
   transform: scale(1.02);
   box-shadow: var(--shadow-dark);
+  border-color: rgba(212, 175, 55, 0.3); /* Enhanced gold border on hover */
 }
 
 .about-me-text {
@@ -95,7 +97,11 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(to right, var(--color-accent), transparent);
+  background: linear-gradient(
+    to right,
+    #0a2442,
+    #d4af37
+  ); /* Navy to gold gradient */
 }
 
 .about-me-text p {
@@ -109,12 +115,36 @@
   margin-bottom: 0;
 }
 
+/* Gold text highlight effect */
+.highlight {
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
 /* Services Section */
 .aboutMe-services-container {
-  background-color: var(--color-light-gray);
+  background-color: rgba(10, 36, 66, 0.03); /* Very light navy background */
   padding: 80px 40px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutMe-services-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d4af37,
+    transparent
+  ); /* Gold top border */
+  opacity: 0.7;
 }
 
 .aboutMe-services-container h3 {
@@ -136,10 +166,10 @@
   height: 3px;
   background: linear-gradient(
     90deg,
-    transparent,
-    var(--color-accent),
-    transparent
-  );
+    #0a2442,
+    #d4af37,
+    #0a2442
+  ); /* Navy-gold-navy gradient */
 }
 
 .aboutMe-services-list {
@@ -162,6 +192,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid rgba(212, 175, 55, 0.08); /* Very subtle gold border */
 }
 
 /* Delay classes for services */
@@ -180,13 +211,14 @@
 .aboutMe-service:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-medium);
+  border-color: rgba(212, 175, 55, 0.2); /* Enhanced gold border on hover */
 }
 
 .aboutMe-service-icon {
   font-size: 2.5rem;
-  color: var(--color-accent);
+  color: #d4af37; /* Gold icon */
   margin-bottom: 20px;
-  background-color: rgba(201, 165, 92, 0.1);
+  background-color: rgba(10, 36, 66, 0.05); /* Very light navy background */
   width: 80px;
   height: 80px;
   display: flex;
@@ -195,17 +227,24 @@
   border-radius: 50%;
   transition: transform var(--transition-normal),
     background-color var(--transition-normal);
+  border: 1px solid rgba(212, 175, 55, 0.15); /* Subtle gold border */
 }
 
 .aboutMe-service:hover .aboutMe-service-icon {
   transform: scale(1.1);
-  background-color: rgba(201, 165, 92, 0.15);
+  background-color: rgba(
+    10,
+    36,
+    66,
+    0.08
+  ); /* Slightly darker navy background on hover */
+  border-color: rgba(212, 175, 55, 0.3); /* Enhanced gold border on hover */
 }
 
 .aboutMe-service-text h4 {
   font-size: 1.4rem;
   margin-bottom: 15px;
-  color: var(--color-primary);
+  color: var(--color-primary); /* Navy heading */
   font-weight: 600;
 }
 
@@ -228,7 +267,7 @@
 
 .standards-header h2 {
   font-size: 2.2rem;
-  color: var(--color-primary);
+  color: var(--color-primary); /* Navy heading */
   margin-bottom: 15px;
   position: relative;
   display: inline-block;
@@ -245,10 +284,10 @@
   height: 3px;
   background: linear-gradient(
     90deg,
-    transparent,
-    var(--color-accent),
-    transparent
-  );
+    #0a2442,
+    #d4af37,
+    #0a2442
+  ); /* Navy-gold-navy gradient */
 }
 
 .standards-header p {
@@ -274,6 +313,7 @@
     box-shadow var(--transition-normal), opacity 0.6s ease;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.08); /* Very subtle gold border */
 }
 
 .standard-item::before {
@@ -283,7 +323,7 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background-color: var(--color-accent);
+  background-color: #d4af37; /* Gold left border */
   opacity: 0.7;
   transform: scaleY(0);
   transform-origin: bottom;
@@ -293,6 +333,7 @@
 .standard-item:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-medium);
+  border-color: rgba(212, 175, 55, 0.2); /* Enhanced gold border on hover */
 }
 
 .standard-item:hover::before {
@@ -301,19 +342,63 @@
 
 .standard-icon {
   font-size: 2rem;
-  color: var(--color-accent);
+  color: #d4af37; /* Gold icon */
   margin-bottom: 15px;
 }
 
 .standard-item h4 {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: var(--color-primary);
+  color: var(--color-primary); /* Navy heading */
 }
 
 .standard-item p {
   color: var(--color-dark-gray);
   line-height: 1.5;
+}
+
+/* Gold button style */
+.gold-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: var(--color-secondary);
+  color: #0a2442; /* Navy text on gold button */
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  margin-top: 25px;
+  transition: all var(--transition-normal);
+  border: 1px solid rgba(10, 36, 66, 0.1); /* Subtle navy border */
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15); /* Gold shadow */
+}
+
+.gold-button:hover {
+  background-color: #0a2442; /* Navy background on hover */
+  color: #d4af37; /* Gold text on hover */
+  box-shadow: 0 6px 15px rgba(10, 36, 66, 0.2); /* Navy shadow */
+  transform: translateY(-3px);
+}
+
+/* Navy button style */
+.navy-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  margin-top: 25px;
+  transition: all var(--transition-normal);
+  border: 1px solid rgba(212, 175, 55, 0.2); /* Subtle gold border */
+  box-shadow: 0 4px 12px rgba(10, 36, 66, 0.15); /* Navy shadow */
+}
+
+.navy-button:hover {
+  background-color: #d4af37; /* Gold background on hover */
+  color: #0a2442; /* Navy text on hover */
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.2); /* Gold shadow */
+  transform: translateY(-3px);
 }
 
 /* Responsive Styles */
@@ -465,5 +550,11 @@
 
   .standard-item {
     padding: 25px 20px;
+  }
+
+  .gold-button,
+  .navy-button {
+    padding: 10px 22px;
+    font-size: 0.95rem;
   }
 }

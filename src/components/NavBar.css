@@ -7,6 +7,13 @@
   --color-light-gray: #f8f8f8;
   --color-gray: #e0e0e0;
   --color-dark-gray: #555555;
+
+  --color-gold: #ffd700;
+  --color-gold-light: #ffdf4d;
+  --color-gold-dark: #ccac00;
+  --color-grenade: 	#2c3e73;
+  --color-grenade-light: 			#5673c1;
+  --color-grenade-dark: #000051;
   --font-primary: "Roboto", sans-serif;
   --font-secondary: "Roboto", sans-serif;
   --transition-slow: 0.5s ease;
@@ -38,7 +45,8 @@
   z-index: 999;
   transition: all var(--transition-normal);
   backdrop-filter: blur(4px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
   font-family: var(--font-primary);
   width: 100%;
 }
@@ -47,7 +55,8 @@
   background: rgba(18, 18, 18, 0.85);
   box-shadow: var(--shadow-dark);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-bottom: 1px solid rgba(255, 215, 0, 0.5);
   height: calc(var(--navbar-height) - 10px);
 }
 
@@ -63,7 +72,7 @@
 }
 
 .navbar-logo {
-  color: var(--color-light);
+  color: var(--color-gold);
   cursor: pointer;
   text-decoration: none;
   font-size: 1.6rem;
@@ -84,11 +93,8 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(
-    to right,
-    var(--color-light) 0%,
-    transparent 100%
-  );
+
+  background: linear-gradient(to right, var(--color-gold) 0%, transparent 100%);
   transition: width var(--transition-normal);
 }
 
@@ -98,12 +104,14 @@
   object-fit: contain;
   margin-left: 6px;
   transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
+
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
 }
 
 .navbar-logo:hover img {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
 }
 
 .navbar-logo:hover:after {
@@ -112,7 +120,8 @@
 
 .navbar--scrolled .navbar-logo {
   font-size: 1.4rem;
-  color: var(--color-light-gray);
+
+  color: var(--color-gold-dark);
 }
 
 .navbar--scrolled .navbar-logo img {
@@ -127,14 +136,20 @@
   transform: translateX(-50%);
   height: 2px;
   width: 60%;
-  background: linear-gradient(90deg, #f0f0f0, #999, #f0f0f0);
-  opacity: 0.1;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 0, 0.2),
+    rgba(255, 215, 0, 0.8),
+    rgba(255, 215, 0, 0.2)
+  );
+  opacity: 0.3;
   transition: opacity var(--transition-normal);
   pointer-events: none;
 }
 
 .navbar--scrolled::after {
-  opacity: 0.25;
+  opacity: 0.4;
 }
 
 .navbar-controls-right {
@@ -170,14 +185,16 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background: var(--color-light);
+
+  background: var(--color-gold);
   transform: translateX(-100%);
   transition: transform var(--transition-fast);
 }
 
 .lang-btn:hover {
   transform: scale(1.05);
-  color: var(--color-light);
+
+  color: var(--color-gold-light);
 }
 
 .lang-btn:hover:after {
@@ -186,7 +203,8 @@
 
 .lang-btn.active {
   font-weight: 600;
-  color: var(--color-light);
+
+  color: var(--color-gold);
 }
 
 .lang-btn.active:after {
@@ -196,7 +214,8 @@
 
 .menu-icon {
   display: none;
-  color: var(--color-light);
+
+  color: var(--color-gold);
   transition: color var(--transition-fast);
   background: none;
   border: none;
@@ -208,8 +227,8 @@
 }
 
 .menu-icon:hover {
-  color: var(--color-gray);
-  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-gold-light);
+  background-color: rgba(255, 215, 0, 0.1);
 }
 
 .nav-menu {
@@ -235,7 +254,7 @@
 }
 
 .nav-links {
-  color: var(--color-light);
+  color: var(--color-grenade-light);
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -255,7 +274,8 @@
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--color-light);
+
+  background: var(--color-gold);
   transition: width var(--transition-fast);
   border-radius: var(--radius-small);
 }
@@ -274,11 +294,12 @@
 
 .nav-links.active:after {
   width: 70%;
-  background: var(--color-light);
+
+  background: var(--color-gold);
 }
 
 .fa-bars {
-  color: var(--color-light);
+  color: var(--color-gold);
 }
 
 iframe.skiptranslate,
@@ -332,10 +353,11 @@ body {
     position: fixed;
     top: var(--navbar-height-mobile);
     left: -100%;
+
     background: linear-gradient(
       135deg,
-      rgba(18, 18, 18, 0.98) 0%,
-      rgba(30, 30, 30, 0.98) 100%
+      rgba(18, 18, 18, 0.96) 0%,
+      rgba(139, 38, 53, 0.5) 100%
     );
     opacity: 0;
     transition: all 0.3s ease;
@@ -366,7 +388,8 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
     display: block;
   }
   .nav-item:last-child {
@@ -386,7 +409,8 @@ body {
     bottom: 10px;
   }
   .nav-links:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 215, 0, 0.08);
+    color: var(--color-grenade-light);
   }
   .nav-links:hover:after {
     width: 40%;
@@ -417,7 +441,8 @@ body {
   .lang-btn {
     font-size: 0.9rem;
     padding: 6px 10px;
-    background-color: rgba(255, 255, 255, 0.05);
+
+    background-color: rgba(255, 215, 0, 0.1);
     border-radius: var(--radius-medium);
     color: var(--color-light-gray);
   }
@@ -426,14 +451,14 @@ body {
   }
   .lang-btn:hover {
     transform: scale(1.05);
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--color-light);
+    background-color: rgba(255, 215, 0, 0.2);
+    color: var(--color-gold);
   }
   .lang-btn.active {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 215, 0, 0.25);
     transform: scale(1.05);
     font-weight: 600;
-    color: var(--color-light);
+    color: var(--color-gold);
   }
 
   .nav-links-mobile {
@@ -588,7 +613,7 @@ body {
 .navbar-logo:focus,
 .lang-btn:focus,
 .menu-icon:focus {
-  outline: 2px solid var(--color-light);
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
@@ -597,4 +622,39 @@ body {
 .lang-btn:focus:not(:focus-visible),
 .menu-icon:focus:not(:focus-visible) {
   outline: none;
+}
+
+.navbar:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 215, 0, 0) 0%,
+    rgba(255, 215, 0, 0.05) 50%,
+    rgba(255, 215, 0, 0) 100%
+  );
+  animation: goldShimmer 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes goldShimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.nav-links.active {
+  color: var(--color-grenade-light);
+  font-weight: 600;
+}
+
+.nav-item.active {
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }

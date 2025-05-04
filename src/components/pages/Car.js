@@ -24,6 +24,7 @@ import {
   faWind,
   faUserTie,
   faCalendarCheck,
+  faUserSecret
 } from "@fortawesome/free-solid-svg-icons";
 
 const imageListPaths = [
@@ -84,6 +85,7 @@ const highlightsData = [
   { icon: faWind, text: "Klimatyzacja z Oczyszczaniem Powietrza Nanoe™ X" },
   { icon: faUserTie, text: "Profesjonalny i Dyskretny Kierowca" },
   { icon: faCalendarCheck, text: "Gwarancja Punktualności" },
+  { icon: faUserSecret, text: "Prywatność i Komfort na Najwyższym Poziomie"},
 ];
 
 const Car = () => {

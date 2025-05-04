@@ -1,47 +1,40 @@
-/* === Root Variables === */
 :root {
-  /* Core Theme Colors */
   --navy-blue: #191970;
-  --navy-blue-light: #283593; /* Lighter for gradients if needed */
-  --navy-blue-dark: #101050; /* Darker for hover states */
+  --navy-blue-light: #283593;
+  --navy-blue-dark: #101050;
   --gold: #daa520;
   --dark-gold: #b8860b;
 
-  /* Re-mapping Primary/Secondary */
-  --color-primary: var(--navy-blue); /* Main theme color (Navy) */
+  --color-primary: var(--navy-blue);
   --color-primary-light: var(--navy-blue-light);
-  --color-secondary: var(--gold); /* Accent color (Gold) */
-  --color-secondary-light: var(--dark-gold); /* Accent hover/darker */
+  --color-secondary: var(--gold);
+  --color-secondary-light: var(--dark-gold);
 
-  /* Neutrals & Backgrounds (Adopted from Services Style) */
   --color-light: #fff;
-  --color-light-gray-bg: #f2f2f2; /* Light gradient end */
-  --color-medium-gray-bg: #f0f2f5; /* Alternate light bg start */
-  --color-darker-gray-bg: #dde1e7; /* Alternate light bg end */
-  --color-gray-border: rgba(0, 0, 0, 0.08); /* Subtle border */
-  --color-text-dark: #111; /* Very dark text */
-  --color-text-medium: #333; /* Medium dark text */
-  --color-text-light: #444; /* Lighter paragraph text */
+  --color-light-gray-bg: #f2f2f2;
+  --color-medium-gray-bg: #f0f2f5;
+  --color-darker-gray-bg: #dde1e7;
+  --color-gray-border: rgba(0, 0, 0, 0.08);
+  --color-text-dark: #111;
+  --color-text-medium: #333;
+  --color-text-light: #444;
 
-  /* Fonts (Keep original or adjust if needed) */
   --font-primary: "Roboto", sans-serif;
-  --font-secondary: "Roboto", sans-serif; /* Can be same or different */
+  --font-secondary: "Roboto", sans-serif;
 
-  /* Effects & Layout (Adopted/Adapted from Services Style) */
-  --transition: 0.4s ease; /* Slightly slower transition */
+  --transition: 0.4s ease;
   --transition-fast: 0.3s ease;
   --shadow-card: 0 8px 25px rgba(0, 0, 0, 0.08);
   --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
   --shadow-button: 0 5px 15px rgba(0, 0, 0, 0.1);
   --shadow-button-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
-  --shadow-gallery: 0 10px 30px rgba(0, 0, 0, 0.12); /* Specific shadow for gallery */
+  --shadow-gallery: 0 10px 30px rgba(0, 0, 0, 0.12);
 
   --radius-small: 4px;
   --radius-medium: 8px;
-  --radius-large: 12px; /* Consistent large radius */
-  --radius-pill: 50px; /* For buttons */
+  --radius-large: 12px;
+  --radius-pill: 50px;
 
-  /* Gradients */
   --gradient-background: linear-gradient(
     135deg,
     var(--color-light) 0%,
@@ -57,24 +50,23 @@
     135deg,
     var(--color-primary) 0%,
     var(--color-primary-light) 100%
-  ); /* Keep original navy gradient for text */
+  );
 }
 
 .car-page-container {
-  max-width: 1200px; /* Slightly smaller max-width common in services */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 1.5rem; /* Consistent padding */
+  padding: 3rem 1.5rem;
 }
 
-/* === Typography === */
 .car-page-container h1,
 .car-page-container h2,
 .car-page-container h3 {
   font-family: var(--font-secondary);
-  font-weight: 600; /* Slightly bolder headings */
+  font-weight: 600;
   line-height: 1.3;
   margin-bottom: 1rem;
-  color: var(--color-text-dark); /* Use very dark text for headings */
+  color: var(--color-text-dark);
 }
 
 .car-page-container h1 {
@@ -85,15 +77,15 @@
 }
 .car-page-container h3 {
   font-size: 1.8rem;
-} /* Larger base H3 */
+}
 
 .car-page-container p {
-  margin-bottom: 1.5rem; /* More spacing */
+  margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
 
 .car-page-container a {
-  color: var(--color-primary); /* Navy links */
+  color: var(--color-primary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
@@ -108,22 +100,19 @@
   display: block;
 }
 
-/* === Sections Styling === */
 .car-page-container section {
-  margin: 4rem 0; /* Consistent section spacing */
+  margin: 4rem 0;
   padding: 3rem 0;
 }
 
-/* Adopted Section Heading Style */
 .section-heading {
   text-align: center;
-  margin-bottom: 4rem; /* More space after heading */
+  margin-bottom: 4rem;
 }
 
 .section-heading h2 {
-  /* Using H2 for section titles */
-  font-size: 3rem; /* Larger section titles */
-  color: var(--color-primary); /* Navy color */
+  font-size: 3rem;
+  color: var(--color-primary);
   position: relative;
   display: inline-block;
   margin-bottom: 1.8rem;
@@ -135,23 +124,22 @@
   position: absolute;
   width: 60%;
   height: 4px;
-  background: var(--gradient-underline); /* Gold gradient underline */
+  background: var(--gradient-underline);
   bottom: -15px;
   left: 20%;
   border-radius: 2px;
 }
 
 .section-heading p {
-  font-size: 1.2rem; /* Larger subheading */
+  font-size: 1.2rem;
   color: var(--color-text-medium);
-  max-width: 800px; /* Wider max-width */
+  max-width: 800px;
   margin: 1.5rem auto 0;
   line-height: 1.7;
 }
 
-/* === Intro Section Styling === */
 .car-intro-section {
-  background-color: var(--color-light); /* White background */
+  background-color: var(--color-light);
   border-radius: var(--radius-large);
   padding: 3rem 2.5rem;
   box-shadow: var(--shadow-card);
@@ -160,9 +148,9 @@
 }
 
 .intro-heading h1 {
-  font-size: 3.2rem; /* Larger intro H1 */
+  font-size: 3.2rem;
   margin-bottom: 1rem;
-  background: var(--gradient-text-primary); /* Navy gradient text */
+  background: var(--gradient-text-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -174,18 +162,17 @@
   margin: 0 auto;
 }
 
-/* === Gallery Section Styling === */
 .car-gallery-wrapper {
   margin: 4rem 0;
 }
 
 .car-gallery {
   position: relative;
-  border-radius: var(--radius-large); /* Consistent radius */
+  border-radius: var(--radius-large);
   overflow: hidden;
-  box-shadow: var(--shadow-gallery); /* Specific gallery shadow */
-  height: 600px; /* Adjusted height */
-  background-color: var(--color-text-dark); /* Dark background for contrast */
+  box-shadow: var(--shadow-gallery);
+  height: 600px;
+  background-color: var(--color-text-dark);
 }
 
 .image-wrapper {
@@ -201,17 +188,16 @@
 .car-img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Use contain to show full image */
+  object-fit: contain;
   transition: transform var(--transition), opacity var(--transition);
   opacity: 1;
 }
 
-/* Gallery Arrows - Services Style */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 45px; /* Slightly smaller */
+  width: 45px;
   height: 45px;
   background-color: rgba(255, 255, 255, 0.8);
   color: var(--color-text-dark);
@@ -221,16 +207,16 @@
   font-size: 1.8rem;
   cursor: pointer;
   z-index: 10;
-  border-radius: var(--radius-pill); /* Pill shape */
+  border-radius: var(--radius-pill);
   box-shadow: var(--shadow-button);
   transition: all var(--transition-fast);
   border: none;
 }
 
 .arrow:hover {
-  background-color: var(--color-secondary); /* Gold background on hover */
-  color: var(--color-light); /* White icon */
-  transform: translateY(-50%) scale(1.05); /* Slight scale up */
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+  transform: translateY(-50%) scale(1.05);
   box-shadow: var(--shadow-button-hover);
 }
 
@@ -241,24 +227,23 @@
   right: 20px;
 }
 
-/* Gallery Thumbnails */
 .gallery-thumbnails {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Smaller gap */
+  gap: 10px;
   margin-top: 25px;
   flex-wrap: wrap;
 }
 
 .thumbnail {
-  width: 100px; /* Larger thumbnails */
+  width: 100px;
   height: 75px;
   object-fit: cover;
-  border-radius: var(--radius-medium); /* Softer radius */
+  border-radius: var(--radius-medium);
   cursor: pointer;
   opacity: 0.6;
   transition: all var(--transition-fast);
-  border: 3px solid transparent; /* Thicker border */
+  border: 3px solid transparent;
 }
 
 .thumbnail:hover {
@@ -266,11 +251,10 @@
 }
 .thumbnail.active {
   opacity: 1;
-  border-color: var(--color-secondary); /* Gold border for active */
-  box-shadow: 0 0 10px rgba(218, 165, 32, 0.5); /* Gold glow */
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
 }
 
-/* Gallery Loading/Error */
 .gallery-loading,
 .gallery-error {
   display: flex;
@@ -301,9 +285,7 @@
   }
 }
 
-/* === Lightbox Styling (Keep functional, adjust colors) === */
 .lightbox {
-  /* ... (keep existing lightbox structure) ... */
   background-color: rgba(0, 0, 0, 0.92);
   z-index: 1000;
 }
@@ -313,12 +295,11 @@
 }
 
 .close-btn {
-  /* ... */
   color: var(--color-light);
   top: 15px;
   right: 15px;
   font-size: 2.5rem;
-} /* Closer to corner */
+}
 
 .lightbox-arrow:hover {
   background-color: var(--color-secondary);
@@ -331,41 +312,33 @@
   border-radius: var(--radius-small);
 }
 
-/* === Experience Section (Styled like Services Cards) === */
 .car-experience-section {
-  /* Background handled by body */
-  padding: 4rem 0; /* Only vertical padding */
+  padding: 4rem 0;
 }
 
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(320px, 1fr)
-  ); /* Adjust minmax */
-  gap: 3rem; /* Consistent gap */
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 4rem;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
-/* Applying .service-card styles to .experience-block */
 .experience-block {
   background-color: var(--color-light);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-card);
-  padding: 3rem 2.5rem; /* Consistent padding */
+  padding: 3rem 2.5rem;
   transition: all var(--transition) ease;
   position: relative;
   overflow: hidden;
   z-index: 1;
   border: 1px solid var(--color-gray-border);
   text-align: center;
-  /* Add fadeInUp animation like service cards */
   opacity: 0;
   animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-/* Stagger animation delays */
 .experience-block:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -375,7 +348,7 @@
 .experience-block:nth-child(3) {
   animation-delay: 0.3s;
 }
-/* Add more if needed */
+
 .experience-block:nth-child(4) {
   animation-delay: 0.4s;
 }
@@ -387,7 +360,6 @@
 }
 
 .experience-block::before {
-  /* Gradient overlay like service card */
   content: "";
   position: absolute;
   top: 0;
@@ -398,7 +370,7 @@
     135deg,
     rgba(25, 25, 112, 0.02) 0%,
     rgba(25, 25, 112, 0.08) 100%
-  ); /* Navy tint */
+  );
   z-index: -1;
   transform: scale(0);
   transform-origin: bottom right;
@@ -407,44 +379,42 @@
 }
 
 .experience-block:hover {
-  transform: translateY(-12px); /* Slightly less lift */
+  transform: translateY(-12px);
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(218, 165, 32, 0.4); /* Gold border hint */
+  border-color: rgba(218, 165, 32, 0.4);
 }
 
 .experience-block:hover::before {
   transform: scale(1);
 }
 
-/* Applying .service-icon styles to .experience-icon */
 .experience-icon {
-  font-size: 3rem; /* Same size */
-  color: var(--color-secondary); /* Gold */
-  margin: 0 auto 2rem; /* Adjusted margin */
+  font-size: 3rem;
+  color: var(--color-secondary);
+  margin: 0 auto 2rem;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     color var(--transition-fast);
-  display: inline-block; /* Needed for transform */
+  display: inline-block;
   height: auto;
   width: auto;
   line-height: 1;
   background-color: transparent;
-  border-radius: 0; /* Remove old icon styles */
+  border-radius: 0;
 }
-/* Remove pulsing border */
+
 .experience-icon:after {
   display: none;
 }
 
 .experience-block:hover .experience-icon {
   transform: scale(1.15) rotate(5deg);
-  color: var(--dark-gold); /* Darker gold on hover */
+  color: var(--dark-gold);
 }
 
-/* Applying .service-card h3 styles to .experience-block h3 */
 .experience-block h3 {
-  font-size: 1.6rem; /* Adjusted size */
+  font-size: 1.6rem;
   margin-bottom: 1.5rem;
-  color: var(--color-primary); /* Navy */
+  color: var(--color-primary);
   position: relative;
   padding-bottom: 1rem;
   font-weight: 600;
@@ -455,7 +425,7 @@
   position: absolute;
   width: 70px;
   height: 3px;
-  background: var(--gradient-underline); /* Gold gradient */
+  background: var(--gradient-underline);
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -464,31 +434,30 @@
 }
 
 .experience-block:hover h3::after {
-  width: 120px; /* Expand underline */
+  width: 120px;
 }
 
 .experience-block p {
   color: var(--color-text-light);
   line-height: 1.8;
-  font-size: 1.05rem; /* Slightly smaller card text */
-  margin-bottom: 0; /* Remove bottom margin */
+  font-size: 1.05rem;
+  margin-bottom: 0;
 }
-/* Remove corner dots */
+
 .experience-block:nth-child(odd):before,
 .experience-block:nth-child(even):after {
   display: none;
 }
 
-/* === Highlights Section Styling === */
 .car-highlights-section {
-  background-color: var(--color-light); /* White background */
+  background-color: var(--color-light);
   border-radius: var(--radius-large);
   padding: 4rem 2.5rem;
-  box-shadow: var(--shadow-card); /* Consistent shadow */
+  box-shadow: var(--shadow-card);
 }
 
 .highlights-list-container {
-  max-width: 1000px; /* Wider container */
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -497,34 +466,34 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.8rem; /* Increased gap */
+  gap: 1.8rem;
 }
 
 .highlight-entry {
   background-color: var(--color-light);
-  padding: 1.5rem; /* More padding */
-  border-radius: var(--radius-medium); /* Softer radius */
+  padding: 1.5rem;
+  border-radius: var(--radius-medium);
   display: flex;
   align-items: center;
-  box-shadow: none; /* Remove individual shadow */
+  box-shadow: none;
   transition: background-color var(--transition-fast),
     transform var(--transition-fast);
-  border: 1px solid #eee; /* Softer border */
-  border-left: 4px solid var(--color-secondary); /* Gold left border */
+  border: 1px solid #eee;
+  border-left: 4px solid var(--color-secondary);
 }
 
 .highlight-entry:hover {
-  transform: translateY(-3px); /* Subtle lift */
-  background-color: #fafafa; /* Slight bg change */
+  transform: translateY(-3px);
+  background-color: #fafafa;
   border-color: #e0e0e0;
-  border-left-color: var(--color-secondary-light); /* Darker gold border */
+  border-left-color: var(--color-secondary-light);
 }
 
 .highlight-icon {
-  color: var(--color-secondary); /* Gold icon */
-  font-size: 1.8rem; /* Larger icon */
+  color: var(--color-secondary);
+  font-size: 1.8rem;
   margin-right: 1.2rem;
-  flex-shrink: 0; /* Prevent icon shrinking */
+  flex-shrink: 0;
 }
 
 .highlight-text {
@@ -533,32 +502,26 @@
   font-size: 1.1rem;
 }
 
-/* === CTA Section Styling === */
-/* Adopted style from services contact section */
 .car-cta-section {
-  background: var(--gradient-background-alt); /* Light grey gradient */
-  color: var(--color-text-dark); /* Dark text on light bg */
+  background: var(--gradient-background-alt);
+  color: var(--color-text-dark);
   text-align: center;
-  padding: 5rem 3rem; /* More padding */
+  padding: 5rem 3rem;
   border-radius: var(--radius-large);
   margin: 5rem auto;
-  box-shadow: var(--shadow-card-hover); /* Use heavier shadow */
+  box-shadow: var(--shadow-card-hover);
   position: relative;
   overflow: hidden;
 }
-/* Keep decorative elements but adjust color? */
+
 .car-cta-section:before,
 .car-cta-section:after {
   content: "";
   position: absolute;
   width: 250px;
   height: 250px;
-  background: radial-gradient(
-    circle,
-    var(--color-secondary),
-    transparent 70%
-  ); /* Gold radial */
-  opacity: 0.08; /* More subtle */
+  background: radial-gradient(circle, var(--color-secondary), transparent 70%);
+  opacity: 0.08;
   border-radius: 50%;
   z-index: 0;
 }
@@ -577,7 +540,7 @@
 .car-cta-section h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: var(--color-primary); /* Navy heading */
+  color: var(--color-primary);
   position: relative;
   z-index: 1;
 }
@@ -586,22 +549,21 @@
   font-size: 1.2rem;
   max-width: 750px;
   margin: 0 auto 2.5rem;
-  color: var(--color-text-light); /* Use standard light text color */
+  color: var(--color-text-light);
   position: relative;
   z-index: 1;
 }
 
-/* Applying .services-btn-contact styles to .cta-button */
 .cta-button {
-  display: inline-flex; /* Use flex for icon alignment if needed */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  padding: 1.2rem 3rem; /* Adjusted padding */
-  background: var(--color-primary); /* Navy background */
-  color: var(--color-light); /* White text */
+  padding: 1.2rem 3rem;
+  background: var(--color-primary);
+  color: var(--color-light);
   text-decoration: none;
-  border-radius: var(--radius-pill); /* Pill shape */
+  border-radius: var(--radius-pill);
   font-weight: 600;
   transition: all var(--transition-fast) ease;
   letter-spacing: 0.5px;
@@ -610,19 +572,18 @@
   overflow: hidden;
   z-index: 1;
   cursor: pointer;
-  border: none; /* Remove border */
-  text-transform: none; /* Remove uppercase */
+  border: none;
+  text-transform: none;
 }
 
 .cta-button::before {
-  /* Hover effect */
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-secondary); /* Gold hover background */
+  background: var(--color-secondary);
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
@@ -635,9 +596,9 @@
 }
 
 .cta-button:hover {
-  transform: translateY(-5px); /* Lift effect */
+  transform: translateY(-5px);
   box-shadow: var(--shadow-button-hover);
-  color: var(--color-primary); /* Navy text on gold hover */
+  color: var(--color-primary);
 }
 .cta-button:active {
   animation: pulseBtn 0.8s ease-out;
@@ -645,7 +606,6 @@
 }
 
 @keyframes pulseBtn {
-  /* Renamed pulse animation */
   0% {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
   }
@@ -657,17 +617,15 @@
   }
 }
 
-/* === Focus Styles === */
 .car-page-container button:focus,
 .car-page-container a:focus,
 .cta-button:focus,
 .thumbnail:focus,
 .arrow:focus {
-  outline: 3px solid var(--color-secondary-light); /* Dark Gold outline */
+  outline: 3px solid var(--color-secondary-light);
   outline-offset: 3px;
 }
 
-/* === Animations === */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -679,7 +637,6 @@
   }
 }
 
-/* === Media Queries (Adjustments for new style) === */
 @media (max-width: 1200px) {
   .car-page-container {
     padding: 2rem 1rem;
@@ -795,7 +752,7 @@
     padding: 1rem 2rem;
     font-size: 0.95rem;
     width: 100%;
-    max-width: 300px; /* Button full width on small screens */
+    max-width: 300px;
   }
   .gallery-thumbnails {
     gap: 8px;
