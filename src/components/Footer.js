@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import {
@@ -12,14 +12,52 @@ import {
 } from "react-icons/fa";
 
 function Footer() {
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const img = new Image();
+    // Upewnij się, że ścieżka do logo jest poprawna
+    img.src = "/images/logo.webp"; 
+
+    const setFooterLoaded = () => {
+      if (footerRef.current && !footerRef.current.classList.contains("footer-loaded")) {
+        footerRef.current.classList.add("footer-loaded");
+      }
+    };
+
+    img.onload = setFooterLoaded;
+    // Dodaj obsługę błędu ładowania obrazu, aby stopka nadal się pojawiała
+    img.onerror = setFooterLoaded; 
+
+    // Sprawdź, czy obraz jest już w pamięci podręcznej przeglądarki
+    if (img.complete) {
+      setFooterLoaded();
+    }
+    
+    // Timeout bezpieczeństwa: jeśli obraz nie załaduje się w określonym czasie,
+    // i tak dodaj klasę 'footer-loaded', aby treść stopki była widoczna (przez zmianę opacity)
+    const safetyTimeout = setTimeout(setFooterLoaded, 2000); // np. 2 sekundy
+
+    return () => {
+      // Wyczyść timeout przy odmontowywaniu komponentu
+      clearTimeout(safetyTimeout);
+    };
+  }, []);
 
   return (
-    <div className="footer-container">
+    <div className="footer-container" ref={footerRef}>
       <section className="footer-top">
         <h3>
-          Bart Premium Services{" "}
+          Bart Premium Services
           <div className="footer-logo">
-            <img src="/images/logo.webp" alt="Logo" width="250" height="80" />
+            <img 
+              src="/images/logo.webp" 
+              alt="Logo" 
+              width="250" 
+              height="80" 
+              loading="eager"
+              fetchpriority="high" 
+            />
           </div>
         </h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
@@ -76,7 +114,7 @@ function Footer() {
               Facebook
             </a>
             <a
-              href="https://wa.me/48660866047"
+              href="https://www.tiktok.com/@twoj_profil_tiktok" // Popraw link do TikToka
               target="_blank"
               rel="noopener noreferrer"
             >

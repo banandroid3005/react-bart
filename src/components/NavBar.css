@@ -11,8 +11,8 @@
   --color-gold: #ffd700;
   --color-gold-light: #ffdf4d;
   --color-gold-dark: #ccac00;
-  --color-grenade: 	#2c3e73;
-  --color-grenade-light: 			#5673c1;
+  --color-grenade:  #2c3e73;
+  --color-grenade-light:      #5673c1;
   --color-grenade-dark: #000051;
   --font-primary: "Roboto", sans-serif;
   --font-secondary: "Roboto", sans-serif;
@@ -49,6 +49,7 @@
   border-bottom: 1px solid rgba(255, 215, 0, 0.3);
   font-family: var(--font-primary);
   width: 100%;
+  contain: layout style;
 }
 
 .navbar--scrolled {
@@ -110,7 +111,6 @@
 
 .navbar-logo:hover img {
   transform: scale(1.1);
-
   filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
 }
 
@@ -628,7 +628,7 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  left: -150%;
+  left: 0; 
   width: 150%;
   height: 100%;
   background: linear-gradient(
@@ -637,16 +637,17 @@ body {
     rgba(255, 215, 0, 0.05) 50%,
     rgba(255, 215, 0, 0) 100%
   );
+  transform: translateX(-100%); 
   animation: goldShimmer 6s infinite;
   pointer-events: none;
 }
 
 @keyframes goldShimmer {
   0% {
-    left: -150%;
+    transform: translateX(-100%);
   }
   100% {
-    left: 150%;
+    transform: translateX(100%);
   }
 }
 
