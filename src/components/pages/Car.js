@@ -15,7 +15,7 @@ import {
   faShieldAlt,
   faWifi,
   faClock,
-  faUserShield,
+  faUserShield, 
   faLeaf,
   faChair,
   faThermometerHalf,

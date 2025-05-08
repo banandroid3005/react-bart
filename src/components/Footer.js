@@ -16,7 +16,6 @@ function Footer() {
 
   useEffect(() => {
     const img = new Image();
-    // Upewnij się, że ścieżka do logo jest poprawna
     img.src = "/images/logo.webp"; 
 
     const setFooterLoaded = () => {
@@ -26,20 +25,15 @@ function Footer() {
     };
 
     img.onload = setFooterLoaded;
-    // Dodaj obsługę błędu ładowania obrazu, aby stopka nadal się pojawiała
     img.onerror = setFooterLoaded; 
 
-    // Sprawdź, czy obraz jest już w pamięci podręcznej przeglądarki
     if (img.complete) {
       setFooterLoaded();
     }
-    
-    // Timeout bezpieczeństwa: jeśli obraz nie załaduje się w określonym czasie,
-    // i tak dodaj klasę 'footer-loaded', aby treść stopki była widoczna (przez zmianę opacity)
-    const safetyTimeout = setTimeout(setFooterLoaded, 2000); // np. 2 sekundy
+  
+    const safetyTimeout = setTimeout(setFooterLoaded, 2000); 
 
     return () => {
-      // Wyczyść timeout przy odmontowywaniu komponentu
       clearTimeout(safetyTimeout);
     };
   }, []);
@@ -53,8 +47,8 @@ function Footer() {
             <img 
               src="/images/logo.webp" 
               alt="Logo" 
-              width="250" 
-              height="80" 
+              width="375" 
+              height="120" 
               loading="eager"
               fetchpriority="high" 
             />
@@ -62,7 +56,7 @@ function Footer() {
         </h3>
         <p>Ekskluzywne przejazdy taxi na terenie całej Polski</p>
       </section>
-      <div className="footer-links">
+      <div className="footer-links"> 
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
             <h3>O nas</h3>
@@ -114,7 +108,7 @@ function Footer() {
               Facebook
             </a>
             <a
-              href="https://www.tiktok.com/@twoj_profil_tiktok" // Popraw link do TikToka
+              href="https://www.tiktok.com/@twoj_profil_tiktok" 
               target="_blank"
               rel="noopener noreferrer"
             >

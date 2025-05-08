@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useGoogleTranslate } from './hooks/useGoogleTranslate.js';
 import "./NavBar.css";
 
-// Definicja linków nawigacyjnych jako stała poza komponentem
 const NAV_ITEMS = [
   { to: "/", text: "Home" },
   { to: "/Usługi", text: "Usługi" },
@@ -12,7 +11,6 @@ const NAV_ITEMS = [
   { to: "/O-mnie", text: "O mnie" },
 ];
 
-// Prosta implementacja throttle jako funkcja poza komponentem
 const throttle = (func, limit) => {
   let lastFunc;
   let lastRan;
@@ -32,8 +30,6 @@ const throttle = (func, limit) => {
     }
   };
 };
-
-// Komponent przycisku języka - wydzielony dla lepszej optymalizacji
 const LanguageButton = memo(({ isActive, onClick, langCode, ariaLabel }) => (
   <button 
     onClick={onClick} 
@@ -45,7 +41,6 @@ const LanguageButton = memo(({ isActive, onClick, langCode, ariaLabel }) => (
   </button>
 ));
 
-// Komponent linku nawigacyjnego - wydzielony dla lepszej optymalizacji
 const NavItem = memo(({ to, text, onClick }) => (
   <li className="nav-item">
     <Link to={to} className="nav-links" onClick={onClick}>
@@ -63,30 +58,21 @@ function NavBar() {
   const throttledScrollHandlerRef = useRef(null);
   const cleanupTimeoutRef = useRef(null);
 
-  // Funkcje obsługi menu
   const handleClick = useCallback(() => setClick(prev => !prev), []);
   const closeMobileMenu = useCallback(() => setClick(false), []);
 
-  // Efekt do obsługi scrolla i początkowego czyszczenia widżetu GT
   useEffect(() => {
-    // Funkcja sprawdzająca pozycję scrolla
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-
-    // Tworzymy throttled handler tylko raz
     if (!throttledScrollHandlerRef.current) {
       throttledScrollHandlerRef.current = throttle(handleScroll, 150);
     }
-
-    // Ustawienie początkowego stanu i dodanie listenera
     handleScroll();
     window.addEventListener("scroll", throttledScrollHandlerRef.current);
 
-    // Początkowe usunięcie paska GT
     cleanupTimeoutRef.current = setTimeout(removeGoogleTranslateWidgetParts, 500);
 
-    // Cleanup function
     return () => {
       window.removeEventListener("scroll", throttledScrollHandlerRef.current);
       if (cleanupTimeoutRef.current) {
@@ -95,7 +81,6 @@ function NavBar() {
     };
   }, [removeGoogleTranslateWidgetParts]);
 
-  // Funkcje do przełączania języków
   const handleSwitchToPl = useCallback(() => {
     if (currentLang !== 'pl') {
       resetTranslation();
@@ -112,14 +97,12 @@ function NavBar() {
     }
   }, [switchToLanguage, currentLang, closeMobileMenu]);
 
-  // Obsługa kliknięcia w logo
   const handleLogoClick = useCallback(() => {
     resetTranslation();
     setCurrentLang('pl');
     closeMobileMenu();
   }, [resetTranslation, closeMobileMenu]);
 
-  // Memoizacja listy nawigacyjnej dla lepszej wydajności
   const renderNavItems = useCallback(() => 
     NAV_ITEMS.map((item) => (
       <NavItem 
@@ -139,14 +122,14 @@ function NavBar() {
           <img
             src="/images/logo.webp"
             alt="Logo Bart Premium Services"
-            loading="lazy"
-            width="250" 
-            height="80"
+            loading="eager"
+            width="375" 
+            height="120"
+            fetchpriority="high"
           />
         </Link>
 
         <div className="navbar-controls-right">
-          {/* Przełącznik języków */}
           <div className="language-switcher">
             <LanguageButton 
               isActive={currentLang === 'pl'}
@@ -161,8 +144,6 @@ function NavBar() {
               ariaLabel="Switch to English language"
             />
           </div>
-
-          {/* Ikona Menu */}
           <div
             className="menu-icon"
             onClick={handleClick}

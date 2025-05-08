@@ -23,8 +23,8 @@ function HeroSection() {
           <img 
             src="/images/logo.webp" 
             alt="Logo Premium Taxi" 
-            width="250" 
-            height="80" 
+            width="375" 
+            height="120" 
             fetchpriority="high"
           />
         </div>
