@@ -68,7 +68,7 @@
 
 .hero-logo img {
   margin: 0 auto;
-  display: block;
+  display: block;;
   transition: transform 0.5s ease;
   filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
 }
@@ -546,7 +546,9 @@
   .hero-sub-heading {
     font-size: 1.1rem;
   }
-
+  .hero-logo img{
+    margin-right: 1rem;
+  }
   .hero-column,
   .hero-column-offer {
     padding: 2.5rem;

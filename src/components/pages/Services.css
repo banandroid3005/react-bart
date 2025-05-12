@@ -19,7 +19,6 @@
 .services-background {
   max-width: 100%;
   min-height: 100vh;
-  /* Tło pozostaje subtelne, aby nie konkurować z elementami */
   background: linear-gradient(
     135deg,
     var(--white) 0%,

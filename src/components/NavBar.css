@@ -11,8 +11,9 @@
   --color-gold: #ffd700;
   --color-gold-light: #ffdf4d;
   --color-gold-dark: #ccac00;
-  --color-grenade:  #2c3e73;
-  --color-grenade-light:      #5673c1;
+  --color-grenade: #2c3e73;
+  --color-grenade-light: #5673c1;
+  --color-navy-blue: #191970;
   --color-grenade-dark: #000051;
   --font-primary: "Roboto", sans-serif;
   --font-secondary: "Roboto", sans-serif;
@@ -45,7 +46,6 @@
   z-index: 999;
   transition: all var(--transition-normal);
   backdrop-filter: blur(4px);
-
   border-bottom: 1px solid rgba(255, 215, 0, 0.3);
   font-family: var(--font-primary);
   width: 100%;
@@ -100,7 +100,7 @@
 }
 
 .navbar-logo img {
-  height: 35px;
+  height: 45px;
   width: auto;
   object-fit: contain;
   margin-left: 6px;
@@ -289,7 +289,7 @@
 }
 
 .nav-links:hover {
-  color: var(--color-light);
+  color: var(--color-gold);
 }
 
 .nav-links.active:after {
@@ -353,12 +353,7 @@ body {
     position: fixed;
     top: var(--navbar-height-mobile);
     left: -100%;
-
-    background: linear-gradient(
-      135deg,
-      rgba(18, 18, 18, 0.96) 0%,
-      rgba(139, 38, 53, 0.5) 100%
-    );
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #d4af37);
     opacity: 0;
     transition: all 0.3s ease;
     z-index: 100;
@@ -372,7 +367,7 @@ body {
 
   .nav-menu.active {
     left: 0;
-    opacity: 1;
+    opacity: 0.9;
   }
 
   .menu-icon {
@@ -384,13 +379,13 @@ body {
   }
 
   .nav-item {
-    height: auto;
+    height: 150px;
     width: 100%;
     margin: 0;
     padding: 0;
-
     border-bottom: 1px solid rgba(255, 215, 0, 0.15);
     display: block;
+    font-size: 2rem;
   }
   .nav-item:last-child {
     border-bottom: none;
@@ -402,8 +397,9 @@ body {
     width: 100%;
     display: block;
     height: auto;
+    font-weight: 600;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 2rem;
   }
   .nav-links:after {
     bottom: 10px;
@@ -628,7 +624,7 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  left: 0; 
+  left: 0;
   width: 150%;
   height: 100%;
   background: linear-gradient(
@@ -637,7 +633,7 @@ body {
     rgba(255, 215, 0, 0.05) 50%,
     rgba(255, 215, 0, 0) 100%
   );
-  transform: translateX(-100%); 
+  transform: translateX(-100%);
   animation: goldShimmer 6s infinite;
   pointer-events: none;
 }

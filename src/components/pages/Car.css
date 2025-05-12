@@ -693,8 +693,8 @@ body.lightbox-open {
   justify-content: center;
   gap: 0.8rem;
   padding: 1.2rem 3rem;
-  background: var(--color-primary);
-  color: var(--color-light);
+  background: linear-gradient(135deg, #283593, #b8860b); /* Wyraźniejszy gradient */
+  color: #ffffff; /* Jasny kolor tekstu */
   text-decoration: none;
   border-radius: var(--radius-pill);
   font-weight: 600;
@@ -716,7 +716,7 @@ body.lightbox-open {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-secondary);
+  background: rgba(255, 255, 255, 0.1); /* Subtelny efekt na hover */
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
@@ -731,8 +731,10 @@ body.lightbox-open {
 .cta-button:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-button-hover);
-  color: var(--color-primary);
+  background: linear-gradient(135deg, #1a237e, #daa520); /* Zmiana gradientu na hover */
+  color: #ffffff;
 }
+
 .cta-button:active {
   animation: pulseBtn 0.8s ease-out;
   transform: scale(0.98);
