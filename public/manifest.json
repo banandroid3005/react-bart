@@ -3,9 +3,9 @@
   "name": "Firma luksusoweych przejazdów w całej Polsce Bart Premium Services",
   "icons": [
     {
-      "src": "logo-icon.ico",
-      "sizes": "250x80",
-      "type": "image/x-icon"
+      "src": "logo192.webp",
+      "sizes": "192x80",
+      "type": "image/webp"
     },
     {
       "src": "logo192.webp",
